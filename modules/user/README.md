@@ -13,26 +13,31 @@ This is not intended to be called by one or more other modules since it contains
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3.0, <1.7.0 |
-| <a name="requirement_ibm"></a> [ibm](#requirement\_ibm) | 1.64.2 |
+| <a name="requirement_ibm"></a> [ibm](#requirement\_ibm) | >= 1.64.0, <2.0.0 |
 
 ### Modules
 
-| Name | Source | Version |
-|------|--------|---------|
-| <a name="module_module_template"></a> [module\_template](#module\_module\_template) | ../.. | n/a |
+No modules.
 
 ### Resources
 
-No resources.
+| Name | Type |
+|------|------|
+| [ibm_mqcloud_user.user](https://registry.terraform.io/providers/ibm-cloud/ibm/latest/docs/resources/mqcloud_user) | resource |
 
 ### Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_ibmcloud_api_key"></a> [ibmcloud\_api\_key](#input\_ibmcloud\_api\_key) | The IBM Cloud API Key | `string` | n/a | yes |
-| <a name="input_region"></a> [region](#input\_region) | The IBM Cloud region | `string` | n/a | yes |
+| <a name="input_email"></a> [email](#input\_email) | The name of the app. | `string` | n/a | yes |
+| <a name="input_name"></a> [name](#input\_name) | The name of the app. | `string` | n/a | yes |
+| <a name="input_service_instance_guid"></a> [service\_instance\_guid](#input\_service\_instance\_guid) | The name of the app. | `string` | n/a | yes |
 
 ### Outputs
 
-No outputs.
+| Name | Description |
+|------|-------------|
+| <a name="output_href"></a> [href](#output\_href) | URL to application that is only visible within the project. |
+| <a name="output_id"></a> [id](#output\_id) | The unique identifier of the created code engine app. |
+| <a name="output_user_id"></a> [user\_id](#output\_user\_id) | URL to application. Depending on visibility this is accessible publicly or in the private network only. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

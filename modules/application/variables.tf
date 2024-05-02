@@ -1,14 +1,13 @@
 ########################################################################################################################
-# Input variables
+# Input Variables
 ########################################################################################################################
 
-variable "ibmcloud_api_key" {
+variable "service_instance_guid" {
+  description = "The name of the app."
   type        = string
-  description = "The IBM Cloud API Key"
-  sensitive   = true
 }
 
-variable "region" {
+variable "name" {
+  description = "The name of the app."
   type        = string
-  description = "The IBM Cloud region"
 }

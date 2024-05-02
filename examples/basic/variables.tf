@@ -31,3 +31,9 @@ variable "resource_tags" {
   description = "Optional list of tags to be added to created resources"
   default     = []
 }
+
+variable "service_plan" {
+  type        = string
+  description = "Prefix to append to all resources created by this example"
+  default     = "lite"
+}
