@@ -17,11 +17,11 @@ variable "name" {
   description = "The name to give the MQ on Cloud instance."
 }
 
-variable "service_plan" {
-  type        = string
-  description = "The MQ on Cloud plan to provision."
-  default     = "lite"
-}
+#variable "service_plan" {
+#  type        = string
+#  description = "The MQ on Cloud plan to provision."
+#  default     = "lite"
+#}
 
 variable "tags" {
   type        = list(string)

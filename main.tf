@@ -11,8 +11,8 @@ module "mqcloud_instance" {
   name              = var.name
   region            = var.region
   resource_group_id = var.resource_group_id
-  service_plan      = var.service_plan
-  tags              = var.tags
+  #  service_plan      = var.service_plan
+  tags = var.tags
 }
 
 module "queue_manager" {

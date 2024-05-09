@@ -32,8 +32,8 @@ variable "resource_tags" {
   default     = []
 }
 
-variable "service_plan" {
-  type        = string
-  description = "Prefix to append to all resources created by this example"
-  default     = "default"
-}
+#variable "service_plan" {
+#  type        = string
+#  description = "Prefix to append to all resources created by this example"
+#  default     = "default"
+#}

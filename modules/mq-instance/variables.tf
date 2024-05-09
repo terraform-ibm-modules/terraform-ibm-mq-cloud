@@ -21,15 +21,15 @@ variable "name" {
 # To list plans:
 # ibmcloud catalog service mqcloud
 # lite, default, custom, reserved-capacity, reserved-deployment
-variable "service_plan" {
-  type        = string
-  description = "The MQ on Cloud plan to provision."
-  default     = "custom"
-  #validation {
-  #  condition     = contains(["lite", "default", "custom", "reservered-capacity", "reserved-deployment"], var.service_plan)
-  #  error_message = "The specified service_plan is not a valid selection!"
-  #}
-}
+#variable "service_plan" {
+#  type        = string
+#  description = "The MQ on Cloud plan to provision."
+#  default     = "custom"
+#validation {
+#  condition     = contains(["lite", "default", "custom", "reservered-capacity", "reserved-deployment"], var.service_plan)
+#  error_message = "The specified service_plan is not a valid selection!"
+#}
+#}
 
 variable "tags" {
   type        = list(string)

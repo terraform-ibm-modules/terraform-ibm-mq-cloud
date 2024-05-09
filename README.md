@@ -6,7 +6,12 @@ Update status and "latest release" badges:
   1. For the status options, see https://terraform-ibm-modules.github.io/documentation/#/badge-status
   2. Update the "latest release" badge to point to the correct module's repo. Replace "terraform-ibm-module-template" in two places.
 -->
-[![Stable (With quality checks)](https://img.shields.io/badge/Status-Stable%20(With%20quality%20checks)-green)](https://terraform-ibm-modules.github.io/documentation/#/badge-status)
+
+<!--
+NOTE: This feature is incubating and ONLY available in eu-fr2 region for validation.
+DO NOT mark this module as stable/supported BEFORE the feature is GA world wide.
+-->
+[![Incubating (Not yet consumable)](https://img.shields.io/badge/status-Incubating%20(Not%20yet%20consumable)-red)](https://terraform-ibm-modules.github.io/documentation/#/badge-status)
 [![latest release](https://img.shields.io/github/v/release/terraform-ibm-modules/terraform-ibm-mq-cloud?logo=GitHub&sort=semver)](https://github.com/terraform-ibm-modules/terraform-ibm-mq-cloud/releases/latest)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 [![Renovate enabled](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovatebot.com/)
@@ -22,6 +27,8 @@ https://terraform-ibm-modules.github.io/documentation/#/implementation-guideline
 
 TODO: Replace this with a description of the modules in this repo.
 
+Information: MQ on Cloud is incubating and NOT GA on IBM Cloud. The features demonstrated here
+are incomplete and may not be in final form and will generate unpredicatable failures.
 
 <!-- The following content is automatically populated by the pre-commit hook -->
 <!-- BEGIN OVERVIEW HOOK -->
@@ -134,7 +141,6 @@ No resources.
 | <a name="input_queue_manager_version"></a> [queue\_manager\_version](#input\_queue\_manager\_version) | The name of the app. | `string` | `"9.3.2_2"` | no |
 | <a name="input_region"></a> [region](#input\_region) | The region to provision the MQ on Cloud instance to. | `string` | n/a | yes |
 | <a name="input_resource_group_id"></a> [resource\_group\_id](#input\_resource\_group\_id) | The ID of the resource group to provision the MQ on Cloud instance to. | `string` | n/a | yes |
-| <a name="input_service_plan"></a> [service\_plan](#input\_service\_plan) | The MQ on Cloud plan to provision. | `string` | `"lite"` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | The list of resource tags that you want to associate with your MQ on Cloud instance. | `list(string)` | `[]` | no |
 | <a name="input_truststore_certificates"></a> [truststore\_certificates](#input\_truststore\_certificates) | A map of code engine domain mappings to be created. | <pre>map(object({<br>    certificate = string<br>    label       = string<br>  }))</pre> | `{}` | no |
 | <a name="input_users"></a> [users](#input\_users) | A map of code engine domain mappings to be created. | <pre>map(object({<br>    email = string<br>    name  = string<br>  }))</pre> | `{}` | no |
