@@ -4,7 +4,12 @@
 # Create an MQ on Cloud SaaS instance
 ##############################################################################
 
+locals {
+  mq_capacity_guid = var.existing_mq_capacity_guid != null ? var.existing_mq_capacity_guid : ibm_resource_instance.mqcloud_capacity[0].guid
+}
+
 resource "ibm_resource_instance" "mqcloud_capacity" {
+  count             = var.existing_mq_capacity_guid != null ? 0 : 1
   location          = var.region
   name              = var.name
   plan              = "reserved-capacity"
@@ -19,7 +24,7 @@ resource "ibm_resource_instance" "mqcloud_deployment" {
   plan              = "reserved-deployment"
   resource_group_id = var.resource_group_id
   parameters = {
-    "undocumented_property" = "location name or id that can not be looked up"
+    "selectedCapacityPlan" = local.mq_capacity_guid
   }
   service = "mqcloud"
   tags    = var.tags

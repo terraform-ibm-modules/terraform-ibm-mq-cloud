@@ -4,12 +4,12 @@
 
 output "capacity_crn" {
   description = "The CRN of the created MQ on Cloud capacity instance."
-  value       = resource.ibm_resource_instance.mqcloud_capacity.crn
+  value       = var.existing_mq_capacity_guid != null ? null : resource.ibm_resource_instance.mqcloud_capacity[0].crn
 }
 
 output "capacity_guid" {
   description = "The unique identifier of the created MQ on Cloud capacity instance."
-  value       = resource.ibm_resource_instance.mqcloud_capacity.guid
+  value       = var.existing_mq_capacity_guid != null ? null : resource.ibm_resource_instance.mqcloud_capacity[0].guid
 }
 
 output "deployment_crn" {

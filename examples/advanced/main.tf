@@ -26,7 +26,7 @@ module "mq_on_cloud" {
   queue_manager_display_name = "${var.prefix}-qm-display"
   queue_manager_location     = var.region
   queue_manager_name         = "${var.prefix}_qm"
-  queue_manager_size         = "lite"
+  queue_manager_size         = "xsmall"
   queue_manager_version      = "9.3.2_2"
 
   applications = {
@@ -46,20 +46,20 @@ module "mq_on_cloud" {
 }
 
 module "application" {
-  service_instance_guid = module.mq_on_cloud.service_instance_guid
+  service_instance_guid = module.mq_on_cloud.service_instance_deployment_guid
   source                = "../../modules/application"
   name                  = "app-ext"
 }
 
 module "user" {
-  service_instance_guid = module.mq_on_cloud.service_instance_guid
+  service_instance_guid = module.mq_on_cloud.service_instance_deployment_guid
   source                = "../../modules/user"
   name                  = "another-user"
   email                 = "another@example.com"
 }
 
 module "keystore" {
-  service_instance_guid = module.mq_on_cloud.service_instance_guid
+  service_instance_guid = module.mq_on_cloud.service_instance_deployment_guid
   queue_manager_id      = module.mq_on_cloud.queue_manager_id
   source                = "../../modules/keystore-certificate"
   certificate           = "BEGIN END"
@@ -67,7 +67,7 @@ module "keystore" {
 }
 
 module "truststore" {
-  service_instance_guid = module.mq_on_cloud.service_instance_guid
+  service_instance_guid = module.mq_on_cloud.service_instance_deployment_guid
   queue_manager_id      = module.mq_on_cloud.queue_manager_id
   source                = "../../modules/truststore-certificate"
   certificate           = "BEGIN END"

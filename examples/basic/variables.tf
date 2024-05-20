@@ -35,5 +35,5 @@ variable "resource_tags" {
 #variable "service_plan" {
 #  type        = string
 #  description = "Prefix to append to all resources created by this example"
-#  default     = "lite"
+#  default     = "reserved-deployment"
 #}

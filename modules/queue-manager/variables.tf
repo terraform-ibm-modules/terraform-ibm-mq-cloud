@@ -25,10 +25,10 @@ variable "name" {
 variable "size" {
   description = "The name of the app."
   type        = string
-  default     = "lite"
+  default     = "xsmall"
   validation {
-    condition     = contains(["lite", "xsmall", "small", "medium", "large"], var.size)
-    error_message = "The specified `size` is not a valid selection, choose from `lite`, `xsmall`, `small`, `medium`, `large`."
+    condition     = contains(["xsmall", "small", "medium", "large"], var.size)
+    error_message = "The specified `size` is not a valid selection, choose from `xsmall`, `small`, `medium`, `large`."
   }
 }
 

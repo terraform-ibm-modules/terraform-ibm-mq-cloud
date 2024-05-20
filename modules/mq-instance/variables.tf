@@ -36,3 +36,9 @@ variable "tags" {
   description = "The list of resource tags that you want to associate with your MQ on Cloud instance."
   default     = []
 }
+
+variable "existing_mq_capacity_guid" {
+  type        = string
+  description = "The GUID of an existing capacity service instance, if not specifed, a new capacity plan will be created"
+  default     = null
+}

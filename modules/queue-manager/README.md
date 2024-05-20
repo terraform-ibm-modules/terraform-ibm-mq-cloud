@@ -34,7 +34,7 @@ No modules.
 | <a name="input_name"></a> [name](#input\_name) | The name of the app. | `string` | n/a | yes |
 | <a name="input_queue_manager_version"></a> [queue\_manager\_version](#input\_queue\_manager\_version) | The name of the app. | `string` | `"9.3.2_2"` | no |
 | <a name="input_service_instance_guid"></a> [service\_instance\_guid](#input\_service\_instance\_guid) | The name of the app. | `string` | n/a | yes |
-| <a name="input_size"></a> [size](#input\_size) | The name of the app. | `string` | `"lite"` | no |
+| <a name="input_size"></a> [size](#input\_size) | The name of the app. | `string` | `"xsmall"` | no |
 
 ### Outputs
 

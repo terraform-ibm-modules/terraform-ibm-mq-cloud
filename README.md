@@ -131,13 +131,13 @@ No resources.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_applications"></a> [applications](#input\_applications) | A map of code engine domain mappings to be created. | <pre>map(object({<br>    name = string<br>  }))</pre> | `{}` | no |
-| <a name="input_existing_mq_instance_id"></a> [existing\_mq\_instance\_id](#input\_existing\_mq\_instance\_id) | Ex | `string` | `null` | no |
+| <a name="input_existing_mq_capacity_guid"></a> [existing\_mq\_capacity\_guid](#input\_existing\_mq\_capacity\_guid) | The GUID of an existing capacity service instance, if not specifed, a new capacity plan will be created | `string` | `null` | no |
 | <a name="input_keystore_certificates"></a> [keystore\_certificates](#input\_keystore\_certificates) | A map of code engine domain mappings to be created. | <pre>map(object({<br>    certificate = string<br>    label       = string<br>  }))</pre> | `{}` | no |
 | <a name="input_name"></a> [name](#input\_name) | The name to give the MQ on Cloud instance. | `string` | n/a | yes |
 | <a name="input_queue_manager_display_name"></a> [queue\_manager\_display\_name](#input\_queue\_manager\_display\_name) | The name of the app. | `string` | n/a | yes |
 | <a name="input_queue_manager_location"></a> [queue\_manager\_location](#input\_queue\_manager\_location) | The name of the app. | `string` | n/a | yes |
 | <a name="input_queue_manager_name"></a> [queue\_manager\_name](#input\_queue\_manager\_name) | ex | `string` | n/a | yes |
-| <a name="input_queue_manager_size"></a> [queue\_manager\_size](#input\_queue\_manager\_size) | The name of the app. | `string` | `"lite"` | no |
+| <a name="input_queue_manager_size"></a> [queue\_manager\_size](#input\_queue\_manager\_size) | The name of the app. | `string` | `"xsmall"` | no |
 | <a name="input_queue_manager_version"></a> [queue\_manager\_version](#input\_queue\_manager\_version) | The name of the app. | `string` | `"9.3.2_2"` | no |
 | <a name="input_region"></a> [region](#input\_region) | The region to provision the MQ on Cloud instance to. | `string` | n/a | yes |
 | <a name="input_resource_group_id"></a> [resource\_group\_id](#input\_resource\_group\_id) | The ID of the resource group to provision the MQ on Cloud instance to. | `string` | n/a | yes |
@@ -150,7 +150,8 @@ No resources.
 | Name | Description |
 |------|-------------|
 | <a name="output_queue_manager_id"></a> [queue\_manager\_id](#output\_queue\_manager\_id) | Description of my output |
-| <a name="output_service_instance_guid"></a> [service\_instance\_guid](#output\_service\_instance\_guid) | Description of my output |
+| <a name="output_service_instance_capacity_guid"></a> [service\_instance\_capacity\_guid](#output\_service\_instance\_capacity\_guid) | Description of my output |
+| <a name="output_service_instance_deployment_guid"></a> [service\_instance\_deployment\_guid](#output\_service\_instance\_deployment\_guid) | Description of my output |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 <!-- Leave this section as is so that your module has a link to local development environment set-up steps for contributors to follow -->

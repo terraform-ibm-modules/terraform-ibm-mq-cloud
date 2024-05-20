@@ -20,7 +20,7 @@ variable "name" {
 #variable "service_plan" {
 #  type        = string
 #  description = "The MQ on Cloud plan to provision."
-#  default     = "lite"
+#  default     = "xsmall"
 #}
 
 variable "tags" {
@@ -29,9 +29,9 @@ variable "tags" {
   default     = []
 }
 
-variable "existing_mq_instance_id" {
+variable "existing_mq_capacity_guid" {
   type        = string
-  description = "Ex"
+  description = "The GUID of an existing capacity service instance, if not specifed, a new capacity plan will be created"
   default     = null
 }
 
@@ -57,7 +57,7 @@ variable "queue_manager_location" {
 variable "queue_manager_size" {
   description = "The name of the app."
   type        = string
-  default     = "lite"
+  default     = "xsmall"
 }
 
 variable "queue_manager_version" {
