@@ -37,3 +37,13 @@ variable "resource_tags" {
 #  description = "Prefix to append to all resources created by this example"
 #  default     = "reserved-deployment"
 #}
+
+variable "existing_mq_capacity_guid" {
+  type        = string
+  description = "The GUID of an existing capacity service instance, if not specifed, a new capacity plan will be created"
+}
+
+variable "existing_mq_location" {
+  type        = string
+  description = "The locations in which the queue manager would be deployed. This is not an MZR, it is the location from the MQ on Cloud deployment service instance."
+}

@@ -39,40 +39,39 @@ variable "existing_mq_capacity_guid" {
 # Queue Manager Variables
 ########################################################################################################################
 
-variable "queue_manager_name" {
-  type        = string
-  description = "ex"
-}
-
 variable "queue_manager_display_name" {
-  description = "The name of the app."
+  description = "A displayable name for the queue manager."
   type        = string
 }
 
 variable "queue_manager_location" {
-  description = "The name of the app."
+  description = "The locations in which the queue manager could be deployed."
   type        = string
 }
 
+variable "queue_manager_name" {
+  type        = string
+  description = "A queue manager name conforming to MQ restrictions. 1 to 48 characters matching regular expression '/^[a-zA-Z0-9._]*$/' ."
+}
+
 variable "queue_manager_size" {
-  description = "The name of the app."
+  description = "The queue manager deployment sizes. Valid values are `xsmall`, `small`, `medium`, `large` ."
   type        = string
   default     = "xsmall"
 }
 
 variable "queue_manager_version" {
-  description = "The name of the app."
+  description = "The MQ version of the queue manager."
   type        = string
   default     = "9.3.2_2"
 }
-
 
 ########################################################################################################################
 # Input Variables
 ########################################################################################################################
 
 variable "applications" {
-  description = "A map of code engine domain mappings to be created."
+  description = "A map of IBM MQ on Cloud applications to be created."
   type = map(object({
     name = string
   }))
@@ -80,7 +79,7 @@ variable "applications" {
 }
 
 variable "keystore_certificates" {
-  description = "A map of code engine domain mappings to be created."
+  description = "A map of IBM MQ on Cloud keystore certificates to be created."
   type = map(object({
     certificate = string
     label       = string
@@ -89,7 +88,7 @@ variable "keystore_certificates" {
 }
 
 variable "truststore_certificates" {
-  description = "A map of code engine domain mappings to be created."
+  description = "A map of IBM MQ on Cloud truststore certificates to be created."
   type = map(object({
     certificate = string
     label       = string
@@ -98,7 +97,7 @@ variable "truststore_certificates" {
 }
 
 variable "users" {
-  description = "A map of code engine domain mappings to be created."
+  description = "A map of IBM MQ on Cloud users to be created."
   type = map(object({
     email = string
     name  = string

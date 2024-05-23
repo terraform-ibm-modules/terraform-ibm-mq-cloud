@@ -29,15 +29,15 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_name"></a> [name](#input\_name) | The name of the app. | `string` | n/a | yes |
-| <a name="input_service_instance_guid"></a> [service\_instance\_guid](#input\_service\_instance\_guid) | The name of the app. | `string` | n/a | yes |
+| <a name="input_name"></a> [name](#input\_name) | The name of the application. | `string` | n/a | yes |
+| <a name="input_service_instance_guid"></a> [service\_instance\_guid](#input\_service\_instance\_guid) | The GUID that uniquely identifies the MQ on Cloud service instance. | `string` | n/a | yes |
 
 ### Outputs
 
 | Name | Description |
 |------|-------------|
-| <a name="output_application_id"></a> [application\_id](#output\_application\_id) | URL to application. Depending on visibility this is accessible publicly or in the private network only. |
-| <a name="output_create_api_key_uri"></a> [create\_api\_key\_uri](#output\_create\_api\_key\_uri) | URL to application that is only visible within the project. |
-| <a name="output_href"></a> [href](#output\_href) | The name of the created code engine app. |
-| <a name="output_id"></a> [id](#output\_id) | The unique identifier of the created code engine app. |
+| <a name="output_application_id"></a> [application\_id](#output\_application\_id) | The ID of the application which was allocated on creation, and can be used for delete calls |
+| <a name="output_create_api_key_uri"></a> [create\_api\_key\_uri](#output\_create\_api\_key\_uri) | The URI to create a new apikey for the application. |
+| <a name="output_href"></a> [href](#output\_href) | The URL for this application. |
+| <a name="output_id"></a> [id](#output\_id) | The unique identifier of the mqcloud\_application. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

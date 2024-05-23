@@ -130,20 +130,20 @@ No resources.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_applications"></a> [applications](#input\_applications) | A map of code engine domain mappings to be created. | <pre>map(object({<br>    name = string<br>  }))</pre> | `{}` | no |
+| <a name="input_applications"></a> [applications](#input\_applications) | A map of IBM MQ on Cloud applications to be created. | <pre>map(object({<br>    name = string<br>  }))</pre> | `{}` | no |
 | <a name="input_existing_mq_capacity_guid"></a> [existing\_mq\_capacity\_guid](#input\_existing\_mq\_capacity\_guid) | The GUID of an existing capacity service instance, if not specifed, a new capacity plan will be created | `string` | `null` | no |
-| <a name="input_keystore_certificates"></a> [keystore\_certificates](#input\_keystore\_certificates) | A map of code engine domain mappings to be created. | <pre>map(object({<br>    certificate = string<br>    label       = string<br>  }))</pre> | `{}` | no |
+| <a name="input_keystore_certificates"></a> [keystore\_certificates](#input\_keystore\_certificates) | A map of IBM MQ on Cloud keystore certificates to be created. | <pre>map(object({<br>    certificate = string<br>    label       = string<br>  }))</pre> | `{}` | no |
 | <a name="input_name"></a> [name](#input\_name) | The name to give the MQ on Cloud instance. | `string` | n/a | yes |
-| <a name="input_queue_manager_display_name"></a> [queue\_manager\_display\_name](#input\_queue\_manager\_display\_name) | The name of the app. | `string` | n/a | yes |
-| <a name="input_queue_manager_location"></a> [queue\_manager\_location](#input\_queue\_manager\_location) | The name of the app. | `string` | n/a | yes |
-| <a name="input_queue_manager_name"></a> [queue\_manager\_name](#input\_queue\_manager\_name) | ex | `string` | n/a | yes |
-| <a name="input_queue_manager_size"></a> [queue\_manager\_size](#input\_queue\_manager\_size) | The name of the app. | `string` | `"xsmall"` | no |
-| <a name="input_queue_manager_version"></a> [queue\_manager\_version](#input\_queue\_manager\_version) | The name of the app. | `string` | `"9.3.2_2"` | no |
+| <a name="input_queue_manager_display_name"></a> [queue\_manager\_display\_name](#input\_queue\_manager\_display\_name) | A displayable name for the queue manager. | `string` | n/a | yes |
+| <a name="input_queue_manager_location"></a> [queue\_manager\_location](#input\_queue\_manager\_location) | The locations in which the queue manager could be deployed. | `string` | n/a | yes |
+| <a name="input_queue_manager_name"></a> [queue\_manager\_name](#input\_queue\_manager\_name) | A queue manager name conforming to MQ restrictions. 1 to 48 characters matching regular expression '/^[a-zA-Z0-9.\_]*$/' . | `string` | n/a | yes |
+| <a name="input_queue_manager_size"></a> [queue\_manager\_size](#input\_queue\_manager\_size) | The queue manager deployment sizes. Valid values are `xsmall`, `small`, `medium`, `large` . | `string` | `"xsmall"` | no |
+| <a name="input_queue_manager_version"></a> [queue\_manager\_version](#input\_queue\_manager\_version) | The MQ version of the queue manager. | `string` | `"9.3.2_2"` | no |
 | <a name="input_region"></a> [region](#input\_region) | The region to provision the MQ on Cloud instance to. | `string` | n/a | yes |
 | <a name="input_resource_group_id"></a> [resource\_group\_id](#input\_resource\_group\_id) | The ID of the resource group to provision the MQ on Cloud instance to. | `string` | n/a | yes |
 | <a name="input_tags"></a> [tags](#input\_tags) | The list of resource tags that you want to associate with your MQ on Cloud instance. | `list(string)` | `[]` | no |
-| <a name="input_truststore_certificates"></a> [truststore\_certificates](#input\_truststore\_certificates) | A map of code engine domain mappings to be created. | <pre>map(object({<br>    certificate = string<br>    label       = string<br>  }))</pre> | `{}` | no |
-| <a name="input_users"></a> [users](#input\_users) | A map of code engine domain mappings to be created. | <pre>map(object({<br>    email = string<br>    name  = string<br>  }))</pre> | `{}` | no |
+| <a name="input_truststore_certificates"></a> [truststore\_certificates](#input\_truststore\_certificates) | A map of IBM MQ on Cloud truststore certificates to be created. | <pre>map(object({<br>    certificate = string<br>    label       = string<br>  }))</pre> | `{}` | no |
+| <a name="input_users"></a> [users](#input\_users) | A map of IBM MQ on Cloud users to be created. | <pre>map(object({<br>    email = string<br>    name  = string<br>  }))</pre> | `{}` | no |
 
 ### Outputs
 

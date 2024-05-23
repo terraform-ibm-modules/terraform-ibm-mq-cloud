@@ -29,15 +29,15 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_email"></a> [email](#input\_email) | The name of the app. | `string` | n/a | yes |
-| <a name="input_name"></a> [name](#input\_name) | The name of the app. | `string` | n/a | yes |
-| <a name="input_service_instance_guid"></a> [service\_instance\_guid](#input\_service\_instance\_guid) | The name of the app. | `string` | n/a | yes |
+| <a name="input_email"></a> [email](#input\_email) | The email of the user. | `string` | n/a | yes |
+| <a name="input_name"></a> [name](#input\_name) | The shortname of the user that will be used as the IBM MQ administrator in interactions with a queue manager for this service instance. | `string` | n/a | yes |
+| <a name="input_service_instance_guid"></a> [service\_instance\_guid](#input\_service\_instance\_guid) | The GUID that uniquely identifies the MQ on Cloud service instance. | `string` | n/a | yes |
 
 ### Outputs
 
 | Name | Description |
 |------|-------------|
-| <a name="output_href"></a> [href](#output\_href) | URL to application that is only visible within the project. |
-| <a name="output_id"></a> [id](#output\_id) | The unique identifier of the created code engine app. |
-| <a name="output_user_id"></a> [user\_id](#output\_user\_id) | URL to application. Depending on visibility this is accessible publicly or in the private network only. |
+| <a name="output_href"></a> [href](#output\_href) | The URL for the user details. |
+| <a name="output_id"></a> [id](#output\_id) | The unique identifier of the user. |
+| <a name="output_user_id"></a> [user\_id](#output\_user\_id) | The ID of the user which was allocated on creation, and can be used for delete calls |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

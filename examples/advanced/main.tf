@@ -21,10 +21,11 @@ module "mq_on_cloud" {
   name   = "${var.prefix}-mq-instance"
   region = var.region
   #  service_plan = var.service_plan
-  tags = var.resource_tags
+  tags                      = var.resource_tags
+  existing_mq_capacity_guid = var.existing_mq_capacity_guid
 
   queue_manager_display_name = "${var.prefix}-qm-display"
-  queue_manager_location     = var.region
+  queue_manager_location     = var.existing_mq_location
   queue_manager_name         = "${var.prefix}_qm"
   queue_manager_size         = "xsmall"
   queue_manager_version      = "9.3.2_2"

@@ -2,39 +2,39 @@
 # Input Variables
 ########################################################################################################################
 
-variable "service_instance_guid" {
-  description = "The name of the app."
-  type        = string
-}
-
 variable "display_name" {
-  description = "The name of the app."
+  description = "A displayable name for the queue manager."
   type        = string
 }
 
 variable "location" {
-  description = "The name of the app."
+  description = "The locations in which the queue manager would be deployed."
   type        = string
 }
 
 variable "name" {
-  description = "The name of the app."
+  description = "A queue manager name conforming to MQ restrictions. 1 to 48 characters matching regular expression '/^[a-zA-Z0-9._]*$/' ."
+  type        = string
+}
+
+# version is reserved attribute on modules
+variable "queue_manager_version" {
+  description = "The MQ version of the queue manager."
+  type        = string
+  default     = "9.3.2_2"
+}
+
+variable "service_instance_guid" {
+  description = "The GUID that uniquely identifies the MQ on Cloud service instance."
   type        = string
 }
 
 variable "size" {
-  description = "The name of the app."
+  description = "The queue manager deployment sizes. Valid values are `xsmall`, `small`, `medium`, `large`."
   type        = string
   default     = "xsmall"
   validation {
     condition     = contains(["xsmall", "small", "medium", "large"], var.size)
     error_message = "The specified `size` is not a valid selection, choose from `xsmall`, `small`, `medium`, `large`."
   }
-}
-
-# version is reserved attribute on modules
-variable "queue_manager_version" {
-  description = "The name of the app."
-  type        = string
-  default     = "9.3.2_2"
 }

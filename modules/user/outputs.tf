@@ -3,16 +3,16 @@
 ########################################################################################################################
 
 output "id" {
-  description = "The unique identifier of the created code engine app."
+  description = "The unique identifier of the user."
   value       = resource.ibm_mqcloud_user.user.id
 }
 
-output "user_id" {
-  description = "URL to application. Depending on visibility this is accessible publicly or in the private network only."
-  value       = resource.ibm_mqcloud_user.user.user_id
+output "href" {
+  description = "The URL for the user details."
+  value       = resource.ibm_mqcloud_user.user.href
 }
 
-output "href" {
-  description = "URL to application that is only visible within the project."
-  value       = resource.ibm_mqcloud_user.user.href
+output "user_id" {
+  description = "The ID of the user which was allocated on creation, and can be used for delete calls"
+  value       = resource.ibm_mqcloud_user.user.user_id
 }
