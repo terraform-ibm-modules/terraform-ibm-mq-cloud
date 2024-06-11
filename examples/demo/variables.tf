@@ -17,7 +17,7 @@ variable "region" {
 variable "prefix" {
   type        = string
   description = "Prefix to append to all resources created by this example"
-  default     = "basic"
+  default     = "demo"
 }
 
 variable "resource_group" {
@@ -28,5 +28,11 @@ variable "resource_group" {
 
 variable "existing_mq_capacity_guid" {
   type        = string
-  description = "The GUID of an existing capacity service instance, if not specifed, a new capacity plan will be created"
+  description = "The GUID of an existing capacity service instance"
+}
+
+variable "mq_restapi_endpoint" {
+  type        = string
+  description = "MQ on Cloud REST API endpoint"
+  default     = "https://api.eu-de.mq2.cloud.ibm.com"
 }

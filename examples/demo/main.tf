@@ -20,16 +20,13 @@ module "mqcloud_instance" {
   region                    = var.region
   resource_group_id         = module.resource_group.resource_group_id
   existing_mq_capacity_guid = var.existing_mq_capacity_guid
-  #  service_plan      = var.service_plan
 }
 
 data "external" "location" {
   program = ["bash", "./mq-location"]
-
   query = {
-    # arbitrary map from strings to strings, passed
-    # to the external program as the data query.
     api_key    = var.ibmcloud_api_key
+    endpoint   = var.mq_restapi_endpoint
     deployment = module.mqcloud_instance.deployment_guid
   }
 }
