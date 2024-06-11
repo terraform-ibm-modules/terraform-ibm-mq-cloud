@@ -1,4 +1,6 @@
 # Advanced example
 
-<!-- There is a pre-commit hook that will take the title of each example add include it in the repos main README.md  -->
-<!-- Add text below should describe exactly what resources are provisioned / configured by the example  -->
+An end-to-end basic example that will provision the following:
+- A new resource group if one is not passed in.
+- An MQ on Cloud deployment instance, with a queue manager, two application key generators and an administrive user.
+- Adds an additional application key generator, user, trust store certificate and key store certificate to the deployment instance

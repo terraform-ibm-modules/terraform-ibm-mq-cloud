@@ -44,6 +44,7 @@ are incomplete and may not be in final form and will generate unpredicatable fai
 * [Examples](./examples)
     * [Advanced example](./examples/advanced)
     * [Basic example](./examples/basic)
+    * [Basic example](./examples/demo)
 * [Contributing](#contributing)
 <!-- END OVERVIEW HOOK -->
 

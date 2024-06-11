@@ -28,7 +28,7 @@ module "mq_on_cloud" {
   queue_manager_location     = var.existing_mq_location
   queue_manager_name         = "${var.prefix}_qm"
   queue_manager_size         = "xsmall"
-  queue_manager_version      = "9.3.2_2"
+  queue_manager_version      = "9.3.5_3"
 
   applications = {
     "${var.prefix}-app" = {

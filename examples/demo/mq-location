@@ -1,0 +1,16 @@
+!/bin/bash
+
+#KEY = `echo $1 | jq -r '@sh "KEY=\(.api_key)"'`
+eval "$(jq -r '@sh "KEY=\(.api_key) DEYPLOYMENT=\(.deployment)"')"
+
+ibmcloud login -a test.cloud.ibm.com -r eu-de --apikey $KEY 2>&1 >/dev/null
+
+# Get a Bearer token
+TOKEN=`ibmcloud iam oauth-tokens | cut -f5 -d' '`
+
+# echo curl -X GET -H 'Authorization: Bearer <token>' -H 'Accept: application/json' 'https://api.private.preprod.mq2.test.cloud.ibm.com/v1/'$2'/options'
+# curl -X GET -H 'Authorization: Bearer '$TOKEN'' -H 'Accept: application/json' 'https://api.private.preprod.mq2.test.cloud.ibm.com/v1/'$DEYPLOYMENT'/options'
+
+LOCATION=`curl -s -X GET -H 'Authorization: Bearer '$TOKEN'' -H 'Accept: application/json' 'https://api.private.preprod.mq2.test.cloud.ibm.com/v1/'$DEYPLOYMENT'/options' | jq .locations[0] | sed 's/"//g'`
+
+echo '{ "location": "'$LOCATION'" }'
