@@ -21,3 +21,8 @@ output "deployment_guid" {
   description = "The unique identifier of the created MQ on Cloud deployment instance."
   value       = resource.ibm_resource_instance.mqcloud_deployment.guid
 }
+
+output "queue_manager_options" {
+  description = "The deployment service instance queue manager options."
+  value       = data.ibm_mqcloud_queue_manager_options.options
+}

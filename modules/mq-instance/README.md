@@ -13,7 +13,7 @@ This is not intended to be called by one or more other modules since it contains
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3.0, <1.7.0 |
-| <a name="requirement_ibm"></a> [ibm](#requirement\_ibm) | >= 1.65.0, <2.0.0 |
+| <a name="requirement_ibm"></a> [ibm](#requirement\_ibm) | >= 1.67.0-beta0, <2.0.0 |
 
 ### Modules
 
@@ -25,6 +25,7 @@ No modules.
 |------|------|
 | [ibm_resource_instance.mqcloud_capacity](https://registry.terraform.io/providers/ibm-cloud/ibm/latest/docs/resources/resource_instance) | resource |
 | [ibm_resource_instance.mqcloud_deployment](https://registry.terraform.io/providers/ibm-cloud/ibm/latest/docs/resources/resource_instance) | resource |
+| [ibm_mqcloud_queue_manager_options.options](https://registry.terraform.io/providers/ibm-cloud/ibm/latest/docs/data-sources/mqcloud_queue_manager_options) | data source |
 
 ### Inputs
 
@@ -44,4 +45,5 @@ No modules.
 | <a name="output_capacity_guid"></a> [capacity\_guid](#output\_capacity\_guid) | The unique identifier of the created MQ on Cloud capacity instance. |
 | <a name="output_deployment_crn"></a> [deployment\_crn](#output\_deployment\_crn) | The CRN of the created MQ on Cloud deployment instance. |
 | <a name="output_deployment_guid"></a> [deployment\_guid](#output\_deployment\_guid) | The unique identifier of the created MQ on Cloud deployment instance. |
+| <a name="output_queue_manager_options"></a> [queue\_manager\_options](#output\_queue\_manager\_options) | The deployment service instance queue manager options. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

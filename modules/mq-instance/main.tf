@@ -29,3 +29,7 @@ resource "ibm_resource_instance" "mqcloud_deployment" {
   service = "mqcloud"
   tags    = var.tags
 }
+
+data "ibm_mqcloud_queue_manager_options" "options" {
+  service_instance_guid = resource.ibm_resource_instance.mqcloud_deployment.guid
+}

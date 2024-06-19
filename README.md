@@ -151,6 +151,7 @@ No resources.
 | Name | Description |
 |------|-------------|
 | <a name="output_queue_manager_id"></a> [queue\_manager\_id](#output\_queue\_manager\_id) | Description of my output |
+| <a name="output_queue_manager_options"></a> [queue\_manager\_options](#output\_queue\_manager\_options) | Queue manager options for the MQ on Cloud deployment |
 | <a name="output_service_instance_capacity_guid"></a> [service\_instance\_capacity\_guid](#output\_service\_instance\_capacity\_guid) | Description of my output |
 | <a name="output_service_instance_deployment_guid"></a> [service\_instance\_deployment\_guid](#output\_service\_instance\_deployment\_guid) | Description of my output |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

@@ -32,11 +32,12 @@ data "external" "location" {
 }
 
 module "queue_manager" {
-  source                = "../../modules/queue-manager"
-  display_name          = "${var.prefix}-qm-display"
+  source       = "../../modules/queue-manager"
+  display_name = "${var.prefix}-qm-display"
+  # location            = module.mqcloud_instance.queue_manager_options.locations[0]
   location              = data.external.location.result.location
   name                  = "${var.prefix}_qm"
   service_instance_guid = module.mqcloud_instance.deployment_guid
   size                  = "xsmall"
-  queue_manager_version = "9.3.5_3"
+  queue_manager_version = module.mqcloud_instance.queue_manager_options.latest_version
 }
