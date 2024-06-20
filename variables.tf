@@ -45,8 +45,9 @@ variable "queue_manager_display_name" {
 }
 
 variable "queue_manager_location" {
-  description = "The locations in which the queue manager could be deployed."
+  description = "The location in which the queue manager will be deployed. Defaults to using the first location in the created service instance"
   type        = string
+  default     = null
 }
 
 variable "queue_manager_name" {

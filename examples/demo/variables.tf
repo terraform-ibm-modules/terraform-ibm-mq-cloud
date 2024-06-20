@@ -30,9 +30,3 @@ variable "existing_mq_capacity_guid" {
   type        = string
   description = "The GUID of an existing capacity service instance"
 }
-
-variable "mq_restapi_endpoint" {
-  type        = string
-  description = "MQ on Cloud REST API endpoint"
-  default     = "https://api.eu-de.mq2.cloud.ibm.com"
-}

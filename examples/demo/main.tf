@@ -22,20 +22,10 @@ module "mqcloud_instance" {
   existing_mq_capacity_guid = var.existing_mq_capacity_guid
 }
 
-data "external" "location" {
-  program = ["bash", "./mq-location"]
-  query = {
-    api_key    = var.ibmcloud_api_key
-    endpoint   = var.mq_restapi_endpoint
-    deployment = module.mqcloud_instance.deployment_guid
-  }
-}
-
 module "queue_manager" {
-  source       = "../../modules/queue-manager"
-  display_name = "${var.prefix}-qm-display"
-  # location            = module.mqcloud_instance.queue_manager_options.locations[0]
-  location              = data.external.location.result.location
+  source                = "../../modules/queue-manager"
+  display_name          = "${var.prefix}-qm-display"
+  location              = module.mqcloud_instance.queue_manager_options.locations[0]
   name                  = "${var.prefix}_qm"
   service_instance_guid = module.mqcloud_instance.deployment_guid
   size                  = "xsmall"

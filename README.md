@@ -136,7 +136,7 @@ No resources.
 | <a name="input_keystore_certificates"></a> [keystore\_certificates](#input\_keystore\_certificates) | A map of IBM MQ on Cloud keystore certificates to be created. | <pre>map(object({<br>    certificate = string<br>    label       = string<br>  }))</pre> | `{}` | no |
 | <a name="input_name"></a> [name](#input\_name) | The name to give the MQ on Cloud instance. | `string` | n/a | yes |
 | <a name="input_queue_manager_display_name"></a> [queue\_manager\_display\_name](#input\_queue\_manager\_display\_name) | A displayable name for the queue manager. | `string` | n/a | yes |
-| <a name="input_queue_manager_location"></a> [queue\_manager\_location](#input\_queue\_manager\_location) | The locations in which the queue manager could be deployed. | `string` | n/a | yes |
+| <a name="input_queue_manager_location"></a> [queue\_manager\_location](#input\_queue\_manager\_location) | The location in which the queue manager will be deployed. Defaults to using the first location in the created service instance | `string` | `null` | no |
 | <a name="input_queue_manager_name"></a> [queue\_manager\_name](#input\_queue\_manager\_name) | A queue manager name conforming to MQ restrictions. 1 to 48 characters matching regular expression '/^[a-zA-Z0-9.\_]*$/' . | `string` | n/a | yes |
 | <a name="input_queue_manager_size"></a> [queue\_manager\_size](#input\_queue\_manager\_size) | The queue manager deployment sizes. Valid values are `xsmall`, `small`, `medium`, `large` . | `string` | `"xsmall"` | no |
 | <a name="input_queue_manager_version"></a> [queue\_manager\_version](#input\_queue\_manager\_version) | The MQ version of the queue manager. | `string` | `"9.3.2_2"` | no |

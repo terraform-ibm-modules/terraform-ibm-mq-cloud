@@ -16,10 +16,14 @@ module "mqcloud_instance" {
   tags = var.tags
 }
 
+locals {
+  queue_manager_location = var.queue_manager_location != null ? var.queue_manager_location : module.mqcloud_instance.queue_manager_options.locations[0]
+}
+
 module "queue_manager" {
   source                = "./modules/queue-manager"
   display_name          = var.queue_manager_display_name
-  location              = var.queue_manager_location
+  location              = local.queue_manager_location
   name                  = var.queue_manager_name
   service_instance_guid = local.deployment_guid
   size                  = var.queue_manager_size
@@ -56,7 +60,7 @@ module "keystore_certificate" {
   service_instance_guid = local.deployment_guid
   certificate           = each.value.certificate
   label                 = each.value.label
-  queue_manager_id      = module.queue_manager.id
+  queue_manager_id      = module.queue_manager.queue_manager_id
 }
 
 ##############################################################################
@@ -68,5 +72,5 @@ module "truststore_certificate" {
   service_instance_guid = local.deployment_guid
   certificate           = each.value.certificate
   label                 = each.value.label
-  queue_manager_id      = module.queue_manager.id
+  queue_manager_id      = module.queue_manager.queue_manager_id
 }

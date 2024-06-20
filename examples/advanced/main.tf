@@ -25,7 +25,6 @@ module "mq_on_cloud" {
   existing_mq_capacity_guid = var.existing_mq_capacity_guid
 
   queue_manager_display_name = "${var.prefix}-qm-display"
-  queue_manager_location     = var.existing_mq_location
   queue_manager_name         = "${var.prefix}_qm"
   queue_manager_size         = "xsmall"
   queue_manager_version      = "9.3.5_3"

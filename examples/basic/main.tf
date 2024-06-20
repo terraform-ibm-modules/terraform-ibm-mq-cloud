@@ -25,7 +25,6 @@ module "mq_on_cloud" {
   existing_mq_capacity_guid = var.existing_mq_capacity_guid
 
   queue_manager_display_name = "${var.prefix}-qm-display"
-  queue_manager_location     = var.existing_mq_location
   queue_manager_name         = "${var.prefix}_qm"
   queue_manager_size         = "xsmall"
   queue_manager_version      = "9.3.5_3"
@@ -41,15 +40,15 @@ module "mq_on_cloud" {
       email = "user-1@example.com"
     }
   }
-  keystore_certificates = {
-    "${var.prefix}-ks-cert" = {
-      certificate = "private.de.icr.io/icr_namespace/image-name"
-      label       = "ks_cert_1"
-    }
-  }
+  #keystore_certificates = {
+  #  "${var.prefix}-ks-cert" = {
+  #    certificate = var.keystore_certificate
+  #    label       = "ks_cert_1"
+  #  }
+  #}
   truststore_certificates = {
     "${var.prefix}-ts-cert" = {
-      certificate = "private.de.icr.io/icr_namespace/image-name"
+      certificate = var.truststore_certificate
       label       = "ts_cert_1"
     }
   }
