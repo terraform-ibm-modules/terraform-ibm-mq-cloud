@@ -31,3 +31,24 @@ variable "resource_tags" {
   description = "Optional list of tags to be added to created resources"
   default     = []
 }
+
+#variable "service_plan" {
+#  type        = string
+#  description = "Prefix to append to all resources created by this example"
+#  default     = "reserved-deployment"
+#}
+
+variable "existing_mq_capacity_guid" {
+  type        = string
+  description = "The GUID of an existing capacity service instance, if not specifed, a new capacity plan will be created"
+}
+
+#variable "keystore_certificate" {
+#  type        = string
+#  description = "Base64 encoded string containing keystore certificate"
+#}
+
+variable "truststore_certificate" {
+  type        = string
+  description = "Base64 encoded string containing keystore certificate"
+}
