@@ -10,7 +10,7 @@ import (
 func TestRunBasicExample(t *testing.T) {
 	t.Parallel()
 
-	options := setupOptions(t, "mod-template-basic", "examples/basic")
+	options := setupOptions(t, "mqoc-basic", "examples/basic")
 
 	output, err := options.RunTestConsistency()
 	assert.Nil(t, err, "This should not have errored")

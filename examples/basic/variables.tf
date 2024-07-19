@@ -43,12 +43,16 @@ variable "existing_mq_capacity_guid" {
   description = "The GUID of an existing capacity service instance, if not specifed, a new capacity plan will be created"
 }
 
-#variable "keystore_certificate" {
-#  type        = string
-#  description = "Base64 encoded string containing keystore certificate"
-#}
+variable "keystore_certificate" {
+  type        = string
+  description = "Base64 encoded string containing keystore certificate"
+  default     = null
+  sensitive   = true
+}
 
 variable "truststore_certificate" {
   type        = string
-  description = "Base64 encoded string containing keystore certificate"
+  description = "Base64 encoded string containing truststore certificate"
+  default     = null
+  sensitive   = true
 }

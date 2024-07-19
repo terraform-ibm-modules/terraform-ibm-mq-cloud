@@ -36,10 +36,11 @@ func setupOptions(t *testing.T, prefix string, dir string) *testhelper.TestOptio
 		Testing:       t,
 		TerraformDir:  dir,
 		Prefix:        prefix,
+		Region:        "us-east",
 		ResourceGroup: resourceGroup,
 		TerraformVars: map[string]interface{}{
-			"existing_mq_capacity_guid": permanentResources["mq_capacity_guid"],
-			"existing_mq_location":      permanentResources["mq_location"],
+			// "existing_mq_capacity_guid": permanentResources["mq_capacity_guid"],
+			"existing_mq_capacity_guid": "9d9a3c00-2097-4da4-a5e4-78e06514b342",
 		},
 	})
 	return options
@@ -48,7 +49,7 @@ func setupOptions(t *testing.T, prefix string, dir string) *testhelper.TestOptio
 func TestRunAdvancedExample(t *testing.T) {
 	t.Parallel()
 
-	options := setupOptions(t, "mod-template", advancedExampleDir)
+	options := setupOptions(t, "mqoc", advancedExampleDir)
 
 	output, err := options.RunTestConsistency()
 	assert.Nil(t, err, "This should not have errored")
@@ -58,7 +59,7 @@ func TestRunAdvancedExample(t *testing.T) {
 func TestRunUpgradeExample(t *testing.T) {
 	t.Parallel()
 
-	options := setupOptions(t, "mod-template-upg", advancedExampleDir)
+	options := setupOptions(t, "mqoc-upg", advancedExampleDir)
 
 	output, err := options.RunTestUpgrade()
 	if !options.UpgradeTestSkipped {

@@ -5,6 +5,7 @@
 variable "certificate" {
   description = "A base64 encoded string contain a PEM certificate chain."
   type        = string
+  sensitive   = true
 }
 
 variable "label" {
