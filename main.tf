@@ -12,8 +12,7 @@ module "mqcloud_instance" {
   region                    = var.region
   resource_group_id         = var.resource_group_id
   existing_mq_capacity_guid = var.existing_mq_capacity_guid
-  #  service_plan      = var.service_plan
-  tags = var.tags
+  tags                      = var.tags
 }
 
 locals {

@@ -1,10 +1,17 @@
-<!-- Update the title -->
-# Deployable Module Template
+# Deployable MQ on Cloud trust store certificate
 
-<!-- Update the below text with the name of the module  -->
+### Usage
 
-A thin wrapper around the [terraform-ibm-module-template](../../) module which includes a provider configuration meaning it can be deployed as is.
-This is not intended to be called by one or more other modules since it contains a provider configuration, meaning it is not compatible with the `for_each`, `count`, and `depends_on` arguments. For more information see [Providers Within Modules](https://developer.hashicorp.com/terraform/language/modules/develop/providers).
+```hcl
+module "truststore_certificate" {
+  source                = "terraform-ibm-modules/mq-cloud/ibm//modules/struststore-certificate"
+  version               = "X.X.X"  # Replace "X.X.X" with a release version to lock into a specific release
+  service_instance_guid = "11111111-1111-1111-1111-111111111111" # MQ on Cloud deployment instance guid
+  certificate           = "YmFzZTY0IGVuY29kZWQgY2VydGlmaWNhdGUK" # Base64 encoded certificate
+  label                 = ["label-1", "label-2"]
+  queue_manager_id      = "11111111-1111-1111-1111-111111111111/11111111111111111111111111111111" # MQ on Cloud queue manager id
+}
+```
 
 <!-- The following content is automatically populated by the pre-commit hook -->
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

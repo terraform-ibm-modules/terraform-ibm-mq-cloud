@@ -1,10 +1,18 @@
-<!-- Update the title -->
-# Deployable Module Template
+# Deployable MQ on Cloud service instance
 
-<!-- Update the below text with the name of the module  -->
+### Usage
 
-A thin wrapper around the [terraform-ibm-module-template](../../) module which includes a provider configuration meaning it can be deployed as is.
-This is not intended to be called by one or more other modules since it contains a provider configuration, meaning it is not compatible with the `for_each`, `count`, and `depends_on` arguments. For more information see [Providers Within Modules](https://developer.hashicorp.com/terraform/language/modules/develop/providers).
+```hcl
+module "mqcloud_instance" {
+  source                    = "terraform-ibm-modules/mq-cloud/ibm//modules/mq-instance"
+  version                   = "X.X.X"  # Replace "X.X.X" with a release version to lock into a specific release
+  name                      = "deployment-instance"
+  region                    = "us-east"
+  resource_group_id         = var.resource_group_id
+  existing_mq_capacity_guid = "11111111-1111-1111-1111-111111111111" # MQ on Cloud capacity instance guid
+  tags                      = [ "tag-1", "tag-2" ]
+}
+```
 
 <!-- The following content is automatically populated by the pre-commit hook -->
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

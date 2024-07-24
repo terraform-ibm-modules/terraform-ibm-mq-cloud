@@ -17,12 +17,6 @@ variable "name" {
   description = "The name to give the MQ on Cloud instance."
 }
 
-#variable "service_plan" {
-#  type        = string
-#  description = "The MQ on Cloud plan to provision."
-#  default     = "xsmall"
-#}
-
 variable "tags" {
   type        = list(string)
   description = "The list of resource tags that you want to associate with your MQ on Cloud instance."
@@ -61,14 +55,14 @@ variable "queue_manager_size" {
   default     = "xsmall"
 }
 
+# Changes rapidly - so no default value
 variable "queue_manager_version" {
   description = "The MQ version of the queue manager."
   type        = string
-  default     = "9.3.2_2"
 }
 
 ########################################################################################################################
-# Input Variables
+# Resource Variables
 ########################################################################################################################
 
 variable "applications" {

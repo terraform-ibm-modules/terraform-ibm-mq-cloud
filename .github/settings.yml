@@ -25,4 +25,4 @@ repository:
   description: "Provisions and configures IBM Cloud MQ on Cloud."
 
   # Use a comma-separated list of topics to set on the repo (ensure not to use any caps in the topic string).
-  topics: terraform, ibm-cloud, terraform-module, mq, core-team, stable, supported
+  topics: terraform, ibm-cloud, terraform-module, mq, core-team, supported

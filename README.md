@@ -1,4 +1,3 @@
-<!-- Update this title with a descriptive name. Use sentence case. -->
 # Terraform MQ on Cloud Module
 
 <!--
@@ -25,10 +24,12 @@ For information, see "Module names and descriptions" at
 https://terraform-ibm-modules.github.io/documentation/#/implementation-guidelines?id=module-names-and-descriptions
 -->
 
-TODO: Replace this with a description of the modules in this repo.
+IBM MQ on IBM Cloud enables you to quickly and easily deploy queue managers in the cloud and connect your applications to them, providing reliable data transfer between different parts of your enterprise application landscape.
 
-Information: MQ on Cloud is incubating and NOT GA on IBM Cloud. The features demonstrated here
-are incomplete and may not be in final form and will generate unpredicatable failures.
+Use the terraform IBM module for MQ on Cloud manage MQ resources. Queue manager, User, Application and Certificate interfaces enable convenient management of MQ on Cloud resource lifecycles.
+
+Information: The terraform IBM module for MQ on Cloud is incubating and NOT GA on IBM Cloud. The features demonstrated here
+are incomplete, may not be in final form and may generate unpredicatable failures.
 
 <!-- The following content is automatically populated by the pre-commit hook -->
 <!-- BEGIN OVERVIEW HOOK -->
@@ -71,7 +72,45 @@ unless real values don't help users know what to change.
 -->
 
 ```hcl
+module "mq_on_cloud" {
+  source            = "terraform-ibm-modules/mq-cloud/ibm/"
+  version           = "x.x.x" #
+  resource_group_id = module.resource_group.resource_group_id
 
+  name   = "${var.prefix}-mq-instance"
+  region = "us-east"
+  existing_mq_capacity_guid = "11111111-1111-1111-1111-111111111111"
+
+  queue_manager_display_name = "queue-manager"
+  queue_manager_name         = "qm"
+  queue_manager_size         = "xsmall"
+  queue_manager_version      = "9.4.0_1"
+
+  applications = {
+    "application" = {
+      name = "application"
+    }
+  }
+  users = {
+    "user" = {
+      name  = "user"
+      email = "user@example.com"
+    }
+  }
+  keystore_certificates = {
+    "ks-cert" = {
+      certificate = "YmFzZTY0IGVuY29kZWQgY2VydGlmaWNhdGUK" # Base64 encoded certificate
+      label       = "ks_cert_1"
+    }
+  }
+  truststore_certificates = {
+    "ts-cert" = {
+      certificate = "YmFzZTY0IGVuY29kZWQgY2VydGlmaWNhdGUK" # Base64 encoded certificate
+      label       = "ts_cert_1"
+    }
+  }
+
+}
 ```
 
 ### Required IAM access policies
@@ -139,7 +178,7 @@ No resources.
 | <a name="input_queue_manager_location"></a> [queue\_manager\_location](#input\_queue\_manager\_location) | The location in which the queue manager will be deployed. Defaults to using the first location in the created service instance | `string` | `null` | no |
 | <a name="input_queue_manager_name"></a> [queue\_manager\_name](#input\_queue\_manager\_name) | A queue manager name conforming to MQ restrictions. 1 to 48 characters matching regular expression '/^[a-zA-Z0-9.\_]*$/' . | `string` | n/a | yes |
 | <a name="input_queue_manager_size"></a> [queue\_manager\_size](#input\_queue\_manager\_size) | The queue manager deployment sizes. Valid values are `xsmall`, `small`, `medium`, `large` . | `string` | `"xsmall"` | no |
-| <a name="input_queue_manager_version"></a> [queue\_manager\_version](#input\_queue\_manager\_version) | The MQ version of the queue manager. | `string` | `"9.3.2_2"` | no |
+| <a name="input_queue_manager_version"></a> [queue\_manager\_version](#input\_queue\_manager\_version) | The MQ version of the queue manager. | `string` | n/a | yes |
 | <a name="input_region"></a> [region](#input\_region) | The region to provision the MQ on Cloud instance to. | `string` | n/a | yes |
 | <a name="input_resource_group_id"></a> [resource\_group\_id](#input\_resource\_group\_id) | The ID of the resource group to provision the MQ on Cloud instance to. | `string` | n/a | yes |
 | <a name="input_tags"></a> [tags](#input\_tags) | The list of resource tags that you want to associate with your MQ on Cloud instance. | `list(string)` | `[]` | no |
