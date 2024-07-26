@@ -39,8 +39,7 @@ func setupOptions(t *testing.T, prefix string, dir string) *testhelper.TestOptio
 		Region:        "us-east",
 		ResourceGroup: resourceGroup,
 		TerraformVars: map[string]interface{}{
-			// "existing_mq_capacity_guid": permanentResources["mq_capacity_guid"],
-			"existing_mq_capacity_guid": "9d9a3c00-2097-4da4-a5e4-78e06514b342",
+			"existing_mq_capacity_guid": permanentResources["mq_capacity_guid"],
 		},
 	})
 	return options

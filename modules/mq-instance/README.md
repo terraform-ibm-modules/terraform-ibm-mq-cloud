@@ -1,4 +1,11 @@
-# Deployable MQ on Cloud service instance
+# MQ on Cloud service instance
+
+MQ on Cloud requires two service instances.
+
+- `reserved-capacity`: A single tenant service instance that provides MQ on Cloud capacity. Incubating versions of this module require the capacity instance to be manually created and the GUID passed into the module.
+- `reserved-deployment`: A service instance to create a `location` in which to create queue managers.
+
+Note: The MQ on Cloud Terraform provider access is restricted to users of the reserved deployment plan.
 
 ### Usage
 
@@ -20,7 +27,7 @@ module "mqcloud_instance" {
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3.0, <1.7.0 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3.0 |
 | <a name="requirement_ibm"></a> [ibm](#requirement\_ibm) | >= 1.67.0, <2.0.0 |
 
 ### Modules
@@ -39,7 +46,7 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_existing_mq_capacity_guid"></a> [existing\_mq\_capacity\_guid](#input\_existing\_mq\_capacity\_guid) | The GUID of an existing capacity service instance, if not specifed, a new capacity plan will be created | `string` | `null` | no |
+| <a name="input_existing_mq_capacity_guid"></a> [existing\_mq\_capacity\_guid](#input\_existing\_mq\_capacity\_guid) | The GUID of an existing capacity service instance, if not specifed, a new capacity plan will be created | `string` | n/a | yes |
 | <a name="input_name"></a> [name](#input\_name) | The name to give the MQ on Cloud instance. | `string` | n/a | yes |
 | <a name="input_region"></a> [region](#input\_region) | The region to provision the MQ on Cloud instance to. | `string` | n/a | yes |
 | <a name="input_resource_group_id"></a> [resource\_group\_id](#input\_resource\_group\_id) | The ID of the resource group to provision the MQ on Cloud instance to. | `string` | n/a | yes |

@@ -1,4 +1,10 @@
-# Deployable MQ on Cloud user
+# MQ on Cloud user
+
+IBM MQ on Cloud makes a distinction between Administrators and Applications - which in IAM terminology are equivalent to Users and Service IDs. Both these entities are capable of accessing an IBM MQ queue manager but they are in different groups and have different access rights.
+
+Administrators are given an IAM access policy which automatically adds them to the standard mqm group for all queue managers in their service instance, and therefore they have full administrator access rights.
+
+[Learn more](https://cloud.ibm.com/docs/mqcloud?topic=mqcloud-users_and_apps)
 
 ### Usage
 
@@ -18,7 +24,7 @@ module "user" {
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3.0, <1.7.0 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3.0 |
 | <a name="requirement_ibm"></a> [ibm](#requirement\_ibm) | >= 1.67.0, <2.0.0 |
 
 ### Modules

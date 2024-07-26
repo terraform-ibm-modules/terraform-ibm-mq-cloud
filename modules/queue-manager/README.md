@@ -1,4 +1,6 @@
-# Deployable MQ on Cloud queue manager
+# MQ on Cloud queue manager
+
+A queue manager is service that hosts MQ queues and channels. The queue manager ensures messages are processed from the right queue or routes requests to another queue manager.
 
 ### Usage
 
@@ -21,7 +23,7 @@ module "queue_manager" {
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3.0, <1.7.0 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3.0 |
 | <a name="requirement_ibm"></a> [ibm](#requirement\_ibm) | >= 1.67.0, <2.0.0 |
 
 ### Modules

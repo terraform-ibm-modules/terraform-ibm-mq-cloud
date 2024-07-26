@@ -1,4 +1,8 @@
-# Deployable MQ on Cloud key store certificate
+# MQ on Cloud keystore certificate
+
+To enable client processes to trust the queue manager create a public certificate that will be presented by the queue manager.
+
+[Learn more](https://cloud.ibm.com/docs/mqcloud?topic=mqcloud-mqoc_configure_chl_ssl#mqoc_chl_ssl_keystore)
 
 ### Usage
 
@@ -19,7 +23,7 @@ module "keystore_certificate" {
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3.0, <1.7.0 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3.0 |
 | <a name="requirement_ibm"></a> [ibm](#requirement\_ibm) | >= 1.67.0, <2.0.0 |
 
 ### Modules

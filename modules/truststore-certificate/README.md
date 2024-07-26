@@ -1,4 +1,8 @@
-# Deployable MQ on Cloud trust store certificate
+# MQ on Cloud trust store certificate
+
+The trust store is used to trust certificates from MQ clients and other queue managers that connect to the queue manager.
+
+[Learn more](https://cloud.ibm.com/docs/mqcloud?topic=mqcloud-mqoc_qm_certs#cert_policy_mqoc_qm_certs)
 
 ### Usage
 
@@ -19,7 +23,7 @@ module "truststore_certificate" {
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3.0, <1.7.0 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3.0 |
 | <a name="requirement_ibm"></a> [ibm](#requirement\_ibm) | >= 1.67.0, <2.0.0 |
 
 ### Modules
