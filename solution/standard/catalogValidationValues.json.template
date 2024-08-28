@@ -1,0 +1,10 @@
+{
+  "ibmcloud_api_key": $VALIDATION_APIKEY,
+  "region": "us-east",
+  "resource_group_name": $PREFIX,
+  "existing_mq_capacity_crn": $HPCS_US_SOUTH_CRN,
+  "deployment_name": "da-mq-instance",
+  "queue_manager_name": "da_qm",
+  "queue_manager_display_name": "da-qm-display",
+  "queue_manager_size": "xsmall"
+}

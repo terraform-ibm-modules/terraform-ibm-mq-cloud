@@ -45,7 +45,6 @@ are incomplete, may not be in final form and may generate unpredicatable failure
 * [Examples](./examples)
     * [Advanced example](./examples/advanced)
     * [Basic example](./examples/basic)
-    * [Demo example](./examples/demo)
 * [Contributing](#contributing)
 <!-- END OVERVIEW HOOK -->
 
