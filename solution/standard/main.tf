@@ -1,15 +1,25 @@
 ########################################################################################################################
-# Resource group
+# Validation and local configuration
 ########################################################################################################################
 
 locals {
+
+}
+
+locals {
+  # Capacity instance
   split_capacity_crn        = split(":", var.existing_mq_capacity_crn)
   existing_mq_capacity_guid = length(local.split_capacity_crn) >= 8 ? local.split_capacity_crn[7] : null
   mq_capacity_crn           = var.existing_mq_capacity_crn
 
-  #split_deployment_crn        = var.existing_mq_deployment_crn == null ? 0 : split(":", var.existing_mq_deployment_crn)
-  #existing_mq_deployment_guid = length(local.split_deployment_crn) >= 8 ? local.split_deployment_crn[7] : null
-  #mq_deployment_crn            = var.existing_mq_deployment_crn == null ? module.mqcloud_instance.deployment_crn : var.existing_mq_deployment_crn
+  # Deployment instance
+  split_deployment_crn        = var.existing_mq_deployment_crn == null ? [] : split(":", var.existing_mq_deployment_crn)
+  existing_mq_deployment_guid = length(local.split_deployment_crn) >= 8 ? local.split_deployment_crn[7] : null
+  mq_deployment_crn           = var.existing_mq_deployment_crn == null ? module.mqcloud_instance[0].deployment_crn : var.existing_mq_deployment_crn
+  mq_deployment_guid          = var.existing_mq_deployment_crn == null ? module.mqcloud_instance[0].deployment_guid : local.existing_mq_deployment_guid
+
+  # Queue manager
+  create_queue_manager = var.existing_queue_manager_name == null ? true : false
 }
 
 ########################################################################################################################
@@ -24,11 +34,11 @@ module "resource_group" {
 }
 
 ########################################################################################################################
-# MQ on Cloud
+# MQ on Cloud deployment instance
 ########################################################################################################################
 
 module "mqcloud_instance" {
-  # count                     = var.existing_mq_deployment_crn == null ? 1 : 0
+  count                     = var.existing_mq_deployment_crn == null ? 1 : 0
   source                    = "../../modules/mq-instance"
   name                      = var.deployment_name
   region                    = var.region
@@ -36,12 +46,37 @@ module "mqcloud_instance" {
   existing_mq_capacity_guid = local.existing_mq_capacity_guid
 }
 
+data "ibm_mqcloud_queue_manager_options" "queue_manager_options" {
+  count                 = var.existing_mq_deployment_crn == null ? 0 : 1
+  service_instance_guid = local.mq_deployment_guid
+}
+
+locals {
+  location = var.existing_mq_deployment_crn == null ? module.mqcloud_instance[0].queue_manager_options.locations[0] : data.ibm_mqcloud_queue_manager_options.queue_manager_options[0].locations[0]
+  version  = var.existing_mq_deployment_crn == null ? module.mqcloud_instance[0].queue_manager_options.latest_version : data.ibm_mqcloud_queue_manager_options.queue_manager_options[0].latest_version
+}
+
+########################################################################################################################
+# MQ queue manager
+########################################################################################################################
+
 module "queue_manager" {
+  count                 = local.create_queue_manager ? 1 : 0
   source                = "../../modules/queue-manager"
   display_name          = var.queue_manager_display_name
-  location              = "temporary" #module.mqcloud_instance.queue_manager_options.locations[0]
+  location              = local.location
   name                  = var.queue_manager_name
-  service_instance_guid = module.mqcloud_instance.deployment_guid
+  service_instance_guid = local.mq_deployment_guid
   size                  = var.queue_manager_size
-  queue_manager_version = module.mqcloud_instance.queue_manager_options.latest_version
+  queue_manager_version = local.version
 }
+
+data "ibm_mqcloud_queue_manager" "queue_manager" {
+  count                 = local.create_queue_manager ? 0 : 1
+  name                  = var.existing_queue_manager_name
+  service_instance_guid = local.mq_deployment_guid
+}
+
+########################################################################################################################
+# MQ queue configuraton
+########################################################################################################################

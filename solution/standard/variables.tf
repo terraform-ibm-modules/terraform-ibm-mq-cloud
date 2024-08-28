@@ -50,11 +50,11 @@ variable "deployment_name" {
   default     = null
 }
 
-#variable "existing_mq_deployment_crn" {
-#  type        = string
-#  description = "The CRN of an existing MQ on Cloud deployment service instance. If no value is specified, a new instance is created."
-#  default     = null
-#}
+variable "existing_mq_deployment_crn" {
+  type        = string
+  description = "The CRN of an existing MQ on Cloud deployment service instance. If no value is specified, a new instance is created."
+  default     = null
+}
 
 ########################################################################################################################
 # MQ on Cloud queue manager
@@ -63,11 +63,13 @@ variable "deployment_name" {
 variable "queue_manager_name" {
   type        = string
   description = "The name to be given to the queue manager"
+  default     = null
 }
 
 variable "queue_manager_display_name" {
   type        = string
   description = "The display name to be given to the queue manager"
+  default     = null
 }
 
 variable "queue_manager_size" {
@@ -78,4 +80,10 @@ variable "queue_manager_size" {
     condition     = contains(["xsmall", "small", "medium", "large"], var.queue_manager_size)
     error_message = "The specified `size` is not a valid selection, choose from `xsmall`, `small`, `medium`, `large`."
   }
+}
+
+variable "existing_queue_manager_name" {
+  type        = string
+  description = "The name of an existing queue manager"
+  default     = null
 }
