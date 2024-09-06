@@ -21,7 +21,7 @@
         "short_description": "Creates and configures IBM Cloud MQ on Cloud resources",
         "long_description": "This architecture supports creating and configuring an IBM MQ on Cloud deployment instance and queue manager.",
         "offering_docs_url": "https://github.com/terraform-ibm-modules/terraform-ibm-mq-cloud/blob/main/solutions/standard/README.md",
-        "offering_icon_url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-mq-cloud/main/reference-architecture/deployable-architecture-mqcloud.svg",
+        "offering_icon_url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-mq-cloud/main/images/MQ.svg",
         "provider_name": "IBM",
         "features": [
           {
