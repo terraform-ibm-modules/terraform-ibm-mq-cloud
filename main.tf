@@ -2,7 +2,13 @@
 # MQ on Cloud instance and queue manager
 ##############################################################################
 locals {
-  capacity_guid   = var.existing_mq_capacity_guid != null ? var.existing_mq_capacity_guid : module.mqcloud_instance.capacity_guid
+  # Capacity instance
+  split_capacity_crn        = var.existing_mq_capacity_crn == null ? null : split(":", var.existing_mq_capacity_crn)
+  existing_mq_capacity_guid = var.existing_mq_capacity_crn == null ? null : (length(local.split_capacity_crn) >= 8 ? local.split_capacity_crn[7] : null)
+
+  capacity_crn    = var.existing_mq_capacity_crn == null ? module.mqcloud_instance.capacity_crn : var.existing_mq_capacity_crn
+  capacity_guid   = local.existing_mq_capacity_guid != null ? local.existing_mq_capacity_guid : module.mqcloud_instance.capacity_guid
+  deployment_crn  = module.mqcloud_instance.deployment_crn
   deployment_guid = module.mqcloud_instance.deployment_guid
 }
 
@@ -11,7 +17,7 @@ module "mqcloud_instance" {
   name                      = var.name
   region                    = var.region
   resource_group_id         = var.resource_group_id
-  existing_mq_capacity_guid = var.existing_mq_capacity_guid
+  existing_mq_capacity_guid = local.existing_mq_capacity_guid
   tags                      = var.tags
 }
 

@@ -7,4 +7,4 @@ CRA_TARGETS:
     # SCC_INSTANCE_ID: "" # The SCC instance ID to use to download profile for CRA scan. If not provided, a default global value will be used.
     # SCC_REGION: "" # The IBM Cloud region that the SCC instance is in. If not provided, a default global value will be used.
     CRA_ENVIRONMENT_VARIABLES:  # An optional map of environment variables for CRA, where the key is the variable name and value is the value. Useful for providing TF_VARs.
-      TF_VAR_existing_mq_capacity_guid:  "9d9a3c00-2097-4da4-a5e4-78e06514b342"
+      TF_VAR_existing_mq_capacity_crn:  "crn:v1:bluemix:public:mqcloud:us-east:a/abac0df06b644a9cabc6e44f55b3880e:9d9a3c00-2097-4da4-a5e4-78e06514b342::"

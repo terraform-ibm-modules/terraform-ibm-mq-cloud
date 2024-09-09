@@ -4,25 +4,25 @@
 
 variable "ibmcloud_api_key" {
   type        = string
-  description = "The IBM Cloud API Key"
+  description = "The IBM Cloud API key to deploy resources."
   sensitive   = true
 }
 
 variable "region" {
   type        = string
-  description = "Region to provision all resources created by this example"
+  description = "Region to provision new resources created by this solution."
   default     = "us-south"
 }
 
 variable "prefix" {
   type        = string
-  description = "Prefix to append to all resources created by this example"
-  default     = "demo"
+  description = "Prefix to add to all resources created by this solution."
+  default     = null
 }
 
 variable "resource_group_name" {
   type        = string
-  description = "The name of a new or an existing resource group to provision the Databases for Elasicsearch in. If a prefix input variable is specified, the prefix is added to the name in the `<prefix>-<name>` format."
+  description = "The name of a new or an existing resource group to provision the MQ on Cloud resources in. If a prefix input variable is specified, the prefix is added to the name in the `<prefix>-<name>` format."
 }
 
 variable "use_existing_resource_group" {
@@ -37,7 +37,7 @@ variable "use_existing_resource_group" {
 
 variable "existing_mq_capacity_crn" {
   type        = string
-  description = "The CRN of an existing MQ on Cloud capacity service instance"
+  description = "The CRN of an existing MQ on Cloud capacity service instance."
 }
 
 ########################################################################################################################
@@ -46,7 +46,7 @@ variable "existing_mq_capacity_crn" {
 
 variable "deployment_name" {
   type        = string
-  description = "The name to be given to the MQ on Cloud deployment instance"
+  description = "The name to be given to the MQ on Cloud deployment instance."
   default     = null
 }
 
@@ -62,18 +62,18 @@ variable "existing_mq_deployment_crn" {
 
 variable "queue_manager_name" {
   type        = string
-  description = "The name to be given to the queue manager"
+  description = "The name to be given to the queue manager."
   default     = null
 }
 
 variable "queue_manager_display_name" {
   type        = string
-  description = "The display name to be given to the queue manager"
+  description = "The display name to be given to the queue manager."
   default     = null
 }
 
 variable "queue_manager_size" {
-  description = "The queue manager sizes. Valid values are `xsmall`, `small`, `medium`, `large`"
+  description = "The queue manager sizes. Valid values are `xsmall`, `small`, `medium`, `large`."
   type        = string
   default     = "xsmall"
   validation {
@@ -84,6 +84,6 @@ variable "queue_manager_size" {
 
 variable "existing_queue_manager_name" {
   type        = string
-  description = "The name of an existing queue manager"
+  description = "The name of an existing queue manager."
   default     = null
 }
