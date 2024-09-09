@@ -8,12 +8,12 @@ The trust store is used to trust certificates from MQ clients and other queue ma
 
 ```hcl
 module "truststore_certificate" {
-  source                = "terraform-ibm-modules/mq-cloud/ibm//modules/struststore-certificate"
-  version               = "X.X.X"  # Replace "X.X.X" with a release version to lock into a specific release
-  service_instance_guid = "11111111-1111-1111-1111-111111111111" # MQ on Cloud deployment instance guid
-  certificate           = "YmFzZTY0IGVuY29kZWQgY2VydGlmaWNhdGUK" # Base64 encoded certificate
-  label                 = ["label-1", "label-2"]
-  queue_manager_id      = "11111111-1111-1111-1111-111111111111/11111111111111111111111111111111" # MQ on Cloud queue manager id
+  source               = "terraform-ibm-modules/mq-cloud/ibm//modules/struststore-certificate"
+  version              = "X.X.X"  # Replace "X.X.X" with a release version to lock into a specific release
+  service_instance_crn = "crn:<...>" # MQ on Cloud deployment instance crn
+  certificate          = "YmFzZTY0IGVuY29kZWQgY2VydGlmaWNhdGUK" # Base64 encoded certificate
+  label                = ["label-1", "label-2"]
+  queue_manager_id     = "11111111-1111-1111-1111-111111111111/11111111111111111111111111111111" # MQ on Cloud queue manager id
 }
 ```
 
@@ -43,7 +43,7 @@ No modules.
 | <a name="input_certificate"></a> [certificate](#input\_certificate) | A base64 encoded string contain a PEM certificate chain. | `string` | n/a | yes |
 | <a name="input_label"></a> [label](#input\_label) | The label to use for the certificate to be uploaded. | `string` | n/a | yes |
 | <a name="input_queue_manager_id"></a> [queue\_manager\_id](#input\_queue\_manager\_id) | The id of the queue manager. | `string` | n/a | yes |
-| <a name="input_service_instance_guid"></a> [service\_instance\_guid](#input\_service\_instance\_guid) | The GUID that uniquely identifies the MQ on Cloud service instance. | `string` | n/a | yes |
+| <a name="input_service_instance_crn"></a> [service\_instance\_crn](#input\_service\_instance\_crn) | The CRN that uniquely identifies the MQ on Cloud deployment service instance. | `string` | n/a | yes |
 
 ### Outputs
 

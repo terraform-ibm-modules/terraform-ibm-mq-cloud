@@ -24,8 +24,8 @@ variable "queue_manager_version" {
   default     = "9.3.2_2"
 }
 
-variable "service_instance_guid" {
-  description = "The GUID that uniquely identifies the MQ on Cloud service instance."
+variable "service_instance_crn" {
+  description = "The CRN that uniquely identifies the MQ on Cloud deployment service instance."
   type        = string
 }
 

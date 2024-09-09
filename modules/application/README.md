@@ -10,10 +10,10 @@ Applications are given an IAM access policy which automatically adds them to the
 
 ```hcl
 module "application" {
-  source                = "terraform-ibm-modules/mq-cloud/ibm//modules/application"
-  version               = "X.X.X"  # Replace "X.X.X" with a release version to lock into a specific release
-  service_instance_guid = "11111111-1111-1111-1111-111111111111" # MQ on Cloud deployment instance guid
-  name                  = "application"
+  source               = "terraform-ibm-modules/mq-cloud/ibm//modules/application"
+  version              = "X.X.X"  # Replace "X.X.X" with a release version to lock into a specific release
+  service_instance_crn = "crn:<...>" # MQ on Cloud deployment instance crn
+  name                 = "application"
 }
 ```
 
@@ -41,7 +41,7 @@ No modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_name"></a> [name](#input\_name) | The name of the application. | `string` | n/a | yes |
-| <a name="input_service_instance_guid"></a> [service\_instance\_guid](#input\_service\_instance\_guid) | The GUID that uniquely identifies the MQ on Cloud service instance. | `string` | n/a | yes |
+| <a name="input_service_instance_crn"></a> [service\_instance\_crn](#input\_service\_instance\_crn) | The CRN that uniquely identifies the MQ on Cloud deployment service instance. | `string` | n/a | yes |
 
 ### Outputs
 

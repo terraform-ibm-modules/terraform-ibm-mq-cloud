@@ -78,7 +78,7 @@ module "mq_on_cloud" {
 
   name   = "${var.prefix}-mq-instance"
   region = "us-east"
-  existing_mq_capacity_guid = "11111111-1111-1111-1111-111111111111"
+  existing_mq_capacity_crn = "crn:<...>" # MQ on Cloud capacity instance crn
 
   queue_manager_display_name = "queue-manager"
   queue_manager_name         = "qm"

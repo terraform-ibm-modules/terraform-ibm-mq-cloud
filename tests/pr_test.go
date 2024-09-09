@@ -41,7 +41,7 @@ func setupOptions(t *testing.T, prefix string, dir string) *testhelper.TestOptio
 		Region:        "us-east",
 		ResourceGroup: resourceGroup,
 		TerraformVars: map[string]interface{}{
-			"existing_mq_capacity_guid": permanentResources["mq_capacity_guid"],
+			"existing_mq_capacity_crn": permanentResources["mq_capacity_crn"],
 		},
 	})
 	return options
@@ -90,8 +90,7 @@ func TestRunStandardSolutionSchematics(t *testing.T) {
 
 	options.TerraformVars = []testschematic.TestSchematicTerraformVar{
 		{Name: "ibmcloud_api_key", Value: options.RequiredEnvironmentVars["TF_VAR_ibmcloud_api_key"], DataType: "string", Secure: true},
-		// 		{Name: "existing_mq_capacity_crn", Value: permanentResources["mq_capacity_crn"], DataType: "string"},
-		{Name: "existing_mq_capacity_crn", Value: ":::::::9d9a3c00-2097-4da4-a5e4-78e06514b342:::", DataType: "string"},
+		{Name: "existing_mq_capacity_crn", Value: permanentResources["mq_capacity_crn"], DataType: "string"},
 		{Name: "resource_group_name", Value: options.Prefix, DataType: "string"},
 		{Name: "region", Value: "us-east", DataType: "string"},
 		{Name: "deployment_name", Value: "da-mq-instance", DataType: "string"},

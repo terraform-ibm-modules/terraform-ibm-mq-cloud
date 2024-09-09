@@ -79,7 +79,7 @@
                 "key": "prefix"
               },
               {
-                "key": "existing_mq_capacity_guid"
+                "key": "existing_mq_capacity_crn"
               },
               {
                 "key": "deployment_name"

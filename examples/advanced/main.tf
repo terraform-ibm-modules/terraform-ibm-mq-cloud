@@ -51,32 +51,32 @@ module "mq_on_cloud" {
 }
 
 module "application" {
-  service_instance_guid = module.mq_on_cloud.service_instance_deployment_guid
-  source                = "../../modules/application"
-  name                  = "app-ext"
+  service_instance_crn = module.mq_on_cloud.service_instance_deployment_crn
+  source               = "../../modules/application"
+  name                 = "app-ext"
 }
 
 module "user" {
-  service_instance_guid = module.mq_on_cloud.service_instance_deployment_guid
-  source                = "../../modules/user"
-  name                  = "another-user"
-  email                 = "another@example.com"
+  service_instance_crn = module.mq_on_cloud.service_instance_deployment_crn
+  source               = "../../modules/user"
+  name                 = "another-user"
+  email                = "another@example.com"
 }
 
 module "keystore" {
-  count                 = var.keystore_certificate == null ? 0 : 1
-  service_instance_guid = module.mq_on_cloud.service_instance_deployment_guid
-  queue_manager_id      = module.mq_on_cloud.queue_manager_id
-  source                = "../../modules/keystore-certificate"
-  certificate           = var.keystore_certificate
-  label                 = "ks_extension"
+  count                = var.keystore_certificate == null ? 0 : 1
+  service_instance_crn = module.mq_on_cloud.service_instance_deployment_crn
+  queue_manager_id     = module.mq_on_cloud.queue_manager_id
+  source               = "../../modules/keystore-certificate"
+  certificate          = var.keystore_certificate
+  label                = "ks_extension"
 }
 
 module "truststore" {
-  count                 = var.truststore_certificate == null ? 0 : 1
-  service_instance_guid = module.mq_on_cloud.service_instance_deployment_guid
-  queue_manager_id      = module.mq_on_cloud.queue_manager_id
-  source                = "../../modules/truststore-certificate"
-  certificate           = var.truststore_certificate
-  label                 = "ts_extension"
+  count                = var.truststore_certificate == null ? 0 : 1
+  service_instance_crn = module.mq_on_cloud.service_instance_deployment_crn
+  queue_manager_id     = module.mq_on_cloud.queue_manager_id
+  source               = "../../modules/truststore-certificate"
+  certificate          = var.truststore_certificate
+  label                = "ts_extension"
 }

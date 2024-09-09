@@ -10,11 +10,11 @@ Administrators are given an IAM access policy which automatically adds them to t
 
 ```hcl
 module "user" {
-  source                = "terraform-ibm-modules/mq-cloud/ibm//modules/user"
-  version               = "X.X.X"  # Replace "X.X.X" with a release version to lock into a specific release
-  service_instance_guid = "11111111-1111-1111-1111-111111111111" # MQ on Cloud deployment instance guid
-  name                  = "user"
-  email                 = "user@example.com"
+  source               = "terraform-ibm-modules/mq-cloud/ibm//modules/user"
+  version              = "X.X.X"  # Replace "X.X.X" with a release version to lock into a specific release
+  service_instance_crn = "crn:<...>" # MQ on Cloud deployment instance crn
+  name                 = "user"
+  email                = "user@example.com"
 }
 ```
 
@@ -43,7 +43,7 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | <a name="input_email"></a> [email](#input\_email) | The email of the user. | `string` | n/a | yes |
 | <a name="input_name"></a> [name](#input\_name) | The shortname of the user that will be used as the IBM MQ administrator in interactions with a queue manager for this service instance. | `string` | n/a | yes |
-| <a name="input_service_instance_guid"></a> [service\_instance\_guid](#input\_service\_instance\_guid) | The GUID that uniquely identifies the MQ on Cloud service instance. | `string` | n/a | yes |
+| <a name="input_service_instance_crn"></a> [service\_instance\_crn](#input\_service\_instance\_crn) | The CRN that uniquely identifies the MQ on Cloud deployment service instance. | `string` | n/a | yes |
 
 ### Outputs
 

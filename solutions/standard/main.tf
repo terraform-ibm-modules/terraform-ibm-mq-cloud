@@ -3,15 +3,6 @@
 ########################################################################################################################
 
 locals {
-
-}
-
-locals {
-  # Capacity instance
-  split_capacity_crn        = split(":", var.existing_mq_capacity_crn)
-  existing_mq_capacity_guid = length(local.split_capacity_crn) >= 8 ? local.split_capacity_crn[7] : null
-  mq_capacity_crn           = var.existing_mq_capacity_crn
-
   # Deployment instance
   split_deployment_crn        = var.existing_mq_deployment_crn == null ? [] : split(":", var.existing_mq_deployment_crn)
   existing_mq_deployment_guid = length(local.split_deployment_crn) >= 8 ? local.split_deployment_crn[7] : null
@@ -38,12 +29,12 @@ module "resource_group" {
 ########################################################################################################################
 
 module "mqcloud_instance" {
-  count                     = var.existing_mq_deployment_crn == null ? 1 : 0
-  source                    = "../../modules/mq-instance"
-  name                      = var.deployment_name
-  region                    = var.region
-  resource_group_id         = module.resource_group.resource_group_id
-  existing_mq_capacity_guid = local.existing_mq_capacity_guid
+  count                    = var.existing_mq_deployment_crn == null ? 1 : 0
+  source                   = "../../modules/mq-instance"
+  name                     = var.deployment_name
+  region                   = var.region
+  resource_group_id        = module.resource_group.resource_group_id
+  existing_mq_capacity_crn = var.existing_mq_capacity_crn
 }
 
 data "ibm_mqcloud_queue_manager_options" "queue_manager_options" {
@@ -66,7 +57,7 @@ module "queue_manager" {
   display_name          = var.queue_manager_display_name
   location              = local.location
   name                  = var.queue_manager_name
-  service_instance_guid = local.mq_deployment_guid
+  service_instance_crn  = local.mq_deployment_crn
   size                  = var.queue_manager_size
   queue_manager_version = local.version
 }

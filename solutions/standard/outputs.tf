@@ -4,7 +4,7 @@
 
 # MQ on Cloud capacity instance
 output "capacity_crn" {
-  value       = local.mq_capacity_crn
+  value       = var.existing_mq_capacity_crn
   description = "MQ on Cloud capacity service instance CRN"
 }
 
