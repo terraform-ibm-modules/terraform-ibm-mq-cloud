@@ -6,6 +6,7 @@
         "product_kind": "solution",
         "tags": [
           "ibm_created",
+          "integration",
           "target_terraform",
           "terraform",
           "solution"
