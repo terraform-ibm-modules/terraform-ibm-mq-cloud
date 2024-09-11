@@ -57,30 +57,27 @@
             ],
             "configuration" : [
               {
-                "key": "ibmcloud_api_key"
+                "key": "ibmcloud_api_key",
+                "required": true
               },
               {
                 "key": "use_existing_resource_group"
               },
               {
-                "key": "resource_group_name"
+                "key": "resource_group_name",
+                "required": true
               },
               {
                 "key": "region",
                 "required": true,
-                "default_value": "",
-                "options": [
-                  {
-                    "displayname": "Washington (us-east)",
-                    "value": "us-east"
-                  }
-                ]
+                "default_value": "us-east"
               },
               {
                 "key": "prefix"
               },
               {
-                "key": "existing_mq_capacity_crn"
+                "key": "existing_mq_capacity_crn",
+                "required": true
               },
               {
                 "key": "deployment_name"
