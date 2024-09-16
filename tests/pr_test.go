@@ -60,7 +60,7 @@ func TestRunAdvancedExample(t *testing.T) {
 func TestRunUpgradeExample(t *testing.T) {
 	t.Parallel()
 
-	options := setupOptions(t, "mqoc-upg", advancedExampleDir)
+	options := setupOptions(t, "mqoc-upg", standardSolutionTerraformDir)
 
 	output, err := options.RunTestUpgrade()
 	if !options.UpgradeTestSkipped {

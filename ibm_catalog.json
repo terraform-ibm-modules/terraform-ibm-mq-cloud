@@ -38,13 +38,6 @@
             "install_type": "fullstack",
             "working_directory": "solutions/standard",
             "compliance": {
-              "authority": "scc-v3",
-              "profiles": [
-                {
-                  "profile_name": "CIS IBM Cloud Foundations Benchmark",
-                  "profile_version": "1.0.0"
-                }
-              ]
             },
             "iam_permissions": [
               {
