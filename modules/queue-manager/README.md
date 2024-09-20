@@ -11,7 +11,7 @@ module "queue_manager" {
   display_name          = "queue-manager"
   location              = "22222222-2222-2222-2222-222222222222" # Location from MQ on Cloud deployment instance
   name                  = "qm"
-  service_instance_guid = "11111111-1111-1111-1111-111111111111" # MQ on Cloud deployment instance guid
+  service_instance_crn  = "crn:<...>" # MQ on Cloud deployment instance crn
   size                  = "xsmall"
   queue_manager_version = "9.4.0_1"
 }
@@ -44,7 +44,7 @@ No modules.
 | <a name="input_location"></a> [location](#input\_location) | The locations in which the queue manager would be deployed. | `string` | n/a | yes |
 | <a name="input_name"></a> [name](#input\_name) | A queue manager name conforming to MQ restrictions. 1 to 48 characters matching regular expression '/^[a-zA-Z0-9.\_]*$/' . | `string` | n/a | yes |
 | <a name="input_queue_manager_version"></a> [queue\_manager\_version](#input\_queue\_manager\_version) | The MQ version of the queue manager. | `string` | `"9.3.2_2"` | no |
-| <a name="input_service_instance_guid"></a> [service\_instance\_guid](#input\_service\_instance\_guid) | The GUID that uniquely identifies the MQ on Cloud service instance. | `string` | n/a | yes |
+| <a name="input_service_instance_crn"></a> [service\_instance\_crn](#input\_service\_instance\_crn) | The CRN that uniquely identifies the MQ on Cloud deployment service instance. | `string` | n/a | yes |
 | <a name="input_size"></a> [size](#input\_size) | The queue manager deployment sizes. Valid values are `xsmall`, `small`, `medium`, `large`. | `string` | `"xsmall"` | no |
 
 ### Outputs

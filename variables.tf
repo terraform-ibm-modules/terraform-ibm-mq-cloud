@@ -23,9 +23,9 @@ variable "tags" {
   default     = []
 }
 
-variable "existing_mq_capacity_guid" {
+variable "existing_mq_capacity_crn" {
   type        = string
-  description = "The GUID of an existing capacity service instance, if not specifed, a new capacity plan will be created"
+  description = "The CRN of an existing capacity service instance, if not specifed, a new capacity plan will be created"
   default     = null
 }
 

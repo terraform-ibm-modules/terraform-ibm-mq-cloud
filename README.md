@@ -45,7 +45,6 @@ are incomplete, may not be in final form and may generate unpredicatable failure
 * [Examples](./examples)
     * [Advanced example](./examples/advanced)
     * [Basic example](./examples/basic)
-    * [Demo example](./examples/demo)
 * [Contributing](#contributing)
 <!-- END OVERVIEW HOOK -->
 
@@ -79,7 +78,7 @@ module "mq_on_cloud" {
 
   name   = "${var.prefix}-mq-instance"
   region = "us-east"
-  existing_mq_capacity_guid = "11111111-1111-1111-1111-111111111111"
+  existing_mq_capacity_crn = "crn:<...>" # MQ on Cloud capacity instance crn
 
   queue_manager_display_name = "queue-manager"
   queue_manager_name         = "qm"
@@ -171,7 +170,7 @@ No resources.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_applications"></a> [applications](#input\_applications) | A map of IBM MQ on Cloud applications to be created. | <pre>map(object({<br>    name = string<br>  }))</pre> | `{}` | no |
-| <a name="input_existing_mq_capacity_guid"></a> [existing\_mq\_capacity\_guid](#input\_existing\_mq\_capacity\_guid) | The GUID of an existing capacity service instance, if not specifed, a new capacity plan will be created | `string` | `null` | no |
+| <a name="input_existing_mq_capacity_crn"></a> [existing\_mq\_capacity\_crn](#input\_existing\_mq\_capacity\_crn) | The CRN of an existing capacity service instance, if not specifed, a new capacity plan will be created | `string` | `null` | no |
 | <a name="input_keystore_certificates"></a> [keystore\_certificates](#input\_keystore\_certificates) | A map of IBM MQ on Cloud keystore certificates to be created. | <pre>map(object({<br>    certificate = string<br>    label       = string<br>  }))</pre> | `{}` | no |
 | <a name="input_name"></a> [name](#input\_name) | The name to give the MQ on Cloud instance. | `string` | n/a | yes |
 | <a name="input_queue_manager_display_name"></a> [queue\_manager\_display\_name](#input\_queue\_manager\_display\_name) | A displayable name for the queue manager. | `string` | n/a | yes |
@@ -189,10 +188,12 @@ No resources.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_queue_manager_id"></a> [queue\_manager\_id](#output\_queue\_manager\_id) | Description of my output |
-| <a name="output_queue_manager_options"></a> [queue\_manager\_options](#output\_queue\_manager\_options) | Queue manager options for the MQ on Cloud deployment |
-| <a name="output_service_instance_capacity_guid"></a> [service\_instance\_capacity\_guid](#output\_service\_instance\_capacity\_guid) | Description of my output |
-| <a name="output_service_instance_deployment_guid"></a> [service\_instance\_deployment\_guid](#output\_service\_instance\_deployment\_guid) | Description of my output |
+| <a name="output_queue_manager_id"></a> [queue\_manager\_id](#output\_queue\_manager\_id) | The ID of the MQ on Cloud queue manager |
+| <a name="output_queue_manager_options"></a> [queue\_manager\_options](#output\_queue\_manager\_options) | Queue manager options for the MQ on Cloud deployment service instance |
+| <a name="output_service_instance_capacity_crn"></a> [service\_instance\_capacity\_crn](#output\_service\_instance\_capacity\_crn) | The CRN of the MQ on Cloud capacity service instance |
+| <a name="output_service_instance_capacity_guid"></a> [service\_instance\_capacity\_guid](#output\_service\_instance\_capacity\_guid) | The GUID of the MQ on Cloud capacity service instance |
+| <a name="output_service_instance_deployment_crn"></a> [service\_instance\_deployment\_crn](#output\_service\_instance\_deployment\_crn) | The CRN of the MQ on Cloud deployment service instance |
+| <a name="output_service_instance_deployment_guid"></a> [service\_instance\_deployment\_guid](#output\_service\_instance\_deployment\_guid) | The GUID of the MQ on Cloud deployment service instance |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 <!-- Leave this section as is so that your module has a link to local development environment set-up steps for contributors to follow -->
