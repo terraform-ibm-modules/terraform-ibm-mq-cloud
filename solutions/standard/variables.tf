@@ -87,3 +87,69 @@ variable "existing_queue_manager_name" {
   description = "The name of an existing queue manager."
   default     = null
 }
+
+########################################################################################################################
+# MQ on Cloud application
+########################################################################################################################
+
+variable "application_name" {
+  type        = string
+  description = "The name to be given to the application."
+  default     = null
+}
+
+variable "existing_application_name" {
+  type        = string
+  description = "The name of an existing application."
+  default     = null
+}
+
+variable "application_key_name" {
+  type        = string
+  description = "The name given to the application api key."
+  default     = null
+}
+
+########################################################################################################################
+# MQ on Cloud user
+########################################################################################################################
+
+variable "user_name" {
+  type        = string
+  description = "The name to be given to the user."
+  default     = null
+}
+
+variable "existing_user_name" {
+  type        = string
+  description = "The name of an existing user."
+  default     = null
+}
+
+variable "user_email" {
+  type        = string
+  description = "The email address to given to the new user."
+  default     = null
+}
+
+########################################################################################################################
+# Secrets Manager - in which to store the queue manager certificate and optionally store application keys
+########################################################################################################################
+
+variable "existing_secrets_manager_crn" {
+  type        = string
+  description = "The CRN of a secrets manager to store secrets.name of an existing application."
+  default     = null
+}
+
+variable "existing_secret_group_crn" {
+  type        = string
+  description = "The CRN of an existing secret group to store any new secrets in."
+  default     = null
+}
+
+variable "secret_group_name" {
+  type        = string
+  description = "The name of a secret group to create to store any new secrets in."
+  default     = null
+}
