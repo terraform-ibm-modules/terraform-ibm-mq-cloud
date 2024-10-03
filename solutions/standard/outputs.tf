@@ -204,6 +204,6 @@ output "certificate_secret_crn" {
 # TODO: DA work off CRN, so add CRN to the outputs of the secret group module
 output "secret_group_crn" {
   description = "The CRN of the secret group containing the MQ secrets."
-  value       = module.secret_group[0].secret_group_id
+  value       = var.existing_secrets_manager_crn != null && var.existing_secret_group_crn == null ? module.secret_group[0].secret_group_id : null
   # value       = var.existing_secret_group_crn == null ? module.secret_group[0].id : var.existing_secret_group_crn
 }

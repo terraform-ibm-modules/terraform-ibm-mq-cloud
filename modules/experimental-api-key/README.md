@@ -23,7 +23,7 @@ module "application_api_key" {
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3.0 |
-| <a name="requirement_external"></a> [external](#requirement\_external) | >= 2.3.4 |
+| <a name="requirement_local"></a> [local](#requirement\_local) | >= 2.5.2 |
 
 ### Modules
 
@@ -33,7 +33,8 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [external_external.application_apikey](https://registry.terraform.io/providers/hashicorp/external/latest/docs/data-sources/external) | data source |
+| [terraform_data.bootstrap_api_key](https://registry.terraform.io/providers/hashicorp/terraform/latest/docs/resources/data) | resource |
+| [local_sensitive_file.bootstrap_api_key](https://registry.terraform.io/providers/hashicorp/local/latest/docs/data-sources/sensitive_file) | data source |
 
 ### Inputs
 
@@ -47,7 +48,7 @@ No modules.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_api_key"></a> [api\_key](#output\_api\_key) | name |
-| <a name="output_api_key_id"></a> [api\_key\_id](#output\_api\_key\_id) | name |
-| <a name="output_api_key_name"></a> [api\_key\_name](#output\_api\_key\_name) | name |
+| <a name="output_api_key"></a> [api\_key](#output\_api\_key) | MQ on Cloud application API key (sensitive) |
+| <a name="output_api_key_id"></a> [api\_key\_id](#output\_api\_key\_id) | MQ on Cloud application API key id |
+| <a name="output_api_key_name"></a> [api\_key\_name](#output\_api\_key\_name) | MQ on Cloud application API key name |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

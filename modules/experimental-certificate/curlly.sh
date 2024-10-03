@@ -11,4 +11,5 @@ BEARER=$(curl -X POST   "https://iam.cloud.ibm.com/identity/token"   --header 'C
 
 CERT_STREAM=$(curl -X GET --location --header "Authorization: Bearer ${BEARER}"   --header "Accept: application/octet-stream"   "${HREF}" 2>/dev/null)
 
-echo '{"certificate":"'"${CERT_STREAM}"'"}'
+# shellcheck disable=SC2086
+echo '{"certificate":"'${CERT_STREAM}'"}'

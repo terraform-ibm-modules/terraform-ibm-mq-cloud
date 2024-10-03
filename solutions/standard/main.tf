@@ -46,6 +46,7 @@ module "mqcloud_instance" {
   name                     = var.deployment_name
   region                   = var.region
   resource_group_id        = module.resource_group.resource_group_id
+  tags                     = var.resource_tags
   existing_mq_capacity_crn = var.existing_mq_capacity_crn
 }
 

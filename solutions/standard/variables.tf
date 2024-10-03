@@ -31,6 +31,12 @@ variable "use_existing_resource_group" {
   default     = false
 }
 
+variable "resource_tags" {
+  type        = list(string)
+  description = "A list of tags to associate with any MQ on Cloud instances created."
+  default     = []
+}
+
 ########################################################################################################################
 # MQ on Cloud capacity instance
 ########################################################################################################################
