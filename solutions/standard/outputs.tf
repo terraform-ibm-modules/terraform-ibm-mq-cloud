@@ -196,14 +196,39 @@ output "user_email" {
 # Secrets
 ########################################################################################################################
 
-output "certificate_secret_crn" {
-  description = "The certificate secrets CRN."
-  value       = var.existing_secrets_manager_crn != null ? module.certificate_secret[0].secret_crn : null
-}
-
 # TODO: DA work off CRN, so add CRN to the outputs of the secret group module
 output "secret_group_crn" {
   description = "The CRN of the secret group containing the MQ secrets."
   value       = var.existing_secrets_manager_crn != null && var.existing_secret_group_crn == null ? module.secret_group[0].secret_group_id : null
   # value       = var.existing_secret_group_crn == null ? module.secret_group[0].id : var.existing_secret_group_crn
+}
+
+output "secret_issue_certificate_crn" {
+  description = "The issue CA certificate secret CRN."
+  value       = var.existing_secrets_manager_crn != null ? module.certificate_secret[0].secret_crn : null
+}
+
+output "secret_issuer_certificate_name" {
+  description = "The issue CA certificate secret name."
+  value       = var.existing_secrets_manager_crn != null ? local.certificate_secret_name : null
+}
+
+output "secret_root_cert_crn" {
+  description = "The root CA certificate secret CRN."
+  value       = var.existing_secrets_manager_crn != null ? module.root_certificate_secret[0].secret_crn : null
+}
+
+output "secret_root_cert_name" {
+  description = "The root CA certificate secret name."
+  value       = var.existing_secrets_manager_crn != null ? local.root_certificate_secret_name : null
+}
+
+output "secret_api_key_crn" {
+  description = "The root CA certificate secret CRN."
+  value       = var.existing_secrets_manager_crn != null ? module.application_api_key_secret[0].secret_crn : null
+}
+
+output "secret_api_key_name" {
+  description = "The root CA certificate secret name."
+  value       = var.existing_secrets_manager_crn != null ? local.application_api_key_secret_name : null
 }
