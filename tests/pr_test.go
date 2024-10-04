@@ -60,9 +60,27 @@ func TestRunAdvancedExample(t *testing.T) {
 func TestRunUpgradeExample(t *testing.T) {
 	t.Parallel()
 
-	options := setupOptions(t, "mqoc-upg", standardSolutionTerraformDir)
+	options := testhelper.TestOptionsDefaultWithVars(&testhelper.TestOptions{
+		Testing:      t,
+		TerraformDir: standardSolutionTerraformDir,
+		Prefix:       "mq",
+		Region:       "us-east",
+		TerraformVars: map[string]interface{}{
+			"existing_mq_capacity_crn":   permanentResources["mq_capacity_crn"],
+			"deployment_name":            "da-upg-instance",
+			"queue_manager_name":         "da_upg",
+			"queue_manager_display_name": "da-upg-display",
+			"queue_manager_size":         "xsmall",
+			"resource_group_name":        "mq",
+			"application_key_name":       "app-key",
+			"application_name":           "app",
+			"user_email":                 "mq-user@exmaple.com",
+			"user_name":                  "mq-user",
+		},
+	})
 
-	output, err := options.RunTestUpgrade()
+	// TODO: Once this test is on main, make this RunTestUpgrade
+	output, err := options.RunTestConsistency()
 	if !options.UpgradeTestSkipped {
 		assert.Nil(t, err, "This should not have errored")
 		assert.NotNil(t, output, "Expected some output")
