@@ -66,6 +66,9 @@
                 "default_value": "us-east"
               },
               {
+                "key": "resource_tags"
+              },
+              {
                 "key": "prefix"
               },
               {
@@ -107,6 +110,33 @@
               },
               {
                 "key": "existing_queue_manager_name"
+              },
+              {
+                "key": "application_name"
+              },
+              {
+                "key": "existing_application_name"
+              },
+              {
+                "key": "application_key_name"
+              },
+              {
+                "key": "user_name"
+              },
+              {
+                "key": "existing_user_name"
+              },
+              {
+                "key": "user_email"
+              },
+              {
+                "key": "existing_secrets_manager_crn"
+              },
+              {
+                "key": "existing_secret_group_crn"
+              },
+              {
+                "key": "secret_group_name"
               }
             ],
             "architecture": {
