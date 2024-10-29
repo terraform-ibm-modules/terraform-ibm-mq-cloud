@@ -2,7 +2,7 @@
     "products": [
       {
         "name": "deploy-arch-ibm-mq-cloud",
-        "label": "MQ on Cloud",
+        "label": "Cloud automation for MQ on Cloud",
         "product_kind": "solution",
         "tags": [
           "ibm_created",
