@@ -86,7 +86,7 @@ module "mq_on_cloud" {
   queue_manager_display_name = "queue-manager"
   queue_manager_name         = "qm"
   queue_manager_size         = "xsmall"
-  queue_manager_version      = "9.4.0_1"
+  queue_manager_version      = "9.4.0_3"
 
   applications = {
     "application" = {

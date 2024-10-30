@@ -13,7 +13,7 @@ module "queue_manager" {
   name                  = "qm"
   service_instance_crn  = "crn:<...>" # MQ on Cloud deployment instance crn
   size                  = "xsmall"
-  queue_manager_version = "9.4.0_1"
+  queue_manager_version = "9.4.0_3"
 }
 ```
 
