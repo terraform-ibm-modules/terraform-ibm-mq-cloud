@@ -95,6 +95,7 @@ func TestRunStandardSolutionSchematics(t *testing.T) {
 		TarIncludePatterns: []string{
 			"*.tf",
 			"modules/*/*.tf",
+			"modules/*/*.sh",
 			standardSolutionTerraformDir + "/*.tf",
 		},
 		TemplateFolder:         standardSolutionTerraformDir,
@@ -115,6 +116,10 @@ func TestRunStandardSolutionSchematics(t *testing.T) {
 		{Name: "queue_manager_name", Value: "da_qm", DataType: "string"},
 		{Name: "queue_manager_display_name", Value: "da-qm-display", DataType: "string"},
 		{Name: "queue_manager_size", Value: "xsmall", DataType: "string"},
+		{Name: "application_key_name", Value: "dapp-key", DataType: "string"},
+		{Name: "application_name", Value: "dapp", DataType: "string"},
+		{Name: "user_email", Value: "mqda-user@exmaple.com", DataType: "string"},
+		{Name: "user_name", Value: "mqda-user", DataType: "string"},
 	}
 	err := options.RunSchematicTest()
 	assert.Nil(t, err, "This should not have errored")
