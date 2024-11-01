@@ -190,15 +190,8 @@ module "sm_crn" {
   crn     = var.existing_secrets_manager_crn
 }
 
-module "smsg_crn" {
-  count   = var.existing_secret_group_crn != null ? 1 : 0
-  source  = "terraform-ibm-modules/common-utilities/ibm//modules/crn-parser"
-  version = "1.0.0"
-  crn     = var.existing_secret_group_crn
-}
-
 module "secret_group" {
-  count                    = var.existing_secrets_manager_crn != null && var.existing_secret_group_crn == null ? 1 : 0
+  count                    = var.existing_secrets_manager_crn != null && var.existing_secret_group_id == null ? 1 : 0
   source                   = "terraform-ibm-modules/secrets-manager-secret-group/ibm"
   version                  = "1.2.2"
   region                   = module.sm_crn[0].region
@@ -209,7 +202,7 @@ module "secret_group" {
 }
 
 locals {
-  secret_group_id                 = var.existing_secrets_manager_crn == null ? null : (var.existing_secret_group_crn == null ? module.secret_group[0].secret_group_id : module.smsg_crn.resource)
+  secret_group_id                 = var.existing_secrets_manager_crn == null ? null : (var.existing_secret_group_id == null ? module.secret_group[0].secret_group_id : var.existing_secret_group_id)
   certificate_secret_name         = "mq-da-cert-${local.queue_manager_name}"
   root_certificate_secret_name    = "mq-da-root-cert-${local.queue_manager_name}"
   application_api_key_secret_name = "mq-da-application-api-key-${module.experimental_api_key.api_key_name}"

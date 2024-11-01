@@ -148,9 +148,9 @@ variable "existing_secrets_manager_crn" {
   default     = null
 }
 
-variable "existing_secret_group_crn" {
+variable "existing_secret_group_id" {
   type        = string
-  description = "The CRN of an existing secret group to store any new secrets in."
+  description = "The ID of an existing secret group to store any new secrets in."
   default     = null
 }
 

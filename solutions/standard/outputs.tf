@@ -196,11 +196,10 @@ output "user_email" {
 # Secrets
 ########################################################################################################################
 
-# TODO: DA work off CRN, so add CRN to the outputs of the secret group module
-output "secret_group_crn" {
-  description = "The CRN of the secret group containing the MQ secrets."
-  value       = var.existing_secrets_manager_crn != null && var.existing_secret_group_crn == null ? module.secret_group[0].secret_group_id : null
-  # value       = var.existing_secret_group_crn == null ? module.secret_group[0].id : var.existing_secret_group_crn
+# Ideally a CRN would be used, but secrets groups do not have them
+output "secret_group_id" {
+  description = "The ID of the secret group containing the MQ secrets."
+  value       = var.existing_secrets_manager_crn != null && var.existing_secret_group_id == null ? module.secret_group[0].secret_group_id : null
 }
 
 output "secret_issue_certificate_crn" {

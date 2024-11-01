@@ -133,7 +133,7 @@
                 "key": "existing_secrets_manager_crn"
               },
               {
-                "key": "existing_secret_group_crn"
+                "key": "existing_secret_group_id"
               },
               {
                 "key": "secret_group_name"
