@@ -153,22 +153,6 @@ output "application_href" {
   value       = local.application_href
 }
 
-output "application_api_key_name" {
-  description = "The URL to create an application api key."
-  value       = module.experimental_api_key.api_key_name
-}
-
-output "application_api_key_id" {
-  description = "The URL to create an application api key."
-  value       = module.experimental_api_key.api_key_id
-}
-
-output "application_api_key" {
-  description = "The URL to create an application api key."
-  value       = module.experimental_api_key.api_key
-  sensitive   = true
-}
-
 # MQ on Cloud trust store certificates
 
 output "truststore_certificate" {
@@ -220,14 +204,4 @@ output "secret_root_cert_crn" {
 output "secret_root_cert_name" {
   description = "The root CA certificate secret name."
   value       = var.existing_secrets_manager_crn != null ? local.root_certificate_secret_name : null
-}
-
-output "secret_api_key_crn" {
-  description = "The root CA certificate secret CRN."
-  value       = var.existing_secrets_manager_crn != null ? module.application_api_key_secret[0].secret_crn : null
-}
-
-output "secret_api_key_name" {
-  description = "The root CA certificate secret name."
-  value       = var.existing_secrets_manager_crn != null ? local.application_api_key_secret_name : null
 }

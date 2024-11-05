@@ -4,6 +4,8 @@ This is an experimental module to extend the [application module](../application
 
 [Learn more](https://cloud.ibm.com/docs/mqcloud?topic=mqcloud-users_and_apps)
 
+This module is problematic in some environments. A temporary step during the provisioning of the key writes to a file. This file has to be retained from one terraform command to another. This means pipeline environments, such as IBM Cloud schematics, which use a clean environment for each run will fail after the first apply.
+
 ### Usage
 
 ```hcl

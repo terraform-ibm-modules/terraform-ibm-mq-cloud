@@ -110,12 +110,6 @@ variable "existing_application_name" {
   default     = null
 }
 
-variable "application_key_name" {
-  type        = string
-  description = "The name given to the application api key."
-  default     = null
-}
-
 ########################################################################################################################
 # MQ on Cloud user
 ########################################################################################################################

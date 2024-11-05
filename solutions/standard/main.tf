@@ -125,13 +125,6 @@ locals {
   application_href               = local.create_application ? module.application[0].href : data.ibm_mqcloud_application.application[0].applications[0].href
 }
 
-module "experimental_api_key" {
-  source           = "../../modules/experimental-api-key"
-  ibmcloud_api_key = var.ibmcloud_api_key
-  href             = local.application_href
-  key_name         = var.application_key_name
-}
-
 ########################################################################################################################
 # MQ user
 ########################################################################################################################
@@ -202,10 +195,9 @@ module "secret_group" {
 }
 
 locals {
-  secret_group_id                 = var.existing_secrets_manager_crn == null ? null : (var.existing_secret_group_id == null ? module.secret_group[0].secret_group_id : var.existing_secret_group_id)
-  certificate_secret_name         = "mq-da-cert-${local.queue_manager_name}"
-  root_certificate_secret_name    = "mq-da-root-cert-${local.queue_manager_name}"
-  application_api_key_secret_name = "mq-da-application-api-key-${module.experimental_api_key.api_key_name}"
+  secret_group_id              = var.existing_secrets_manager_crn == null ? null : (var.existing_secret_group_id == null ? module.secret_group[0].secret_group_id : var.existing_secret_group_id)
+  certificate_secret_name      = "mq-da-cert-${local.queue_manager_name}"
+  root_certificate_secret_name = "mq-da-root-cert-${local.queue_manager_name}"
 }
 
 module "certificate_secret" {
@@ -234,18 +226,4 @@ module "root_certificate_secret" {
   secret_description      = "MQ DA ${local.queue_manager_name}"
   secret_type             = "arbitrary"
   secret_payload_password = module.experimental_certificate_root.certificate
-}
-
-module "application_api_key_secret" {
-  count                   = var.existing_secrets_manager_crn != null ? 1 : 0
-  source                  = "terraform-ibm-modules/secrets-manager-secret/ibm"
-  version                 = "1.3.2"
-  region                  = module.sm_crn[0].region
-  secrets_manager_guid    = module.sm_crn[0].service_instance
-  secret_group_id         = local.secret_group_id
-  endpoint_type           = "public"
-  secret_name             = local.application_api_key_secret_name
-  secret_description      = "MQ DA ${module.experimental_api_key.api_key_name}"
-  secret_type             = "arbitrary"
-  secret_payload_password = module.experimental_api_key.api_key
 }
