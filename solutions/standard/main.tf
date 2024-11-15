@@ -191,7 +191,7 @@ module "secret_group" {
   secrets_manager_guid     = module.sm_crn[0].service_instance
   secret_group_name        = var.secret_group_name
   secret_group_description = "MQ DA module secrets"
-  endpoint_type            = "public"
+  endpoint_type            = var.secrets_manager_endpoint_type
 }
 
 locals {
@@ -207,7 +207,7 @@ module "certificate_secret" {
   region                  = module.sm_crn[0].region
   secrets_manager_guid    = module.sm_crn[0].service_instance
   secret_group_id         = local.secret_group_id
-  endpoint_type           = "public"
+  endpoint_type           = var.secrets_manager_endpoint_type
   secret_name             = local.certificate_secret_name
   secret_description      = "MQ DA ${local.queue_manager_name}"
   secret_type             = "arbitrary"
@@ -221,7 +221,7 @@ module "root_certificate_secret" {
   region                  = module.sm_crn[0].region
   secrets_manager_guid    = module.sm_crn[0].service_instance
   secret_group_id         = local.secret_group_id
-  endpoint_type           = "public"
+  endpoint_type           = var.secrets_manager_endpoint_type
   secret_name             = local.root_certificate_secret_name
   secret_description      = "MQ DA ${local.queue_manager_name}"
   secret_type             = "arbitrary"

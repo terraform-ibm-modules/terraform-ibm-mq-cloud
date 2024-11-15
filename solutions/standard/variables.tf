@@ -142,6 +142,16 @@ variable "existing_secrets_manager_crn" {
   default     = null
 }
 
+variable "secrets_manager_endpoint_type" {
+  type        = string
+  description = "The type of endpoint to use for communicating with the provided Secrets Manager instance. Possible values are `public` or `private`. Applies only if `existing_secrets_manager_crn` is set."
+  default     = "private"
+  validation {
+    condition     = contains(["public", "private"], var.secrets_manager_endpoint_type)
+    error_message = "The secrets_manager_endpoint_type value must be 'public' or 'private'."
+  }
+}
+
 variable "existing_secret_group_id" {
   type        = string
   description = "The ID of an existing secret group to store any new secrets in."
