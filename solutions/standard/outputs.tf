@@ -116,9 +116,9 @@ output "connection_app_host" {
   value       = module.experimental_connection.connection_app_host
 }
 
-output "connection_appin_port" {
+output "connection_app_port" {
   description = "The queue manager application channel port."
-  value       = module.experimental_connection.connection_appin_port
+  value       = module.experimental_connection.connection_app_port
 }
 
 output "connection_app_queue_manager_name" {
@@ -186,7 +186,7 @@ output "secret_group_id" {
   value       = var.existing_secrets_manager_crn != null && var.existing_secret_group_id == null ? module.secret_group[0].secret_group_id : null
 }
 
-output "secret_issue_certificate_crn" {
+output "secret_issuer_certificate_crn" {
   description = "The issue CA certificate secret CRN."
   value       = var.existing_secrets_manager_crn != null ? module.certificate_secret[0].secret_crn : null
 }

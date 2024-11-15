@@ -52,7 +52,7 @@ No modules.
 | <a name="output_connection_app_channel_name"></a> [connection\_app\_channel\_name](#output\_connection\_app\_channel\_name) | name |
 | <a name="output_connection_app_cipherspec"></a> [connection\_app\_cipherspec](#output\_connection\_app\_cipherspec) | name |
 | <a name="output_connection_app_host"></a> [connection\_app\_host](#output\_connection\_app\_host) | name |
+| <a name="output_connection_app_port"></a> [connection\_app\_port](#output\_connection\_app\_port) | name |
 | <a name="output_connection_app_queue_manager_name"></a> [connection\_app\_queue\_manager\_name](#output\_connection\_app\_queue\_manager\_name) | name |
 | <a name="output_connection_app_type"></a> [connection\_app\_type](#output\_connection\_app\_type) | name |
-| <a name="output_connection_appin_port"></a> [connection\_appin\_port](#output\_connection\_appin\_port) | name |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

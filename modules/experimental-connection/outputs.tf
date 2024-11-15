@@ -42,7 +42,7 @@ output "connection_app_host" {
   value       = data.external.connection.result.channel_1_clientConnection_connection_0_host
 }
 
-output "connection_appin_port" {
+output "connection_app_port" {
   description = "name"
   value       = data.external.connection.result.channel_1_clientConnection_connection_0_port
 }
