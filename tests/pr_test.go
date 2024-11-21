@@ -60,9 +60,26 @@ func TestRunAdvancedExample(t *testing.T) {
 func TestRunUpgradeExample(t *testing.T) {
 	t.Parallel()
 
-	options := setupOptions(t, "mqoc-upg", standardSolutionTerraformDir)
+	options := testhelper.TestOptionsDefaultWithVars(&testhelper.TestOptions{
+		Testing:      t,
+		TerraformDir: standardSolutionTerraformDir,
+		Prefix:       "mq",
+		Region:       "us-east",
+		TerraformVars: map[string]interface{}{
+			"existing_mq_capacity_crn":   permanentResources["mq_capacity_crn"],
+			"deployment_name":            "da-upg-instance",
+			"queue_manager_name":         "da_upg",
+			"queue_manager_display_name": "da-upg-display",
+			"queue_manager_size":         "xsmall",
+			"resource_group_name":        "mq",
+			"application_name":           "app",
+			"user_email":                 "mq-user@exmaple.com",
+			"user_name":                  "mq-user",
+		},
+	})
 
-	output, err := options.RunTestUpgrade()
+	// TODO: Once this test is on main, make this RunTestUpgrade
+	output, err := options.RunTestConsistency()
 	if !options.UpgradeTestSkipped {
 		assert.Nil(t, err, "This should not have errored")
 		assert.NotNil(t, output, "Expected some output")
@@ -77,6 +94,7 @@ func TestRunStandardSolutionSchematics(t *testing.T) {
 		TarIncludePatterns: []string{
 			"*.tf",
 			"modules/*/*.tf",
+			"modules/*/*.sh",
 			standardSolutionTerraformDir + "/*.tf",
 		},
 		TemplateFolder:         standardSolutionTerraformDir,
@@ -97,6 +115,9 @@ func TestRunStandardSolutionSchematics(t *testing.T) {
 		{Name: "queue_manager_name", Value: "da_qm", DataType: "string"},
 		{Name: "queue_manager_display_name", Value: "da-qm-display", DataType: "string"},
 		{Name: "queue_manager_size", Value: "xsmall", DataType: "string"},
+		{Name: "application_name", Value: "dapp", DataType: "string"},
+		{Name: "user_email", Value: "mqda-user@exmaple.com", DataType: "string"},
+		{Name: "user_name", Value: "mqda-user", DataType: "string"},
 	}
 	err := options.RunSchematicTest()
 	assert.Nil(t, err, "This should not have errored")
