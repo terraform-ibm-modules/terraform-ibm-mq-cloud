@@ -78,8 +78,7 @@ func TestRunUpgradeExample(t *testing.T) {
 		},
 	})
 
-	// TODO: Once this test is on main, make this RunTestUpgrade
-	output, err := options.RunTestConsistency()
+	output, err := options.RunTestUpgrade()
 	if !options.UpgradeTestSkipped {
 		assert.Nil(t, err, "This should not have errored")
 		assert.NotNil(t, output, "Expected some output")

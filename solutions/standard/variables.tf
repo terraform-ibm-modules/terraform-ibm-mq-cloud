@@ -120,12 +120,6 @@ variable "user_name" {
   default     = null
 }
 
-variable "existing_user_name" {
-  type        = string
-  description = "The name of an existing user."
-  default     = null
-}
-
 variable "user_email" {
   type        = string
   description = "The email address to given to the new user."
