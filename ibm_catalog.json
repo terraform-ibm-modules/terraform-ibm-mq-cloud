@@ -121,9 +121,6 @@
                 "key": "user_name"
               },
               {
-                "key": "existing_user_name"
-              },
-              {
                 "key": "user_email"
               },
               {
