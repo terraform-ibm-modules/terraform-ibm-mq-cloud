@@ -17,10 +17,4 @@ resource "ibm_mqcloud_queue_manager" "mqcloud_queue_manager" {
   service_instance_guid = local.existing_mq_deployment_guid
   size                  = var.size
   version               = var.queue_manager_version
-
-  timeouts {
-    create = "60m"
-    update = "60m"
-    delete = "15m"
-  }
 }
