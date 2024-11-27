@@ -86,6 +86,33 @@ func TestRunUpgradeExample(t *testing.T) {
 	}
 }
 
+// Run the DA in minimal configuration, valid logic for options
+// used in catalog pipeline
+func TestRunInstanceOnlyExample(t *testing.T) {
+	t.Parallel()
+
+	options := testhelper.TestOptionsDefaultWithVars(&testhelper.TestOptions{
+		Testing:      t,
+		TerraformDir: standardSolutionTerraformDir,
+		Prefix:       "mqi",
+		Region:       "us-east",
+		TerraformVars: map[string]interface{}{
+			"existing_mq_capacity_crn":   permanentResources["mq_capacity_crn"],
+			"deployment_name":            "instance-only",
+			"queue_manager_name":         "inst",
+			"queue_manager_display_name": "instance-display",
+			"queue_manager_size":         "xsmall",
+			"resource_group_name":        "mqi",
+		},
+	})
+
+	output, err := options.RunTestConsistency()
+	if !options.UpgradeTestSkipped {
+		assert.Nil(t, err, "This should not have errored")
+		assert.NotNil(t, output, "Expected some output")
+	}
+}
+
 func TestRunStandardSolutionSchematics(t *testing.T) {
 	t.Parallel()
 
