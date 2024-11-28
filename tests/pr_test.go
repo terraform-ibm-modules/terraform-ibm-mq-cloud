@@ -48,7 +48,7 @@ func setupOptions(t *testing.T, prefix string, dir string) *testhelper.TestOptio
 }
 
 func TestRunAdvancedExample(t *testing.T) {
-	t.Parallel()
+	// t.Parallel()
 
 	options := setupOptions(t, "mqoc", advancedExampleDir)
 
@@ -58,7 +58,7 @@ func TestRunAdvancedExample(t *testing.T) {
 }
 
 func TestRunUpgradeExample(t *testing.T) {
-	t.Parallel()
+	// t.Parallel()
 
 	options := testhelper.TestOptionsDefaultWithVars(&testhelper.TestOptions{
 		Testing:      t,
@@ -89,7 +89,7 @@ func TestRunUpgradeExample(t *testing.T) {
 // Run the DA in minimal configuration, valid logic for options
 // used in catalog pipeline
 func TestRunInstanceOnlyExample(t *testing.T) {
-	t.Parallel()
+	// t.Parallel()
 
 	options := testhelper.TestOptionsDefaultWithVars(&testhelper.TestOptions{
 		Testing:      t,
@@ -114,7 +114,7 @@ func TestRunInstanceOnlyExample(t *testing.T) {
 }
 
 func TestRunStandardSolutionSchematics(t *testing.T) {
-	t.Parallel()
+	// t.Parallel()
 
 	options := testschematic.TestSchematicOptionsDefault(&testschematic.TestSchematicOptions{
 		Testing: t,
