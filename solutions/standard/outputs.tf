@@ -140,7 +140,7 @@ output "connection_app_type" {
 
 output "application_id" {
   description = "The unique identifier of the mqcloud_application."
-  value       = local.create_application ? module.application[0].id : data.ibm_mqcloud_application.application[0].applications[0].id
+  value       = local.application_id
 }
 
 output "application_create_api_key_uri" {
@@ -165,15 +165,6 @@ output "truststore_root_certificate" {
   description = "The queue manager root CA certificate."
   value       = module.experimental_certificate_root.certificate
   sensitive   = true
-}
-
-########################################################################################################################
-# User
-########################################################################################################################
-
-output "user_email" {
-  description = "name"
-  value       = local.user
 }
 
 ########################################################################################################################

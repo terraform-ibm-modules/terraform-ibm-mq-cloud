@@ -16,10 +16,11 @@ locals {
   create_queue_manager = var.existing_queue_manager_name == null ? true : false
 
   # Application
-  create_application = var.existing_application_name == null ? true : false
+  create_application = var.application_name == null ? false : true
+  lookup_application = var.existing_application_name == null ? false : true
 
   # User
-  create_user = var.existing_user_name == null ? true : false
+  create_user = var.user_name == null ? false : true
 
   # Certificate, only supports looking up the existing default certificate
   create_certificate = false
@@ -94,14 +95,9 @@ module "experimental_connection" {
   href             = local.queue_manager_href
 }
 
-
 ########################################################################################################################
 # MQ queue configuraton
 ########################################################################################################################
-
-# Need to pass the user (local.user_name) and the application api key (module.experimental_api_key.api_key)
-# Need to pass the queue manager administrator href (local.queue_manager_administrator_api_endpoint_url)
-
 
 ########################################################################################################################
 # MQ application
@@ -115,14 +111,15 @@ module "application" {
 }
 
 data "ibm_mqcloud_application" "application" {
-  count                 = local.create_application ? 0 : 1
+  count                 = local.lookup_application ? 1 : 0
   name                  = var.existing_application_name
   service_instance_guid = local.mq_deployment_guid
 }
 
 locals {
-  application_create_api_key_uri = local.create_application ? module.application[0].create_api_key_uri : data.ibm_mqcloud_application.application[0].applications[0].create_api_key_uri
-  application_href               = local.create_application ? module.application[0].href : data.ibm_mqcloud_application.application[0].applications[0].href
+  application_create_api_key_uri = local.create_application ? module.application[0].create_api_key_uri : local.lookup_application ? data.ibm_mqcloud_application.application[0].applications[0].create_api_key_uri : null
+  application_href               = local.create_application ? module.application[0].href : local.lookup_application ? data.ibm_mqcloud_application.application[0].applications[0].href : null
+  application_id                 = local.create_application ? module.application[0].id : local.lookup_application ? data.ibm_mqcloud_application.application[0].applications[0].id : null
 }
 
 ########################################################################################################################
@@ -135,11 +132,6 @@ module "user" {
   name                 = var.user_name
   email                = var.user_email
   service_instance_crn = local.mq_deployment_crn
-}
-
-# For a new user, add them and use; for an existing user just use supplied name
-locals {
-  user = local.create_user ? var.user_email : var.existing_user_name
 }
 
 ########################################################################################################################
