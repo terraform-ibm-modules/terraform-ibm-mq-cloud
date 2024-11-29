@@ -37,6 +37,9 @@ are incomplete, may not be in final form and may generate unpredicatable failure
 * [terraform-ibm-mq-cloud](#terraform-ibm-mq-cloud)
 * [Submodules](./modules)
     * [application](./modules/application)
+    * [experimental-api-key](./modules/experimental-api-key)
+    * [experimental-certificate](./modules/experimental-certificate)
+    * [experimental-connection](./modules/experimental-connection)
     * [keystore-certificate](./modules/keystore-certificate)
     * [mq-instance](./modules/mq-instance)
     * [queue-manager](./modules/queue-manager)
@@ -83,7 +86,7 @@ module "mq_on_cloud" {
   queue_manager_display_name = "queue-manager"
   queue_manager_name         = "qm"
   queue_manager_size         = "xsmall"
-  queue_manager_version      = "9.4.0_1"
+  queue_manager_version      = "9.4.0_3"
 
   applications = {
     "application" = {
