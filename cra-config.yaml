@@ -7,3 +7,6 @@ CRA_TARGETS:
     CRA_ENVIRONMENT_VARIABLES:  # An optional map of environment variables for CRA, where the key is the variable name and value is the value. Useful for providing TF_VARs.
       TF_VAR_existing_mq_capacity_crn: "crn:v1:bluemix:public:mqcloud:us-east:a/abac0df06b644a9cabc6e44f55b3880e:9d9a3c00-2097-4da4-a5e4-78e06514b342::"
       TF_VAR_resource_group_name: "test"
+      TF_VAR_deployment_name: "deployment"
+      TF_VAR_queue_manager_name: "qm"
+      TF_VAR_queue_manager_display_name: "qm-display"
