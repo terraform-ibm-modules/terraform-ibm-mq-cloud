@@ -75,7 +75,6 @@ func TestRunUpgradeExample(t *testing.T) {
 		"queue_manager_size":         "xsmall",
 		"resource_group_name":        options.Prefix,
 		"application_name":           "app",
-		"provider_visibility":        "public",
 		"user_email":                 "mq-user@exmaple.com",
 		"user_name":                  "mq-user",
 	}
@@ -108,7 +107,6 @@ func TestRunInstanceOnlyExample(t *testing.T) {
 		"queue_manager_name":         "inst",
 		"queue_manager_display_name": "instance-display",
 		"queue_manager_size":         "xsmall",
-		"provider_visibility":        "public",
 		"resource_group_name":        options.Prefix,
 	}
 
@@ -147,7 +145,6 @@ func TestRunStandardSolutionSchematics(t *testing.T) {
 		{Name: "resource_group_name", Value: options.Prefix, DataType: "string"},
 		{Name: "region", Value: "us-east", DataType: "string"},
 		{Name: "deployment_name", Value: "da-mq-instance", DataType: "string"},
-		{Name: "provider_visibility", Value: "public", DataType: "string"},
 		{Name: "queue_manager_name", Value: "da_qm", DataType: "string"},
 		{Name: "queue_manager_display_name", Value: "da-qm-display", DataType: "string"},
 		{Name: "queue_manager_size", Value: "xsmall", DataType: "string"},
