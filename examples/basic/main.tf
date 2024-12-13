@@ -28,6 +28,7 @@ module "mq_on_cloud" {
   region                   = var.region
   tags                     = var.resource_tags
   existing_mq_capacity_crn = var.existing_mq_capacity_crn
+  subscription_id          = var.subscription_id
 
   queue_manager_display_name = "${var.prefix}-qm-display"
   queue_manager_name         = "${local.prefix}_qm"

@@ -25,5 +25,12 @@ variable "tags" {
 
 variable "existing_mq_capacity_crn" {
   type        = string
-  description = "The CRN of an existing capacity service instance, if not specifed, a new capacity plan will be created"
+  description = "The CRN of an existing capacity service instance, if not specifed, a new capacity plan will be created."
+  default     = null
+}
+
+variable "subscription_id" {
+  type        = string
+  description = "The MQ on Cloud subscription id. Required if `existing_mq_capacity_crn` is not specified."
+  default     = null
 }
