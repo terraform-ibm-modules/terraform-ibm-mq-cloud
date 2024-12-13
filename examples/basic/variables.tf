@@ -35,6 +35,13 @@ variable "resource_tags" {
 variable "existing_mq_capacity_crn" {
   type        = string
   description = "The CRN of an existing capacity service instance, if not specifed, a new capacity plan will be created"
+  default     = null
+}
+
+variable "subscription_id" {
+  type        = string
+  description = "An MQ on Cloud subscsription plan id for customers who have purchased a subscription through an IBM sales representative"
+  default     = null
 }
 
 variable "keystore_certificate" {

@@ -29,6 +29,12 @@ variable "existing_mq_capacity_crn" {
   default     = null
 }
 
+variable "subscription_id" {
+  type        = string
+  description = "An MQ on Cloud subscsription plan id for customers who have purchased a subscription through an IBM sales representative"
+  default     = null
+}
+
 ########################################################################################################################
 # Queue Manager Variables
 ########################################################################################################################

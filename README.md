@@ -183,6 +183,7 @@ No resources.
 | <a name="input_queue_manager_version"></a> [queue\_manager\_version](#input\_queue\_manager\_version) | The MQ version of the queue manager. | `string` | n/a | yes |
 | <a name="input_region"></a> [region](#input\_region) | The region to provision the MQ on Cloud instance to. | `string` | n/a | yes |
 | <a name="input_resource_group_id"></a> [resource\_group\_id](#input\_resource\_group\_id) | The ID of the resource group to provision the MQ on Cloud instance to. | `string` | n/a | yes |
+| <a name="input_subscription_id"></a> [subscription\_id](#input\_subscription\_id) | An MQ on Cloud subscsription plan id for customers who have purchased a subscription through an IBM sales representative | `string` | `null` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | The list of resource tags that you want to associate with your MQ on Cloud instance. | `list(string)` | `[]` | no |
 | <a name="input_truststore_certificates"></a> [truststore\_certificates](#input\_truststore\_certificates) | A map of IBM MQ on Cloud truststore certificates to be created. | <pre>map(object({<br/>    certificate = string<br/>    label       = string<br/>  }))</pre> | `{}` | no |
 | <a name="input_users"></a> [users](#input\_users) | A map of IBM MQ on Cloud users to be created. | <pre>map(object({<br/>    email = string<br/>    name  = string<br/>  }))</pre> | `{}` | no |
