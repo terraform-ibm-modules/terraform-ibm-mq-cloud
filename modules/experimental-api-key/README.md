@@ -24,7 +24,7 @@ module "application_api_key" {
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3.0 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.9.0 |
 | <a name="requirement_local"></a> [local](#requirement\_local) | >= 2.5.2 |
 
 ### Modules
