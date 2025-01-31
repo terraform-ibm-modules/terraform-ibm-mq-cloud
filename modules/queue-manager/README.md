@@ -43,7 +43,7 @@ No modules.
 | <a name="input_display_name"></a> [display\_name](#input\_display\_name) | A displayable name for the queue manager. | `string` | n/a | yes |
 | <a name="input_location"></a> [location](#input\_location) | The locations in which the queue manager would be deployed. | `string` | n/a | yes |
 | <a name="input_name"></a> [name](#input\_name) | A queue manager name conforming to MQ restrictions. 1 to 48 characters matching regular expression '/^[a-zA-Z0-9.\_]*$/' . | `string` | n/a | yes |
-| <a name="input_queue_manager_version"></a> [queue\_manager\_version](#input\_queue\_manager\_version) | The MQ version of the queue manager. | `string` | `"9.4.0_3"` | no |
+| <a name="input_queue_manager_version"></a> [queue\_manager\_version](#input\_queue\_manager\_version) | The MQ version of the queue manager. | `string` | `"9.4.1_1"` | no |
 | <a name="input_service_instance_crn"></a> [service\_instance\_crn](#input\_service\_instance\_crn) | The CRN that uniquely identifies the MQ on Cloud deployment service instance. | `string` | n/a | yes |
 | <a name="input_size"></a> [size](#input\_size) | The queue manager deployment sizes. Valid values are `xsmall`, `small`, `medium`, `large`. | `string` | `"xsmall"` | no |
 
