@@ -21,7 +21,7 @@ variable "name" {
 variable "queue_manager_version" {
   description = "The MQ version of the queue manager."
   type        = string
-  default     = "9.4.1_1"
+  default     = "9.4.1_2"
 }
 
 variable "service_instance_crn" {
