@@ -11,12 +11,11 @@ locals {
 }
 
 data "ibm_mqcloud_queue_manager_options" "options" {
-  count                 = var.queue_manager_version == null ? 1 : 0
   service_instance_guid = local.existing_mq_deployment_guid
 }
 
 locals {
-  queue_manager_version = var.queue_manager_version == null ? data.ibm_mqcloud_queue_manager_options.options[0].latest_version : var.queue_manager_version
+  queue_manager_version = var.queue_manager_version == null ? data.ibm_mqcloud_queue_manager_options.options.latest_version : var.queue_manager_version
 }
 
 resource "ibm_mqcloud_queue_manager" "mqcloud_queue_manager" {
