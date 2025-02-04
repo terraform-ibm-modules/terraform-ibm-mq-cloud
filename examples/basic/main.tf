@@ -33,7 +33,7 @@ module "mq_on_cloud" {
   queue_manager_display_name = "${var.prefix}-qm-display"
   queue_manager_name         = "${local.prefix}_qm"
   queue_manager_size         = "xsmall"
-  queue_manager_version      = "9.4.0_3"
+  queue_manager_version      = "9.4.1_2" # Pinned to current version
 
   applications = {
     "app-${local.prefix}" = {
