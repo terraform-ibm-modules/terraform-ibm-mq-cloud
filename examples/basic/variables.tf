@@ -44,16 +44,18 @@ variable "subscription_id" {
   default     = null
 }
 
-variable "keystore_certificate" {
-  type        = string
-  description = "Base64 encoded string containing keystore certificate"
-  default     = null
-  sensitive   = true
-}
+# tflint 0.55.1 has an issue https://github.com/terraform-linters/tflint/issues/2243
+# Remove certificate features until it is resolved
+#variable "keystore_certificate" {
+#  type        = string
+#  description = "Base64 encoded string containing keystore certificate"
+#  default     = null
+#  sensitive   = true
+#}
 
-variable "truststore_certificate" {
-  type        = string
-  description = "Base64 encoded string containing truststore certificate"
-  default     = null
-  sensitive   = true
-}
+#variable "truststore_certificate" {
+#  type        = string
+#  default     = null
+#  description = "Base64 encoded string containing truststore certificate"
+#  sensitive   = true
+#}

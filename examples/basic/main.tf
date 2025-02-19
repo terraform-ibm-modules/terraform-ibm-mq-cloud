@@ -20,6 +20,8 @@ locals {
   prefix        = local.prefix_split[local.prefix_offest]
 }
 
+# tflint 0.55.1 has an issue https://github.com/terraform-linters/tflint/issues/2243
+# Remove certificate features until it is resolved
 module "mq_on_cloud" {
   source            = "../.."
   resource_group_id = module.resource_group.resource_group_id
@@ -46,17 +48,17 @@ module "mq_on_cloud" {
       email = "user-1@example.com"
     }
   }
-  keystore_certificates = var.keystore_certificate == null ? {} : {
-    "${var.prefix}-ks-cert" = {
-      certificate = var.keystore_certificate
-      label       = "ks_cert_1"
-    }
-  }
-  truststore_certificates = var.truststore_certificate == null ? {} : {
-    "${var.prefix}-ts-cert" = {
-      certificate = var.truststore_certificate
-      label       = "ts_cert_1"
-    }
-  }
+  #keystore_certificates = var.keystore_certificate == null ? {} : {
+  #  "${var.prefix}-ks-cert" = {
+  #    certificate = var.keystore_certificate
+  #    label       = "ks_cert_1"
+  #  }
+  #}
+  #truststore_certificates = var.truststore_certificate == null ? {} : {
+  #  "${var.prefix}-ts-cert" = {
+  #    certificate = var.truststore_certificate
+  #    label       = "ts_cert_1"
+  #  }
+  #}
 
 }
