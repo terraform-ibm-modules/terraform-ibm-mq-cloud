@@ -155,12 +155,6 @@ output "application_href" {
 
 # MQ on Cloud trust store certificates
 
-output "truststore_certificate" {
-  description = "The queue manager issuer certificate."
-  value       = module.experimental_certificate.certificate
-  sensitive   = true
-}
-
 output "truststore_root_certificate" {
   description = "The queue manager root CA certificate."
   value       = module.experimental_certificate_root.certificate
@@ -175,16 +169,6 @@ output "truststore_root_certificate" {
 output "secret_group_id" {
   description = "The ID of the secret group containing the MQ secrets."
   value       = var.existing_secrets_manager_crn != null && var.existing_secret_group_id == null ? module.secret_group[0].secret_group_id : null
-}
-
-output "secret_issuer_certificate_crn" {
-  description = "The issue CA certificate secret CRN."
-  value       = var.existing_secrets_manager_crn != null ? module.certificate_secret[0].secret_crn : null
-}
-
-output "secret_issuer_certificate_name" {
-  description = "The issue CA certificate secret name."
-  value       = var.existing_secrets_manager_crn != null ? local.certificate_secret_name : null
 }
 
 output "secret_root_cert_crn" {

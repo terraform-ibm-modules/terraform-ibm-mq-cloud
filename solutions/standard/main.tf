@@ -138,12 +138,6 @@ module "user" {
 # MQ CA certificate
 ########################################################################################################################
 
-data "ibm_mqcloud_truststore_certificate" "certificate" {
-  count                 = local.create_certificate ? 0 : 1
-  label                 = "LetsEncryptIssuingCA"
-  queue_manager_id      = local.queue_manager_id
-  service_instance_guid = local.override_guid
-}
 
 data "ibm_mqcloud_truststore_certificate" "root_ca_certificate" {
   count                 = local.create_certificate ? 0 : 1
@@ -152,16 +146,8 @@ data "ibm_mqcloud_truststore_certificate" "root_ca_certificate" {
   service_instance_guid = local.override_guid
 }
 
-module "experimental_certificate" {
-  source           = "../../modules/experimental-certificate"
-  depends_on       = [module.experimental_connection]
-  ibmcloud_api_key = var.ibmcloud_api_key
-  href             = data.ibm_mqcloud_truststore_certificate.certificate[0].trust_store[0].href
-}
-
 module "experimental_certificate_root" {
   source           = "../../modules/experimental-certificate"
-  depends_on       = [module.experimental_certificate]
   ibmcloud_api_key = var.ibmcloud_api_key
   href             = data.ibm_mqcloud_truststore_certificate.root_ca_certificate[0].trust_store[0].href
 }
@@ -190,22 +176,7 @@ module "secret_group" {
 
 locals {
   secret_group_id              = var.existing_secrets_manager_crn == null ? null : (var.existing_secret_group_id == null ? module.secret_group[0].secret_group_id : var.existing_secret_group_id)
-  certificate_secret_name      = "mq-da-cert-${local.queue_manager_name}"
   root_certificate_secret_name = "mq-da-root-cert-${local.queue_manager_name}"
-}
-
-module "certificate_secret" {
-  count                   = var.existing_secrets_manager_crn != null ? 1 : 0
-  source                  = "terraform-ibm-modules/secrets-manager-secret/ibm"
-  version                 = "1.4.0"
-  region                  = module.sm_crn[0].region
-  secrets_manager_guid    = module.sm_crn[0].service_instance
-  secret_group_id         = local.secret_group_id
-  endpoint_type           = var.secrets_manager_endpoint_type
-  secret_name             = local.certificate_secret_name
-  secret_description      = "MQ DA ${local.queue_manager_name}"
-  secret_type             = "arbitrary"
-  secret_payload_password = module.experimental_certificate.certificate
 }
 
 module "root_certificate_secret" {
