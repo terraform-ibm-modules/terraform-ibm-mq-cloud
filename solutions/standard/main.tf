@@ -154,12 +154,14 @@ data "ibm_mqcloud_truststore_certificate" "root_ca_certificate" {
 
 module "experimental_certificate" {
   source           = "../../modules/experimental-certificate"
+  depends_on       = [module.experimental_connection]
   ibmcloud_api_key = var.ibmcloud_api_key
   href             = data.ibm_mqcloud_truststore_certificate.certificate[0].trust_store[0].href
 }
 
 module "experimental_certificate_root" {
   source           = "../../modules/experimental-certificate"
+  depends_on       = [module.experimental_certificate]
   ibmcloud_api_key = var.ibmcloud_api_key
   href             = data.ibm_mqcloud_truststore_certificate.root_ca_certificate[0].trust_store[0].href
 }
