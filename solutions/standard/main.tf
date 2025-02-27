@@ -3,7 +3,7 @@
 ########################################################################################################################
 
 locals {
-  prefix = var.prefix != null ? (var.prefix != "" ? var.prefix : null) : null
+  prefix = (var.prefix != null && trimspace(var.prefix) != "" ? "${var.prefix}-" : "")
   # Deployment instance
   split_deployment_crn        = var.existing_mq_deployment_crn == null ? [] : split(":", var.existing_mq_deployment_crn)
   existing_mq_deployment_guid = length(local.split_deployment_crn) >= 8 ? local.split_deployment_crn[7] : null
@@ -34,7 +34,7 @@ locals {
 module "resource_group" {
   source                       = "terraform-ibm-modules/resource-group/ibm"
   version                      = "1.1.6"
-  resource_group_name          = var.use_existing_resource_group == false ? try("${local.prefix}-${var.resource_group_name}", var.resource_group_name) : null
+  resource_group_name          = var.use_existing_resource_group == false ? "${local.prefix}${var.resource_group_name}" : null
   existing_resource_group_name = var.use_existing_resource_group == true ? var.resource_group_name : null
 }
 
