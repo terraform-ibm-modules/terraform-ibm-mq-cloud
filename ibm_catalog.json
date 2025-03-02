@@ -81,7 +81,8 @@
                 "key": "resource_tags"
               },
               {
-                "key": "prefix"
+                "key": "prefix",
+                "required": true
               },
               {
                 "key": "existing_mq_capacity_crn",
@@ -171,6 +172,288 @@
                 }
               ]
             }
+          },
+          {
+            "label": "Addons variation",
+            "name": "addons-variation",
+            "install_type": "fullstack",
+            "working_directory": "solutions/standard",
+            "compliance": {
+              "authority": "scc-v3",
+              "profiles": []
+            },
+            "iam_permissions": [
+              {
+                "role_crns": [
+                  "crn:v1:bluemix:public:iam::::serviceRole:Manager",
+                  "crn:v1:bluemix:public:iam::::role:Editor"
+                ],
+                "service_name": "mqcloud"
+              }
+            ],
+            "architecture": {
+              "descriptions": "This architecture supports creating and configuring an MQ on Cloud instance.",
+              "features": [
+                {
+                  "title": "Creates an MQ on Cloud deployment instance.",
+                  "description": "Creates and configures an MQ on Cloud deployment instance."
+                },
+                {
+                  "title": "Creates a queue manager",
+                  "description": "Creates a queue manager"
+                }
+              ],
+              "diagrams": [
+                {
+                  "diagram": {
+                    "caption": "IBM MQ on Cloud",
+                    "url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-mq-cloud/main/reference-architecture/deployable-architecture-mqcloud.svg",
+                    "type": "image/svg+xml"
+                  },
+                  "description": "This architecture supports creating and configuring MQ on Cloud resources"
+                }
+              ]
+            },
+            "dependencies": [
+              {
+                "name": "testing-deploy-arch-ibm-secrets-manager",
+                "id": "5f149ae6-d781-460a-977d-c8c4171ad0fa-global",
+                "flavors": [
+                  "standard"
+                ],
+                "catalog_id": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3",
+                "version": "^1.2.1",
+                "optional": true,
+                "on_by_default": true,
+                "default_flavor": "standard",
+                "input_mapping": [
+                  {
+                    "reference_version": true,
+                    "dependency_input": "resource_group_name",
+                    "version_input": "existing_resource_group_name"
+                  },
+                  {
+                    "value": true,
+                    "dependency_input": "use_existing_resource_group"
+                  },
+                  {
+                    "reference_version": true,
+                    "dependency_input": "region",
+                    "version_input": "region"
+                  },
+                  {
+                    "reference_version": true,
+                    "dependency_input": "prefix",
+                    "version_input": "prefix"
+                  },
+                  {
+                    "reference_version": true,
+                    "dependency_output": "secrets_manager_crn",
+                    "version_input": "existing_secrets_manager_crn"
+                  }
+                ],
+                "ignore_auto_referencing": [
+                  "*"
+                ]
+              },
+              {
+                "name": "testing-deploy-arch-ibm-observability",
+                "id": "daf2cf91-2384-4205-b7f4-621299a4896d-global",
+                "flavors": [
+                  "standard"
+                ],
+                "catalog_id": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3",
+                "optional": true,
+                "version": "^1.2.2",
+                "on_by_default": true,
+                "default_flavor": "standard",
+                "input_mapping": [
+                  {
+                    "reference_version": true,
+                    "dependency_input": "resource_group_name",
+                    "version_input": "existing_resource_group_name"
+                  },
+                  {
+                    "value": true,
+                    "dependency_input": "use_existing_resource_group"
+                  },
+                  {
+                    "reference_version": true,
+                    "dependency_input": "region",
+                    "version_input": "region"
+                  },
+                  {
+                    "reference_version": true,
+                    "dependency_input": "prefix",
+                    "version_input": "prefix"
+                  }
+                ],
+                "ignore_auto_referencing": [
+                  "*"
+                ]
+              },
+              {
+                "name": "deploy-arch-ibm-account-infra-base",
+                "id": "63641cec-6093-4b4f-b7b0-98d2f4185cd6-global",
+                "catalog_id": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3",
+                "optional": true,
+                "on_by_default": true,
+                "default_flavor": "standard",
+                "version": "^v1.18.2",
+                "input_mapping": [
+                  {
+                    "reference_version": true,
+                    "dependency_input": "prefix",
+                    "version_input": "prefix"
+                  },
+                  {
+                    "dependency_input": "skip_iam_account_settings",
+                    "value": true
+                  },
+                  {
+                    "dependency_output": "workload_resource_group_name",
+                    "version_input": "existing_resource_group_name"
+                  }
+                ],
+                "ignore_auto_referencing": [
+                  "*"
+                ]
+              }
+            ],
+            "dependency_version_2": true,
+            "configuration": [
+              {
+                "key": "ibmcloud_api_key",
+                "required": true,
+                "display_name": "IBM Cloud API Key",
+                "description": "IBM Cloud API Key to use for provisioning resources"
+              },
+              {
+                "key": "existing_resource_group_name",
+                "display_name": "Resource group",
+                "default_value": "dev",
+                "description": "The name of the existing resource group in which to provision resources to.",
+                "required": true,
+                "custom_config": {
+                    "type": "resource_group",
+                    "grouping": "deployment",
+                    "original_grouping": "deployment",
+                    "config_constraints": {
+                        "identifier": "rg_name"
+                    }
+                }
+              },
+              {
+                "key": "region",
+                "required": true,
+                "default_value": "us-east",
+                "display_name": "Cloud region",
+                "description": "The cloud region where the resources will be created",
+                "options": [
+                  {
+                    "displayname": "Washington (us-east)",
+                    "value": "us-east"
+                  }
+                ]
+              },
+              {
+                "key": "prefix",
+                "required": true,
+                "description": "Prefix to add to all resources created by this solution. To not use any prefix value, you can enter the string `__NULL__`."
+              },
+              {
+                "key": "resource_tags",
+                "display_name": "Resource tags",
+                "description": "Metadata labels to be applied to the resources",
+                "custom_config": {
+                  "grouping": "deployment",
+                  "original_grouping": "deployment",
+                  "config_constraints": {
+                    "type": "string"
+                  }
+                }
+              },
+              {
+                "key": "existing_mq_capacity_crn",
+                "display_name": "Capacity instance CRN",
+                "required": true
+              },
+              {
+                "key": "deployment_name",
+                "display_name": "Deployment instance name"
+              },
+              {
+                "key": "existing_mq_deployment_crn",
+                "display_name": "Deployment instance CRN"
+              },
+              {
+                "key": "queue_manager_name",
+                "display_name": "Queue Manager Name"
+              },
+              {
+                "key": "queue_manager_display_name",
+                "display_name": "Queue Manager display name"
+              },
+              {
+                "key": "queue_manager_size",
+                "display_name": "Queue Manager size",
+                "options": [
+                  {
+                    "displayname": "xsmall",
+                    "value": "xsmall"
+                  },
+                  {
+                    "displayname": "small",
+                    "value": "small"
+                  },
+                  {
+                    "displayname": "medium",
+                    "value": "medium"
+                  },
+                  {
+                    "displayname": "large",
+                    "value": "large"
+                  }
+                ]
+              },
+              {
+                "key": "existing_queue_manager_name",
+                "display_name": "Existing Queue Manager name"
+              },
+              {
+                "key": "application_name",
+                "display_name": "Application name"
+              },
+              {
+                "key": "existing_application_name",
+                "display_name": "Existing application name"
+              },
+              {
+                "key": "user_name",
+                "display_name": "User name"
+              },
+              {
+                "key": "user_email",
+                "display_name": "User email"
+              },
+              {
+                "key": "existing_secrets_manager_crn",
+                "display_name": "Secrets Manager instance CRN"
+              },
+              {
+                "key": "secrets_manager_endpoint_type",
+                "display_name": "Secrets Manager endpoint type"
+              },
+              {
+                "key": "existing_secret_group_id",
+                "display_name": "Existing secret group ID"
+              },
+              {
+                "key": "secret_group_name",
+                "display_name": "Secret group name"
+              }
+            ],
+            "swappable_dependencies": []
           }
         ]
       }
