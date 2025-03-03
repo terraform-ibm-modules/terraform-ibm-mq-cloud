@@ -44,6 +44,8 @@
             "install_type": "fullstack",
             "working_directory": "solutions/standard",
             "compliance": {
+              "authority": "scc-v3",
+              "profiles": []
             },
             "iam_permissions": [
               {
@@ -56,7 +58,10 @@
             ],
             "configuration" : [
               {
-                "key": "ibmcloud_api_key"
+                "key": "ibmcloud_api_key",
+                "required": true,
+                "display_name": "IBM Cloud API Key",
+                "description": "IBM Cloud API Key to use for provisioning resources"
               },
               {
                 "key": "existing_resource_group_name",
@@ -78,27 +83,42 @@
                 "default_value": "us-east"
               },
               {
-                "key": "resource_tags"
+                "key": "prefix",
+                "required": true,
+                "description": "Prefix to add to all resources created by this solution. To not use any prefix value, you can enter the string `__NULL__`."
               },
               {
-                "key": "prefix",
-                "required": true
+                "key": "resource_tags",
+                "display_name": "Resource tags",
+                "description": "Metadata labels to be applied to the resources",
+                "custom_config": {
+                  "grouping": "deployment",
+                  "original_grouping": "deployment",
+                  "config_constraints": {
+                    "type": "string"
+                  }
+                }
               },
               {
                 "key": "existing_mq_capacity_crn",
+                "display_name": "Capacity instance CRN",
                 "required": true
               },
               {
-                "key": "deployment_name"
+                "key": "deployment_name",
+                "display_name": "Deployment instance name"
               },
               {
-                "key": "existing_mq_deployment_crn"
+                "key": "existing_mq_deployment_crn",
+                "display_name": "Deployment instance CRN"
               },
               {
-                "key": "queue_manager_name"
+                "key": "queue_manager_name",
+                "display_name": "Queue Manager name"
               },
               {
-                "key": "queue_manager_display_name"
+                "key": "queue_manager_display_name",
+                "display_name": "Queue Manager display name"
               },
               {
                 "key": "queue_manager_size",
@@ -122,31 +142,40 @@
                 ]
               },
               {
-                "key": "existing_queue_manager_name"
+                "key": "existing_queue_manager_name",
+                "display_name": "Existing Queue Manager name"
               },
               {
-                "key": "application_name"
+                "key": "application_name",
+                "display_name": "Application name"
               },
               {
-                "key": "existing_application_name"
+                "key": "existing_application_name",
+                "display_name": "Existing application name"
               },
               {
-                "key": "user_name"
+                "key": "user_name",
+                "display_name": "User name"
               },
               {
-                "key": "user_email"
+                "key": "user_email",
+                "display_name": "User email"
               },
               {
-                "key": "existing_secrets_manager_crn"
+                "key": "existing_secrets_manager_crn",
+                "display_name": "Secrets Manager instance CRN"
               },
               {
-                "key": "secrets_manager_endpoint_type"
+                "key": "secrets_manager_endpoint_type",
+                "display_name": "Secrets Manager endpoint type"
               },
               {
-                "key": "existing_secret_group_id"
+                "key": "existing_secret_group_id",
+                "display_name": "Existing secret group ID"
               },
               {
-                "key": "secret_group_name"
+                "key": "secret_group_name",
+                "display_name": "Secret group name"
               }
             ],
             "architecture": {
@@ -247,7 +276,6 @@
                     "version_input": "prefix"
                   },
                   {
-                    "reference_version": true,
                     "dependency_output": "secrets_manager_crn",
                     "version_input": "existing_secrets_manager_crn"
                   }
