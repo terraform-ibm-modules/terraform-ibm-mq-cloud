@@ -109,7 +109,6 @@ func TestRunInstanceOnlyExample(t *testing.T) {
 		"queue_manager_name":           "inst",
 		"queue_manager_display_name":   "instance-display",
 		"queue_manager_size":           "xsmall",
-		"resource_group_name":          options.Prefix,
 	}
 
 	options.TerraformVars = terraformVars
@@ -135,7 +134,6 @@ func TestRunStandardSolutionSchematics(t *testing.T) {
 		TemplateFolder:         standardSolutionTerraformDir,
 		Tags:                   []string{"test-schematic"},
 		Prefix:                 "mqoc-da",
-		ResourceGroup:          resourceGroup,
 		DeleteWorkspaceOnFail:  false,
 		WaitJobCompleteMinutes: 60,
 		Region:                 "us-south",
