@@ -16,7 +16,7 @@ variable "region" {
 
 variable "prefix" {
   type        = string
-  description = "The prefix to add to all resources that this solution creates. To not use any prefix value, you can set this value to `null` or an empty string."
+  description = "The prefix to add to all resources that this solution creates (e.g `prod`, `test`, `dev`). To not use any prefix value, you can set this value to `null` or an empty string."
   default     = "dev"
 }
 
