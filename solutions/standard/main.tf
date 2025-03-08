@@ -197,7 +197,7 @@ locals {
 module "certificate_secret" {
   count                   = var.existing_secrets_manager_crn != null ? 1 : 0
   source                  = "terraform-ibm-modules/secrets-manager-secret/ibm"
-  version                 = "1.4.0"
+  version                 = "1.7.0"
   region                  = module.sm_crn[0].region
   secrets_manager_guid    = module.sm_crn[0].service_instance
   secret_group_id         = local.secret_group_id
@@ -211,7 +211,7 @@ module "certificate_secret" {
 module "root_certificate_secret" {
   count                   = var.existing_secrets_manager_crn != null ? 1 : 0
   source                  = "terraform-ibm-modules/secrets-manager-secret/ibm"
-  version                 = "1.4.0"
+  version                 = "1.7.0"
   region                  = module.sm_crn[0].region
   secrets_manager_guid    = module.sm_crn[0].service_instance
   secret_group_id         = local.secret_group_id
