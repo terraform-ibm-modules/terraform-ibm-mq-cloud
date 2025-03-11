@@ -70,10 +70,6 @@
               "default_flavor": "standard",
               "input_mapping": [
                 {
-                  "value": true,
-                  "dependency_input": "use_existing_resource_group"
-                },
-                {
                   "reference_version": true,
                   "dependency_input": "prefix",
                   "version_input": "prefix"
@@ -103,10 +99,6 @@
               "on_by_default": true,
               "default_flavor": "standard",
               "input_mapping": [
-                {
-                  "value": true,
-                  "dependency_input": "use_existing_resource_group"
-                },
                 {
                   "reference_version": true,
                   "dependency_input": "region",
