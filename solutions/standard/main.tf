@@ -71,7 +71,7 @@ module "queue_manager" {
   source                = "../../modules/queue-manager"
   display_name          = var.queue_manager_display_name != null ? var.queue_manager_display_name : try("${local.prefix}-${var.deployment_name}", var.deployment_name)
   location              = local.location
-  name                  = var.queue_manager_name != null ? var.queue_manager_name : try("${local.prefix}-${var.deployment_name}", var.deployment_name)
+  name                  = local.default_queue_manager_name
   service_instance_crn  = local.mq_deployment_crn
   size                  = var.queue_manager_size
   queue_manager_version = local.version
@@ -84,9 +84,10 @@ data "ibm_mqcloud_queue_manager" "queue_manager" {
 }
 
 locals {
+  default_queue_manager_name                   = var.queue_manager_name != null ? var.queue_manager_name : try("${local.prefix}-${var.deployment_name}", var.deployment_name)
   queue_manager_href                           = local.create_queue_manager ? module.queue_manager[0].href : data.ibm_mqcloud_queue_manager.queue_manager[0].queue_managers[0].href
   queue_manager_id                             = local.create_queue_manager ? module.queue_manager[0].queue_manager_id : data.ibm_mqcloud_queue_manager.queue_manager[0].queue_managers[0].id
-  queue_manager_name                           = local.create_queue_manager ? var.queue_manager_name : var.existing_queue_manager_name
+  queue_manager_name                           = local.create_queue_manager ? local.default_queue_manager_name : var.existing_queue_manager_name
   queue_manager_administrator_api_endpoint_url = local.create_queue_manager ? module.queue_manager[0].administrator_api_endpoint_url : data.ibm_mqcloud_queue_manager.queue_manager[0].queue_managers[0].administrator_api_endpoint_url
 }
 
