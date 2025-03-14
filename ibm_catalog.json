@@ -100,9 +100,8 @@
               "default_flavor": "standard",
               "input_mapping": [
                 {
-                  "reference_version": true,
-                  "dependency_input": "region",
-                  "version_input": "region"
+                  "value": "us-south",
+                  "dependency_input": "region"
                 },
                 {
                   "reference_version": true,
