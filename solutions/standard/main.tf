@@ -84,7 +84,8 @@ data "ibm_mqcloud_queue_manager" "queue_manager" {
 }
 
 locals {
-  default_queue_manager_name                   = var.queue_manager_name != null ? var.queue_manager_name : try("${local.prefix}-${var.deployment_name}", var.deployment_name)
+  # hyphens are not supported in queue manager names
+  default_queue_manager_name                   = var.queue_manager_name != null ? var.queue_manager_name : try("${local.prefix}_${var.deployment_name}", var.deployment_name)
   queue_manager_href                           = local.create_queue_manager ? module.queue_manager[0].href : data.ibm_mqcloud_queue_manager.queue_manager[0].queue_managers[0].href
   queue_manager_id                             = local.create_queue_manager ? module.queue_manager[0].queue_manager_id : data.ibm_mqcloud_queue_manager.queue_manager[0].queue_managers[0].id
   queue_manager_name                           = local.create_queue_manager ? local.default_queue_manager_name : var.existing_queue_manager_name
