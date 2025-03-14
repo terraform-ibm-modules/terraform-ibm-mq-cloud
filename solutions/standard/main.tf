@@ -69,9 +69,9 @@ locals {
 module "queue_manager" {
   count                 = local.create_queue_manager ? 1 : 0
   source                = "../../modules/queue-manager"
-  display_name          = var.queue_manager_display_name
+  display_name          = var.queue_manager_display_name != null ? var.queue_manager_display_name : try("${local.prefix}-${var.deployment_name}", var.deployment_name)
   location              = local.location
-  name                  = var.queue_manager_name
+  name                  = var.queue_manager_name != null ? var.queue_manager_name : try("${local.prefix}-${var.deployment_name}", var.deployment_name)
   service_instance_crn  = local.mq_deployment_crn
   size                  = var.queue_manager_size
   queue_manager_version = local.version
@@ -184,7 +184,7 @@ module "secret_group" {
   version                  = "1.2.2"
   region                   = module.sm_crn[0].region
   secrets_manager_guid     = module.sm_crn[0].service_instance
-  secret_group_name        = var.secret_group_name
+  secret_group_name        = var.secret_group_name != null ? var.secret_group_name : try("${local.prefix}-${var.deployment_name}", var.deployment_name)
   secret_group_description = "MQ DA module secrets"
   endpoint_type            = var.secrets_manager_endpoint_type
 }

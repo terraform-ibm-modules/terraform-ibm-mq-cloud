@@ -47,7 +47,7 @@ variable "existing_mq_capacity_crn" {
 variable "deployment_name" {
   type        = string
   description = "The name to be given to the MQ on Cloud deployment instance."
-  default     = null
+  default     = "mqcloud"
 }
 
 variable "existing_mq_deployment_crn" {
