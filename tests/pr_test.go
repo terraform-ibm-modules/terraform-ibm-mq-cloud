@@ -20,7 +20,7 @@ var permanentResources map[string]interface{}
 // Use existing resource group
 const resourceGroup = "geretain-test-resources"
 const advancedExampleDir = "examples/advanced"
-const standardSolutionTerraformDir = "solutions/standard"
+const standardSolutionTerraformDir = "solutions/fully-configurable"
 
 // TestMain will be run before any parallel tests, used to read data from yaml for use with tests
 func TestMain(m *testing.M) {
@@ -71,10 +71,10 @@ func TestRunUpgradeExample(t *testing.T) {
 		"existing_mq_capacity_crn":     permanentResources["mq_capacity_crn"],
 		"existing_resource_group_name": resourceGroup,
 		"deployment_name":              "da-upg-instance",
+		"prefix":                       "mq",
 		"queue_manager_name":           "da_upg",
 		"queue_manager_display_name":   "da-upg-display",
 		"queue_manager_size":           "xsmall",
-		"resource_group_name":          options.Prefix,
 		"application_name":             "app",
 		"user_email":                   "mq-user@exmaple.com",
 		"user_name":                    "mq-user",
@@ -106,6 +106,7 @@ func TestRunInstanceOnlyExample(t *testing.T) {
 		"existing_mq_capacity_crn":     permanentResources["mq_capacity_crn"],
 		"existing_resource_group_name": resourceGroup,
 		"deployment_name":              "instance-only",
+		"prefix":                       "mqi",
 		"queue_manager_name":           "inst",
 		"queue_manager_display_name":   "instance-display",
 		"queue_manager_size":           "xsmall",

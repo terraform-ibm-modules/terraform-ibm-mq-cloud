@@ -23,7 +23,7 @@
       ],
       "short_description": "Cloud architecture including instance of IBM Cloud MQ on Cloud with essential security and observability cloud services",
       "long_description": "IBM Cloud MQ on Cloud is an end-to-end solution to building an running secure queue managers. This architecture supports deploying an instance of MQ on Cloud on cloud together with optional security and observability cloud services",
-      "offering_docs_url": "https://github.com/terraform-ibm-modules/terraform-ibm-mq-cloud/blob/main/solutions/standard/README.md",
+      "offering_docs_url": "https://github.com/terraform-ibm-modules/terraform-ibm-mq-cloud/blob/main/solutions/fully-config/README.md",
       "offering_icon_url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-mq-cloud/main/images/MQ.svg",
       "provider_name": "IBM",
       "features": [
@@ -42,7 +42,7 @@
           "label": "Fully configurable",
           "name": "fully-configurable",
           "install_type": "fullstack",
-          "working_directory": "solutions/standard",
+          "working_directory": "solutions/fully-configurable",
           "compliance": {
             "authority": "scc-v3",
             "profiles": []
@@ -164,12 +164,10 @@
             {
               "key": "region",
               "required": true,
-              "default_value": "us-east",
               "description": "The region used to provision MQ services created by this resource. `us-south` is used to create other services."
             },
             {
               "key": "prefix",
-              "required": true,
               "description": "Prefix to add to all resources created by this solution. To not use any prefix value, you can enter the string `__NULL__`."
             },
             {
@@ -252,7 +250,17 @@
             },
             {
               "key": "secrets_manager_endpoint_type",
-              "display_name": "Secrets Manager endpoint type"
+              "display_name": "Secrets Manager endpoint type",
+              "options": [
+                {
+                  "displayname": "Public",
+                  "value": "public"
+                },
+                {
+                  "displayname": "Private",
+                  "value": "private"
+                }
+              ]
             },
             {
               "key": "existing_secret_group_id",
