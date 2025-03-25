@@ -16,19 +16,13 @@ variable "region" {
 
 variable "prefix" {
   type        = string
-  description = "Prefix to add to all resources created by this solution."
-  default     = null
+  description = "Prefix to add to all resources created by this deployable architecture. To not use any prefix value, you can set this value to `null` or an empty string."
 }
 
-variable "resource_group_name" {
+variable "existing_resource_group_name" {
   type        = string
-  description = "The name of a new or an existing resource group to provision the MQ on Cloud resources in. If a prefix input variable is specified, the prefix is added to the name in the `<prefix>-<name>` format."
-}
-
-variable "use_existing_resource_group" {
-  type        = bool
-  description = "Whether to use an existing resource group."
-  default     = false
+  description = "The name of the existing resource group in which to provision resources to."
+  nullable    = false
 }
 
 variable "resource_tags" {
@@ -53,7 +47,7 @@ variable "existing_mq_capacity_crn" {
 variable "deployment_name" {
   type        = string
   description = "The name to be given to the MQ on Cloud deployment instance."
-  default     = null
+  default     = "mqcloud"
 }
 
 variable "existing_mq_deployment_crn" {
