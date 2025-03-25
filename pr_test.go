@@ -20,7 +20,7 @@ var permanentResources map[string]interface{}
 // Use existing resource group
 const resourceGroup = "geretain-test-resources"
 const advancedExampleDir = "examples/advanced"
-const standardSolutionTerraformDir = "solutions/fully-configurable"
+const standardSolutionTerraformDir = "solutions/standard"
 
 // TestMain will be run before any parallel tests, used to read data from yaml for use with tests
 func TestMain(m *testing.M) {
