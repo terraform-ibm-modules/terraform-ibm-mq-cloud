@@ -22,6 +22,7 @@ variable "prefix" {
 variable "existing_resource_group_name" {
   type        = string
   description = "The name of the existing resource group in which to provision resources to."
+  default     = "Default"
   nullable    = false
 }
 

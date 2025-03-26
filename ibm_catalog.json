@@ -69,6 +69,11 @@
               "required": true
             },
             {
+              "key": "prefix",
+              "required": true,
+              "description": "Prefix to add to all resources that this solution creates. To not use any prefix value, you can enter the string `__NULL__`."
+            },
+            {
               "key": "resource_tags",
               "display_name": "Resource tags",
               "description": "Metadata labels to be applied to the resources",
@@ -79,9 +84,6 @@
                   "type": "string"
                 }
               }
-            },
-            {
-              "key": "prefix"
             },
             {
               "key": "existing_mq_capacity_crn",
