@@ -11,7 +11,6 @@ NOTE: This feature is incubating and ONLY available in eu-fr2 region for validat
 DO NOT mark this module as stable/supported BEFORE the feature is GA world wide.
 -->
 [![Stable (With quality checks)](https://img.shields.io/badge/Status-Stable%20(With%20quality%20checks)-green)](https://terraform-ibm-modules.github.io/documentation/#/badge-status)
-
 [![latest release](https://img.shields.io/github/v/release/terraform-ibm-modules/terraform-ibm-mq-cloud?logo=GitHub&sort=semver)](https://github.com/terraform-ibm-modules/terraform-ibm-mq-cloud/releases/latest)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 [![Renovate enabled](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovatebot.com/)
