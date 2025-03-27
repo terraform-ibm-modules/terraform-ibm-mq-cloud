@@ -66,7 +66,17 @@
             },
             {
               "key": "region",
-              "required": true
+              "required": true,
+              "options": [
+                {
+                  "displayname": "London",
+                  "value": "eu-gb"
+                },
+                {
+                  "displayname": "Washington",
+                  "value": "us-east"
+                }
+              ]
             },
             {
               "key": "prefix",
