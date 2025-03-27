@@ -29,13 +29,8 @@ variable "existing_mq_capacity_crn" {
   default     = null
 
   validation {
-    condition     = var.existing_mq_capacity_crn == null && var.subscription_id == null
+    condition     = (var.existing_mq_capacity_crn != null && var.subscription_id == null) || (var.existing_mq_capacity_crn == null && var.subscription_id != null)
     error_message = "Exactly one of 'existing_mq_capacity_crn' or 'subscription_id' is required."
-  }
-
-  validation {
-    condition     = var.existing_mq_capacity_crn != null && var.subscription_id != null
-    error_message = "Only one of 'existing_mq_capacity_crn' or 'subscription_id' is required."
   }
 }
 
