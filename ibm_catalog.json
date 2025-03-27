@@ -85,8 +85,6 @@
             },
             {
               "key": "resource_tags",
-              "display_name": "Resource tags",
-              "description": "Metadata labels to be applied to the resources",
               "custom_config": {
                 "grouping": "deployment",
                 "original_grouping": "deployment",
