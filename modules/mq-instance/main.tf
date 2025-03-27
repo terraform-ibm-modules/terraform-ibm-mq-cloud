@@ -3,17 +3,6 @@
 #
 # Create an MQ on Cloud SaaS instance
 ##############################################################################
-
-# Validation
-# Approach based on https://stackoverflow.com/a/66682419
-locals {
-  # validate username_password or arbitrary secret has a password payload
-  capacity_validate_condition = var.existing_mq_capacity_crn == null && var.subscription_id == null
-  capacity_validate_msg       = "Exactly one of 'existing_mq_capacity_crn' or 'subscription_id' is required."
-  # tflint-ignore: terraform_unused_declarations
-  capacity_validate_check = regex("^${local.capacity_validate_msg}$", (!local.capacity_validate_condition ? local.capacity_validate_msg : ""))
-}
-
 locals {
   # Capacity instance
   split_capacity_crn        = var.existing_mq_capacity_crn != null ? split(":", var.existing_mq_capacity_crn) : []

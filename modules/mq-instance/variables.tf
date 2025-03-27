@@ -27,6 +27,16 @@ variable "existing_mq_capacity_crn" {
   type        = string
   description = "The CRN of an existing capacity service instance, if not specifed, a new capacity plan will be created."
   default     = null
+
+  validation {
+    condition     = var.existing_mq_capacity_crn == null && var.subscription_id == null
+    error_message = "Exactly one of 'existing_mq_capacity_crn' or 'subscription_id' is required."
+  }
+
+  validation {
+    condition     = var.existing_mq_capacity_crn != null && var.subscription_id != null
+    error_message = "Only one of 'existing_mq_capacity_crn' or 'subscription_id' is required."
+  }
 }
 
 variable "subscription_id" {
