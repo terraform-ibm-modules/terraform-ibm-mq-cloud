@@ -164,7 +164,6 @@ output "truststore_certificate" {
 output "truststore_certificate_errors" {
   description = "Errors relating to fetching issuer certificate."
   value       = module.experimental_certificate.errors
-  sensitive   = true
 }
 
 output "truststore_root_certificate" {
@@ -176,7 +175,6 @@ output "truststore_root_certificate" {
 output "truststore_root_certificate_errors" {
   description = "Errors relating to fetching queue manager root CA certificate."
   value       = module.experimental_certificate_root.errors
-  sensitive   = true
 }
 
 ########################################################################################################################
