@@ -43,16 +43,17 @@ No modules.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_connection_admin_channel_name"></a> [connection\_admin\_channel\_name](#output\_connection\_admin\_channel\_name) | name |
-| <a name="output_connection_admin_cipherspec"></a> [connection\_admin\_cipherspec](#output\_connection\_admin\_cipherspec) | name |
-| <a name="output_connection_admin_host"></a> [connection\_admin\_host](#output\_connection\_admin\_host) | name |
-| <a name="output_connection_admin_port"></a> [connection\_admin\_port](#output\_connection\_admin\_port) | name |
-| <a name="output_connection_admin_queue_manager_name"></a> [connection\_admin\_queue\_manager\_name](#output\_connection\_admin\_queue\_manager\_name) | name |
-| <a name="output_connection_admin_type"></a> [connection\_admin\_type](#output\_connection\_admin\_type) | name |
-| <a name="output_connection_app_channel_name"></a> [connection\_app\_channel\_name](#output\_connection\_app\_channel\_name) | name |
-| <a name="output_connection_app_cipherspec"></a> [connection\_app\_cipherspec](#output\_connection\_app\_cipherspec) | name |
-| <a name="output_connection_app_host"></a> [connection\_app\_host](#output\_connection\_app\_host) | name |
-| <a name="output_connection_app_port"></a> [connection\_app\_port](#output\_connection\_app\_port) | name |
-| <a name="output_connection_app_queue_manager_name"></a> [connection\_app\_queue\_manager\_name](#output\_connection\_app\_queue\_manager\_name) | name |
-| <a name="output_connection_app_type"></a> [connection\_app\_type](#output\_connection\_app\_type) | name |
+| <a name="output_connection_admin_channel_name"></a> [connection\_admin\_channel\_name](#output\_connection\_admin\_channel\_name) | Channel name of the admin channel |
+| <a name="output_connection_admin_cipherspec"></a> [connection\_admin\_cipherspec](#output\_connection\_admin\_cipherspec) | Cipher specification of the admin channel |
+| <a name="output_connection_admin_host"></a> [connection\_admin\_host](#output\_connection\_admin\_host) | Host name of the admin channel |
+| <a name="output_connection_admin_port"></a> [connection\_admin\_port](#output\_connection\_admin\_port) | Port of of the admin channel |
+| <a name="output_connection_admin_queue_manager_name"></a> [connection\_admin\_queue\_manager\_name](#output\_connection\_admin\_queue\_manager\_name) | Queue manager name of the admin channel |
+| <a name="output_connection_admin_type"></a> [connection\_admin\_type](#output\_connection\_admin\_type) | Connection type of the admin channel |
+| <a name="output_connection_app_channel_name"></a> [connection\_app\_channel\_name](#output\_connection\_app\_channel\_name) | Channel name of the application channel |
+| <a name="output_connection_app_cipherspec"></a> [connection\_app\_cipherspec](#output\_connection\_app\_cipherspec) | Cipher specification of the application channel |
+| <a name="output_connection_app_host"></a> [connection\_app\_host](#output\_connection\_app\_host) | Host name of the application channel |
+| <a name="output_connection_app_port"></a> [connection\_app\_port](#output\_connection\_app\_port) | Port of the application channel |
+| <a name="output_connection_app_queue_manager_name"></a> [connection\_app\_queue\_manager\_name](#output\_connection\_app\_queue\_manager\_name) | Queue manager name of the application channel |
+| <a name="output_connection_app_type"></a> [connection\_app\_type](#output\_connection\_app\_type) | Connection type of the application channel |
+| <a name="output_errors"></a> [errors](#output\_errors) | Diagnostics of any errors reported by during the lookup process |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
