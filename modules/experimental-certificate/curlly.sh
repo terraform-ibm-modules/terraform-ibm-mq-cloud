@@ -15,7 +15,7 @@ CERT_STREAM=$(curl -X GET --location --header "Authorization: Bearer ${BEARER}" 
 # shellcheck disable=SC2086
 if [[ ${CERT_STREAM} =~ ^{ ]];
 then
-  echo ${CERT_STREAM}
+  echo ${CERT_STREAM} | jq '[paths(scalars) as $path | { ($path | map(tostring) | join("_")): getpath($path) } ] | add' |  jq 'walk(if type == "number" then tostring else . end)'
 else
   echo '{"certificate":"'${CERT_STREAM}'"}'
 fi
