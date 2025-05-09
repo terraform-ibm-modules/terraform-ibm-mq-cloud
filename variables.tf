@@ -61,10 +61,10 @@ variable "queue_manager_size" {
   default     = "xsmall"
 }
 
-# Changes rapidly - so no default value
 variable "queue_manager_version" {
-  description = "The MQ version of the queue manager."
+  description = "The MQ version of the queue manager. If null, use the latest available"
   type        = string
+  default     = null
 }
 
 ########################################################################################################################

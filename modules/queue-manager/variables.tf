@@ -19,9 +19,9 @@ variable "name" {
 
 # version is reserved attribute on modules
 variable "queue_manager_version" {
-  description = "The MQ version of the queue manager."
+  description = "The MQ version of the queue manager. If no value set, use the latest available"
   type        = string
-  default     = "9.4.0_3"
+  default     = null
 }
 
 variable "service_instance_crn" {

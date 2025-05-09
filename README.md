@@ -75,7 +75,7 @@ unless real values don't help users know what to change.
 
 ```hcl
 module "mq_on_cloud" {
-  source            = "terraform-ibm-modules/mq-cloud/ibm/"
+  source            = "terraform-ibm-modules/mq-cloud/ibm"
   version           = "x.x.x" #
   resource_group_id = module.resource_group.resource_group_id
 
@@ -86,7 +86,6 @@ module "mq_on_cloud" {
   queue_manager_display_name = "queue-manager"
   queue_manager_name         = "qm"
   queue_manager_size         = "xsmall"
-  queue_manager_version      = "9.4.0_3"
 
   applications = {
     "application" = {
@@ -180,7 +179,7 @@ No resources.
 | <a name="input_queue_manager_location"></a> [queue\_manager\_location](#input\_queue\_manager\_location) | The location in which the queue manager will be deployed. Defaults to using the first location in the created service instance | `string` | `null` | no |
 | <a name="input_queue_manager_name"></a> [queue\_manager\_name](#input\_queue\_manager\_name) | A queue manager name conforming to MQ restrictions. 1 to 48 characters matching regular expression '/^[a-zA-Z0-9.\_]*$/' . | `string` | n/a | yes |
 | <a name="input_queue_manager_size"></a> [queue\_manager\_size](#input\_queue\_manager\_size) | The queue manager deployment sizes. Valid values are `xsmall`, `small`, `medium`, `large` . | `string` | `"xsmall"` | no |
-| <a name="input_queue_manager_version"></a> [queue\_manager\_version](#input\_queue\_manager\_version) | The MQ version of the queue manager. | `string` | n/a | yes |
+| <a name="input_queue_manager_version"></a> [queue\_manager\_version](#input\_queue\_manager\_version) | The MQ version of the queue manager. If null, use the latest available | `string` | `null` | no |
 | <a name="input_region"></a> [region](#input\_region) | The region to provision the MQ on Cloud instance to. | `string` | n/a | yes |
 | <a name="input_resource_group_id"></a> [resource\_group\_id](#input\_resource\_group\_id) | The ID of the resource group to provision the MQ on Cloud instance to. | `string` | n/a | yes |
 | <a name="input_subscription_id"></a> [subscription\_id](#input\_subscription\_id) | An MQ on Cloud subscsription plan id for customers who have purchased a subscription through an IBM sales representative | `string` | `null` | no |
