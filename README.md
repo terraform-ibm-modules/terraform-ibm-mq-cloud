@@ -75,7 +75,7 @@ unless real values don't help users know what to change.
 
 ```hcl
 module "mq_on_cloud" {
-  source            = "terraform-ibm-modules/mq-cloud/ibm/"
+  source            = "terraform-ibm-modules/mq-cloud/ibm"
   version           = "x.x.x" #
   resource_group_id = module.resource_group.resource_group_id
 

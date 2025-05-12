@@ -11,5 +11,11 @@ BEARER=$(curl -X POST   "https://iam.cloud.ibm.com/identity/token"   --header 'C
 
 CERT_STREAM=$(curl -X GET --location --header "Authorization: Bearer ${BEARER}"   --header "Accept: application/octet-stream"   "${HREF}" 2>/dev/null)
 
+# Validate result, JSON starting { implies an error, just return it; otherwise assume raw certificate and wrapper it
 # shellcheck disable=SC2086
-echo '{"certificate":"'${CERT_STREAM}'"}'
+if [[ ${CERT_STREAM} =~ ^{ ]];
+then
+  echo ${CERT_STREAM} | jq '[paths(scalars) as $path | { ($path | map(tostring) | join("_")): getpath($path) } ] | add' |  jq 'walk(if type == "number" then tostring else . end)'
+else
+  echo '{"certificate":"'${CERT_STREAM}'"}'
+fi

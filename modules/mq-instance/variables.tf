@@ -33,4 +33,9 @@ variable "subscription_id" {
   type        = string
   description = "The MQ on Cloud subscription id. Required if `existing_mq_capacity_crn` is not specified."
   default     = null
+
+  validation {
+    condition     = (var.subscription_id == null && var.existing_mq_capacity_crn == null) ? false : true
+    error_message = "Exactly one of 'existing_mq_capacity_crn' or 'subscription_id' is required."
+  }
 }
