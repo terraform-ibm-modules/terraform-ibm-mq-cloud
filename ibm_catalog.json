@@ -37,7 +37,6 @@
           "name": "standard",
           "install_type": "fullstack",
           "working_directory": "solutions/standard",
-          "compliance": {},
           "iam_permissions": [
             {
               "role_crns": [
