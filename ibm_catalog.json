@@ -273,7 +273,6 @@
             }
           ],
           "architecture": {
-            "descriptions": "This architecture supports creating and configuring an MQ on Cloud instance.",
             "features": [
               {
                 "title": "Creates an MQ on Cloud deployment instance.",
