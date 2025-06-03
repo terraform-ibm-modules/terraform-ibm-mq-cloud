@@ -58,16 +58,16 @@
           ],
           "dependencies": [
             {
-              "name": "testing-deploy-arch-ibm-secrets-manager",
-              "id": "5f149ae6-d781-460a-977d-c8c4171ad0fa-global",
+              "name": "deploy-arch-ibm-secrets-manager",
+              "id": "6d6ebc76-7bbd-42f5-8bc7-78f4fabd5944-global",
               "flavors": [
-                "standard"
+                "fully-configurable"
               ],
               "catalog_id": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3",
-              "version": "^v1.2.2",
+              "version": "^v2.4.0",
               "optional": true,
               "on_by_default": true,
-              "default_flavor": "standard",
+              "default_flavor": "fully-configurable",
               "input_mapping": [
                 {
                   "reference_version": true,
@@ -88,16 +88,16 @@
               ]
             },
             {
-              "name": "testing-deploy-arch-ibm-observability",
-              "id": "daf2cf91-2384-4205-b7f4-621299a4896d-global",
+              "name": "deploy-arch-ibm-observability",
+              "id": "a3137d28-79e0-479d-8a24-758ebd5a0eab-global",
               "flavors": [
-                "standard"
+                "instances"
               ],
               "catalog_id": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3",
               "optional": true,
-              "version": "^1.2.2",
+              "version": "^v3.0.3",
               "on_by_default": true,
-              "default_flavor": "standard",
+              "default_flavor": "instances",
               "input_mapping": [
                 {
                   "value": "us-south",
@@ -114,32 +114,32 @@
               ]
             },
             {
-              "name": "deploy-arch-ibm-account-infra-base",
-              "id": "63641cec-6093-4b4f-b7b0-98d2f4185cd6-global",
-              "catalog_id": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3",
-              "optional": true,
-              "on_by_default": true,
-              "default_flavor": "standard",
-              "version": "^v1.18.2",
-              "input_mapping": [
-                {
-                  "reference_version": true,
-                  "dependency_input": "prefix",
-                  "version_input": "prefix"
-                },
-                {
-                  "dependency_input": "skip_iam_account_settings",
-                  "value": true
-                },
-                {
-                  "dependency_output": "workload_resource_group_name",
-                  "version_input": "existing_resource_group_name"
-                }
-              ],
-              "ignore_auto_referencing": [
-                "*"
-              ]
-            }
+                "name": "deploy-arch-ibm-account-infra-base",
+                "id": "63641cec-6093-4b4f-b7b0-98d2f4185cd6-global",
+                "catalog_id": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3",
+                "optional": true,
+                "on_by_default": true,
+                "default_flavor": "resource-group-only",
+                "version": "^v3.0.7",
+                "input_mapping": [
+                  {
+                    "reference_version": true,
+                    "dependency_input": "prefix",
+                    "version_input": "prefix"
+                  },
+                  {
+                    "dependency_input": "provision_trusted_profile_projects",
+                    "value": false
+                  },
+                  {
+                    "dependency_output": "workload_resource_group_name",
+                    "version_input": "existing_resource_group_name"
+                  }
+                ],
+                "ignore_auto_referencing": [
+                  "*"
+                ]
+              }
           ],
           "dependency_version_2": true,
           "configuration": [
