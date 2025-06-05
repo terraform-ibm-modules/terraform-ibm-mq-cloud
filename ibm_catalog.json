@@ -89,57 +89,58 @@
             },
             {
               "name": "deploy-arch-ibm-observability",
-              "id": "a3137d28-79e0-479d-8a24-758ebd5a0eab-global",
+              "description": "Enable to provisions and configures IBM Cloud Monitoring, Activity Tracker, and Log Analysis services for analysing events generated from the Events Notification instance.",
               "flavors": [
                 "instances"
               ],
+              "id": "a3137d28-79e0-479d-8a24-758ebd5a0eab-global",
               "catalog_id": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3",
-              "optional": true,
-              "version": "^v3.0.3",
-              "on_by_default": true,
-              "default_flavor": "instances",
               "input_mapping": [
                 {
-                  "value": "us-south",
-                  "dependency_input": "region"
+                  "dependency_input": "prefix",
+                  "version_input": "prefix",
+                  "reference_version": true
                 },
                 {
-                  "reference_version": true,
-                  "dependency_input": "prefix",
-                  "version_input": "prefix"
+                  "dependency_input": "region",
+                  "version_input": "region",
+                  "reference_version": true
                 }
               ],
-              "ignore_auto_referencing": [
-                "*"
-              ]
+              "optional": true,
+              "on_by_default": true,
+              "version": "v3.0.3"
             },
-            {
-                "name": "deploy-arch-ibm-account-infra-base",
-                "id": "63641cec-6093-4b4f-b7b0-98d2f4185cd6-global",
-                "catalog_id": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3",
-                "optional": true,
-                "on_by_default": true,
-                "default_flavor": "resource-group-only",
-                "version": "^v3.0.7",
-                "input_mapping": [
-                  {
-                    "reference_version": true,
-                    "dependency_input": "prefix",
-                    "version_input": "prefix"
-                  },
-                  {
-                    "dependency_input": "provision_trusted_profile_projects",
-                    "value": false
-                  },
-                  {
-                    "dependency_output": "workload_resource_group_name",
-                    "version_input": "existing_resource_group_name"
-                  }
-                ],
-                "ignore_auto_referencing": [
-                  "*"
-                ]
-              }
+              {
+              "name": "deploy-arch-ibm-account-infra-base",
+              "description": "Cloud automation for account configuration organizes your IBM Cloud account with a ready-made set of resource groups by default. When you enable the “with account settings” option, it also applies baseline security and governance settings.",
+              "catalog_id": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3",
+              "flavors": [
+                "resource-group-only",
+                "resource-groups-with-account-settings"
+              ],
+              "default_flavor": "resource-group-only",
+              "id": "63641cec-6093-4b4f-b7b0-98d2f4185cd6-global",
+              "input_mapping": [
+                {
+                  "dependency_input": "prefix",
+                  "version_input": "prefix",
+                  "reference_version": true
+                },
+                {
+                  "dependency_output": "workload_resource_group_name",
+                  "version_input": "existing_resource_group_name"
+                },
+                {
+                  "dependency_input": "provider_visibility",
+                  "version_input": "provider_visibility",
+                  "reference_version": true
+                }
+              ],
+              "optional": true,
+              "on_by_default": false,
+              "version": "v3.0.7"
+            }
           ],
           "dependency_version_2": true,
           "configuration": [
@@ -147,6 +148,24 @@
               "key": "ibmcloud_api_key",
               "display_name": "IBM Cloud API Key",
               "description": "IBM Cloud API Key to use for provisioning resources"
+            },
+            {
+              "key": "provider_visibility",
+              "hidden": true,
+              "options": [
+                {
+                  "displayname": "private",
+                  "value": "private"
+                },
+                {
+                  "displayname": "public",
+                  "value": "public"
+                },
+                {
+                  "displayname": "public-and-private",
+                  "value": "public-and-private"
+                }
+              ]
             },
             {
               "key": "existing_resource_group_name",
