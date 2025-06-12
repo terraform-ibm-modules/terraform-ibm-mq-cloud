@@ -183,7 +183,17 @@
             {
               "key": "region",
               "required": true,
-              "description": "The region used to provision MQ services created by this resource. `us-south` is used to create other services."
+              "description": "The region used to provision MQ services created by this resource. `us-south` is used to create other services.",
+              "options": [
+                {
+                  "displayname": "London",
+                  "value": "eu-gb"
+                },
+                {
+                  "displayname": "Washington",
+                  "value": "us-east"
+                }
+              ]
             },
             {
               "key": "prefix",
