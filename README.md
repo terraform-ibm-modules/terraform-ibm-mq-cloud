@@ -146,7 +146,7 @@ statement instead the previous block.
 - IAM services
     - **mqcloud** service
         - `Editor` platform access
-        - `Writer` service access
+        - `Manager` service access
 
 
 <!-- The following content is automatically populated by the pre-commit hook -->
