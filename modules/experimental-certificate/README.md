@@ -55,5 +55,6 @@ No modules.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_certificate"></a> [certificate](#output\_certificate) | name |
+| <a name="output_certificate"></a> [certificate](#output\_certificate) | The value of the requested certificate |
+| <a name="output_errors"></a> [errors](#output\_errors) | Diagnostics of any errors reported by during the lookup process |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

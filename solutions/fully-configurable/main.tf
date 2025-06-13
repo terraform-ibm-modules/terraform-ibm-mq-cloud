@@ -34,7 +34,7 @@ locals {
 
 module "resource_group" {
   source                       = "terraform-ibm-modules/resource-group/ibm"
-  version                      = "1.1.6"
+  version                      = "1.2.0"
   existing_resource_group_name = var.existing_resource_group_name
 }
 
@@ -181,7 +181,7 @@ module "sm_crn" {
 module "secret_group" {
   count                    = var.existing_secrets_manager_crn != null && var.existing_secret_group_id == null ? 1 : 0
   source                   = "terraform-ibm-modules/secrets-manager-secret-group/ibm"
-  version                  = "1.2.3"
+  version                  = "1.3.7"
   region                   = module.sm_crn[0].region
   secrets_manager_guid     = module.sm_crn[0].service_instance
   secret_group_name        = var.secret_group_name != null ? var.secret_group_name : local.prefix != null ? "${local.prefix}-${var.deployment_name}" : var.deployment_name

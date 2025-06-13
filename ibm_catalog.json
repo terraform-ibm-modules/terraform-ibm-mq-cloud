@@ -37,7 +37,10 @@
           "name": "fully-configurable",
           "install_type": "fullstack",
           "working_directory": "solutions/fully-configurable",
-          "compliance": {},
+          "compliance": {
+            "authority": "scc-v3",
+            "profiles": []
+          },
           "iam_permissions": [
             {
               "role_crns": [

@@ -4,7 +4,7 @@
 
 module "resource_group" {
   source  = "terraform-ibm-modules/resource-group/ibm"
-  version = "1.1.6"
+  version = "1.2.0"
   # if an existing resource group is not set (null) create a new one using prefix
   resource_group_name          = var.resource_group == null ? "${var.prefix}-resource-group" : null
   existing_resource_group_name = var.resource_group
@@ -35,7 +35,7 @@ module "mq_on_cloud" {
   queue_manager_display_name = "${var.prefix}-qm-display"
   queue_manager_name         = "${local.prefix}_qm"
   queue_manager_size         = "xsmall"
-  queue_manager_version      = "9.4.1_2" # Pinned to current version
+  queue_manager_version      = "9.4.2_2" # Pinned to current version
 
   applications = {
     "app-${local.prefix}" = {
