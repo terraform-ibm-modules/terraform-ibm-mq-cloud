@@ -10,7 +10,7 @@ variable "ibmcloud_api_key" {
 
 variable "region" {
   type        = string
-  description = "Region to provision new resources created by this solution."
+  description = "The region to provision all resources in. [Learn more](https://terraform-ibm-modules.github.io/documentation/#/region) about how to select different regions for different services."
   default     = "us-east"
 }
 
@@ -65,6 +65,20 @@ variable "queue_manager_name" {
   type        = string
   description = "The name to be given to the queue manager."
   default     = null
+  validation {
+    condition     = var.queue_manager_name == null || can(regex("^([\\w_]+)\\w$", var.queue_manager_name))
+    error_message = "The value of queue_manager_name, if not null, must contain only alphanumerical characters and \"_\" matching this regular expression ^([\\w_]+)\\w$ "
+  }
+  validation {
+    condition     = var.existing_queue_manager_name == null && var.queue_manager_name == null ? false : true
+    error_message = "The values of var.existing_queue_manager_name and var.queue_manager_name cannot be null at the same time."
+  }
+}
+
+variable "existing_queue_manager_name" {
+  type        = string
+  description = "The name of an existing queue manager."
+  default     = null
 }
 
 variable "queue_manager_display_name" {
@@ -81,12 +95,6 @@ variable "queue_manager_size" {
     condition     = contains(["xsmall", "small", "medium", "large"], var.queue_manager_size)
     error_message = "The specified `size` is not a valid selection, choose from `xsmall`, `small`, `medium`, `large`."
   }
-}
-
-variable "existing_queue_manager_name" {
-  type        = string
-  description = "The name of an existing queue manager."
-  default     = null
 }
 
 ########################################################################################################################
