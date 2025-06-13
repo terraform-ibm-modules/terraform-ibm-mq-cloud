@@ -3,7 +3,6 @@
 #
 # Create an MQ on Cloud SaaS instance
 ##############################################################################
-
 locals {
   # Capacity instance
   split_capacity_crn        = var.existing_mq_capacity_crn != null ? split(":", var.existing_mq_capacity_crn) : []
