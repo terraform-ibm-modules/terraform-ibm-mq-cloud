@@ -1,6 +1,10 @@
 ########################################################################################################################
 # Outputs
 ########################################################################################################################
+output "resource_group_name" {
+  description = "Resource group name where Enterprise Application Service instance is created"
+  value       = module.resource_group.resource_group_name
+}
 
 # MQ on Cloud capacity instance
 output "capacity_crn" {
