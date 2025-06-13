@@ -1,8 +1,8 @@
 {
   "products": [
     {
-      "name": "testing-deploy-arch-ibm-mq-cloud",
-      "label": "[Add-ons Beta] Cloud automation for MQ on Cloud",
+      "name": "deploy-arch-ibm-mq-cloud",
+      "label": "Cloud automation for MQ on Cloud",
       "product_kind": "solution",
       "tags": [
         "ibm_created",
@@ -22,8 +22,8 @@
         "application_modernization"
       ],
       "short_description": "Cloud architecture including instance of IBM Cloud MQ on Cloud with essential security and observability cloud services",
-      "long_description": "IBM Cloud MQ on Cloud is an end-to-end solution to building an running secure queue managers. This architecture supports deploying an instance of MQ on Cloud on cloud together with optional security and observability cloud services",
-      "offering_docs_url": "https://github.com/terraform-ibm-modules/terraform-ibm-mq-cloud/blob/main/solutions/fully-config/README.md",
+      "long_description": "IBM Cloud MQ on Cloud is an end-to-end solution to building an running secure queue managers.<br/>This architecture supports deploying an instance of MQ on Cloud on cloud together with optional security and observability cloud services.<br/>br/>ℹ️ This Terraform-based automation is part of a broader suite of IBM-maintained Infrastructure as Code (IaC) assets, each following the naming pattern \"Cloud automation for *servicename*\" and focusing on single IBM Cloud service. These single-service deployable architectures can be used on their own to streamline and automate service deployments through an [IaC approach](https://cloud.ibm.com/docs/secure-enterprise?topic=secure-enterprise-understanding-projects), or assembled together into a broader [automated IaC stack](https://cloud.ibm.com/docs/secure-enterprise?topic=secure-enterprise-config-stack) to automate the deployment of an end-to-end solution architecture.",
+      "offering_docs_url": "https://github.com/terraform-ibm-modules/terraform-ibm-mq-cloud/blob/main/solutions/fully-configurable/README.md",
       "offering_icon_url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-mq-cloud/main/images/MQ.svg",
       "provider_name": "IBM",
       "features": [
@@ -59,12 +59,13 @@
           "dependencies": [
             {
               "name": "deploy-arch-ibm-secrets-manager",
+              "description": "Enable to provisions and configures IBM Cloud Secrets Manager for securely storing generated secrets.",
               "id": "6d6ebc76-7bbd-42f5-8bc7-78f4fabd5944-global",
               "flavors": [
                 "fully-configurable"
               ],
               "catalog_id": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3",
-              "version": "^v2.4.0",
+              "version": "v2.6.1",
               "optional": true,
               "on_by_default": true,
               "default_flavor": "fully-configurable",
@@ -102,9 +103,8 @@
                   "reference_version": true
                 },
                 {
-                  "dependency_input": "region",
-                  "version_input": "region",
-                  "reference_version": true
+                  "value": "us-south",
+                  "dependency_input": "region"
                 }
               ],
               "optional": true,
@@ -130,11 +130,6 @@
                 {
                   "dependency_output": "workload_resource_group_name",
                   "version_input": "existing_resource_group_name"
-                },
-                {
-                  "dependency_input": "provider_visibility",
-                  "version_input": "provider_visibility",
-                  "reference_version": true
                 }
               ],
               "optional": true,
@@ -146,8 +141,7 @@
           "configuration": [
             {
               "key": "ibmcloud_api_key",
-              "display_name": "IBM Cloud API Key",
-              "description": "IBM Cloud API Key to use for provisioning resources"
+              "display_name": "IBM Cloud API Key"
             },
             {
               "key": "provider_visibility",
@@ -169,7 +163,7 @@
             },
             {
               "key": "existing_resource_group_name",
-              "display_name": "Resource group",
+              "display_name": "resource_group",
               "required": true,
               "custom_config": {
                 "type": "resource_group",
@@ -183,7 +177,6 @@
             {
               "key": "region",
               "required": true,
-              "description": "The region used to provision MQ services created by this resource. `us-south` is used to create other services.",
               "options": [
                 {
                   "displayname": "London",
@@ -197,13 +190,10 @@
             },
             {
               "key": "prefix",
-              "required": true,
-              "description": "Prefix to add to all resources that this solution creates. To not use any prefix value, you can enter the string `__NULL__`."
+              "required": true
             },
             {
               "key": "resource_tags",
-              "display_name": "Resource tags",
-              "description": "Metadata labels to be applied to the resources",
               "custom_config": {
                 "grouping": "deployment",
                 "original_grouping": "deployment",
@@ -214,24 +204,19 @@
             },
             {
               "key": "existing_mq_capacity_crn",
-              "display_name": "Capacity instance CRN",
               "required": true
             },
             {
-              "key": "deployment_name",
-              "display_name": "Deployment instance name"
+              "key": "deployment_name"
             },
             {
-              "key": "existing_mq_deployment_crn",
-              "display_name": "Deployment instance CRN"
+              "key": "existing_mq_deployment_crn"
             },
             {
-              "key": "queue_manager_name",
-              "display_name": "Queue Manager name"
+              "key": "queue_manager_name"
             },
             {
-              "key": "queue_manager_display_name",
-              "display_name": "Queue Manager display name"
+              "key": "queue_manager_display_name"
             },
             {
               "key": "queue_manager_size",
@@ -255,32 +240,25 @@
               ]
             },
             {
-              "key": "existing_queue_manager_name",
-              "display_name": "Existing Queue Manager name"
+              "key": "existing_queue_manager_name"
             },
             {
-              "key": "application_name",
-              "display_name": "Application name"
+              "key": "application_name"
             },
             {
-              "key": "existing_application_name",
-              "display_name": "Existing application name"
+              "key": "existing_application_name"
             },
             {
-              "key": "user_name",
-              "display_name": "User name"
+              "key": "user_name"
             },
             {
-              "key": "user_email",
-              "display_name": "User email"
+              "key": "user_email"
             },
             {
-              "key": "existing_secrets_manager_crn",
-              "display_name": "Secrets Manager instance CRN"
+              "key": "existing_secrets_manager_crn"
             },
             {
               "key": "secrets_manager_endpoint_type",
-              "display_name": "Secrets Manager endpoint type",
               "options": [
                 {
                   "displayname": "Public",
@@ -293,12 +271,10 @@
               ]
             },
             {
-              "key": "existing_secret_group_id",
-              "display_name": "Existing secret group ID"
+              "key": "existing_secret_group_id"
             },
             {
-              "key": "secret_group_name",
-              "display_name": "Secret group name"
+              "key": "secret_group_name"
             }
           ],
           "architecture": {
@@ -322,8 +298,7 @@
                 "description": "This architecture supports creating and configuring MQ on Cloud resources"
               }
             ]
-          },
-          "swappable_dependencies": []
+          }
         }
       ]
     }

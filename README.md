@@ -143,6 +143,11 @@ statement instead the previous block.
 
 <!-- No permissions are needed to run this module.-->
 
+- IAM services
+    - **mqcloud** service
+        - `Editor` platform access
+        - `Writer` service access
+
 
 <!-- The following content is automatically populated by the pre-commit hook -->
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

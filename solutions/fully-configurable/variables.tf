@@ -21,7 +21,7 @@ variable "provider_visibility" {
 
 variable "region" {
   type        = string
-  description = "Region to provision new resources created by this solution."
+  description = "The region to provision all resources in. [Learn more](https://terraform-ibm-modules.github.io/documentation/#/region) about how to select different regions for different services."
   default     = "us-east"
 }
 
