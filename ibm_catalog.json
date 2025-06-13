@@ -150,8 +150,7 @@
           "dependency_version_2": true,
           "configuration": [
             {
-              "key": "ibmcloud_api_key",
-              "display_name": "IBM Cloud API Key"
+              "key": "ibmcloud_api_key"
             },
             {
               "key": "provider_visibility",
