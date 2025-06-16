@@ -149,6 +149,7 @@ func TestRunStandardSolutionSchematics(t *testing.T) {
 		{Name: "application_name", Value: "dapp", DataType: "string"},
 		{Name: "user_email", Value: "mqda-user@exmaple.com", DataType: "string"},
 		{Name: "user_name", Value: "mqda-user", DataType: "string"},
+		{Name: "provider_visibility", Value: "public", DataType: "string"},
 	}
 	err := options.RunSchematicTest()
 	assert.Nil(t, err, "This should not have errored")
