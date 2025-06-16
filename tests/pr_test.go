@@ -76,6 +76,7 @@ func TestRunUpgradeExample(t *testing.T) {
 			"application_name":             "app",
 			"user_email":                   "mq-user@exmaple.com",
 			"user_name":                    "mq-user",
+			"provider_visibility":          "public",
 		},
 	})
 
@@ -105,6 +106,7 @@ func TestRunInstanceOnlyExample(t *testing.T) {
 			"queue_manager_name":           "inst",
 			"queue_manager_display_name":   "instance-display",
 			"queue_manager_size":           "xsmall",
+			"provider_visibility":          "public",
 		},
 	})
 
