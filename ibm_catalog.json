@@ -290,6 +290,9 @@
               "key": "existing_secrets_manager_crn"
             },
             {
+              "key": "sm_ibmcloud_api_key"
+            },
+            {
               "key": "secrets_manager_endpoint_type",
               "options": [
                 {
