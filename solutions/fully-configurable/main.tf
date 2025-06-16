@@ -178,6 +178,10 @@ module "sm_crn" {
   crn     = var.existing_secrets_manager_crn
 }
 
+locals {
+  sm_region = var.existing_secrets_manager_crn != null ? module.sm_crn[0].region : ""
+}
+
 module "secret_group" {
   count                    = var.existing_secrets_manager_crn != null && var.existing_secret_group_id == null ? 1 : 0
   source                   = "terraform-ibm-modules/secrets-manager-secret-group/ibm"
@@ -187,6 +191,9 @@ module "secret_group" {
   secret_group_name        = var.secret_group_name != null ? var.secret_group_name : "${local.prefix}${var.deployment_name}"
   secret_group_description = "MQ DA module secrets"
   endpoint_type            = var.secrets_manager_endpoint_type
+  providers = {
+    ibm = ibm.ibm-sm
+  }
 }
 
 locals {
@@ -207,6 +214,9 @@ module "certificate_secret" {
   secret_description      = "MQ DA ${local.queue_manager_name}"
   secret_type             = "arbitrary"
   secret_payload_password = module.experimental_certificate.certificate
+  providers = {
+    ibm = ibm.ibm-sm
+  }
 }
 
 module "root_certificate_secret" {
@@ -221,4 +231,7 @@ module "root_certificate_secret" {
   secret_description      = "MQ DA ${local.queue_manager_name}"
   secret_type             = "arbitrary"
   secret_payload_password = module.experimental_certificate_root.certificate
+  providers = {
+    ibm = ibm.ibm-sm
+  }
 }
