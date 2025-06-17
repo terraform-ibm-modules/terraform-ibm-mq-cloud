@@ -34,7 +34,7 @@ locals {
 
 module "resource_group" {
   source                       = "terraform-ibm-modules/resource-group/ibm"
-  version                      = "1.2.0"
+  version                      = "1.2.1"
   existing_resource_group_name = var.existing_resource_group_name
 }
 
@@ -174,7 +174,7 @@ module "experimental_certificate_root" {
 module "sm_crn" {
   count   = var.existing_secrets_manager_crn != null ? 1 : 0
   source  = "terraform-ibm-modules/common-utilities/ibm//modules/crn-parser"
-  version = "1.1.0"
+  version = "1.2.0"
   crn     = var.existing_secrets_manager_crn
 }
 
