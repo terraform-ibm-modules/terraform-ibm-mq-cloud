@@ -149,6 +149,7 @@ func TestRunStandardSolutionSchematics(t *testing.T) {
 		{Name: "application_name", Value: "dapp", DataType: "string"},
 		{Name: "user_email", Value: "mqda-user@exmaple.com", DataType: "string"},
 		{Name: "user_name", Value: "mqda-user", DataType: "string"},
+		// forcing provider visibility to public due to this provider bug https://github.ibm.com/GoldenEye/issues/issues/14309
 		{Name: "provider_visibility", Value: "public", DataType: "string"},
 	}
 	err := options.RunSchematicTest()
