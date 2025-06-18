@@ -180,7 +180,7 @@ module "sm_crn" {
 
 locals {
   sm_region           = var.existing_secrets_manager_crn != null ? module.sm_crn[0].region : ""
-  sm_ibmcloud_api_key = var.sm_ibmcloud_api_key == null ? var.ibmcloud_api_key : var.sm_ibmcloud_api_key
+  sm_ibmcloud_api_key = var.secrets_manager_ibmcloud_api_key == null ? var.ibmcloud_api_key : var.secrets_manager_ibmcloud_api_key
 }
 
 module "secret_group" {
