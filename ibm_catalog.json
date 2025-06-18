@@ -181,7 +181,7 @@
               "required": true,
               "options": [
                 {
-                  "displayname": "Washington",
+                  "displayname": "Washington (us-east)",
                   "value": "us-east"
                 },
                 {
@@ -189,7 +189,7 @@
                   "value": "us-south"
                 },
                 {
-                  "displayname": "London",
+                  "displayname": "London (eu-gb)",
                   "value": "eu-gb"
                 },
                 {
@@ -295,6 +295,7 @@
             },
             {
               "key": "secrets_manager_endpoint_type",
+              "hidden": true,
               "options": [
                 {
                   "displayname": "Public",

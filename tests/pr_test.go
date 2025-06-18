@@ -140,7 +140,7 @@ func TestRunStandardSolutionSchematics(t *testing.T) {
 		{Name: "ibmcloud_api_key", Value: options.RequiredEnvironmentVars["TF_VAR_ibmcloud_api_key"], DataType: "string", Secure: true},
 		{Name: "existing_mq_capacity_crn", Value: permanentResources["mq_capacity_crn"], DataType: "string"},
 		{Name: "existing_resource_group_name", Value: resourceGroup, DataType: "string"},
-		{Name: "prefix", Value: "mqoc-da", DataType: "string"},
+		{Name: "prefix", Value: options.Prefix, DataType: "string"},
 		{Name: "region", Value: "us-east", DataType: "string"},
 		{Name: "deployment_name", Value: "da-mq-instance", DataType: "string"},
 		{Name: "queue_manager_name", Value: "da_qm", DataType: "string"},
