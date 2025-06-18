@@ -106,8 +106,9 @@
                   "reference_version": true
                 },
                 {
-                  "value": "us-south",
-                  "dependency_input": "region"
+                  "dependency_input": "region",
+                  "version_input": "region",
+                  "reference_version": true
                 }
               ],
               "optional": true,
@@ -180,12 +181,20 @@
               "required": true,
               "options": [
                 {
+                  "displayname": "Washington",
+                  "value": "us-east"
+                },
+                {
+                  "displayname": "Dallas (us-south)",
+                  "value": "us-south"
+                },
+                {
                   "displayname": "London",
                   "value": "eu-gb"
                 },
                 {
-                  "displayname": "Washington",
-                  "value": "us-east"
+                  "displayname": "Frankfurt (eu-de)",
+                  "value": "eu-de"
                 }
               ]
             },
@@ -307,12 +316,8 @@
           "architecture": {
             "features": [
               {
-                "title": "Creates an MQ on Cloud deployment instance.",
-                "description": "Creates and configures an MQ on Cloud deployment instance."
-              },
-              {
-                "title": "Creates a queue manager",
-                "description": "Creates a queue manager"
+                "title": " ",
+                "description": "Configured to use IBM secure by default standards, but can be edited to fit your use case."
               }
             ],
             "diagrams": [
