@@ -185,16 +185,8 @@
                   "value": "us-east"
                 },
                 {
-                  "displayname": "Dallas (us-south)",
-                  "value": "us-south"
-                },
-                {
                   "displayname": "London (eu-gb)",
                   "value": "eu-gb"
-                },
-                {
-                  "displayname": "Frankfurt (eu-de)",
-                  "value": "eu-de"
                 }
               ]
             },
