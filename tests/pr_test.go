@@ -133,7 +133,7 @@ func TestRunStandardSolutionSchematics(t *testing.T) {
 		Prefix:                 "mqoc-da",
 		DeleteWorkspaceOnFail:  false,
 		WaitJobCompleteMinutes: 60,
-		Region:                 "us-south",
+		Region:                 "us-east",
 	})
 
 	options.TerraformVars = []testschematic.TestSchematicTerraformVar{
@@ -143,7 +143,6 @@ func TestRunStandardSolutionSchematics(t *testing.T) {
 		{Name: "prefix", Value: options.Prefix, DataType: "string"},
 		{Name: "region", Value: "us-east", DataType: "string"},
 		{Name: "deployment_name", Value: "da-mq-instance", DataType: "string"},
-		{Name: "prefix", Value: options.Prefix, DataType: "string"},
 		{Name: "queue_manager_name", Value: "da_qm", DataType: "string"},
 		{Name: "queue_manager_display_name", Value: "da-qm-display", DataType: "string"},
 		{Name: "queue_manager_size", Value: "xsmall", DataType: "string"},
