@@ -3,6 +3,8 @@
 ########################################################################################################################
 
 locals {
+  prefix = var.prefix != null ? trimspace(var.prefix) != "" ? "${var.prefix}-" : "" : ""
+
   # Deployment instance
   split_deployment_crn        = var.existing_mq_deployment_crn == null ? [] : split(":", var.existing_mq_deployment_crn)
   existing_mq_deployment_guid = length(local.split_deployment_crn) >= 8 ? local.split_deployment_crn[7] : null
@@ -27,14 +29,13 @@ locals {
 }
 
 ########################################################################################################################
-# Resource group
+# Existing resource group
 ########################################################################################################################
 
 module "resource_group" {
   source                       = "terraform-ibm-modules/resource-group/ibm"
   version                      = "1.2.1"
-  resource_group_name          = var.use_existing_resource_group == false ? (var.prefix != null ? "${var.prefix}-${var.resource_group_name}" : var.resource_group_name) : null
-  existing_resource_group_name = var.use_existing_resource_group == true ? var.resource_group_name : null
+  existing_resource_group_name = var.existing_resource_group_name
 }
 
 ########################################################################################################################
@@ -44,7 +45,7 @@ module "resource_group" {
 module "mqcloud_instance" {
   count                    = var.existing_mq_deployment_crn == null ? 1 : 0
   source                   = "../../modules/mq-instance"
-  name                     = var.deployment_name
+  name                     = "${local.prefix}${var.deployment_name}"
   region                   = var.region
   resource_group_id        = module.resource_group.resource_group_id
   tags                     = var.resource_tags
@@ -68,7 +69,7 @@ locals {
 module "queue_manager" {
   count                 = local.create_queue_manager ? 1 : 0
   source                = "../../modules/queue-manager"
-  display_name          = var.queue_manager_display_name
+  display_name          = var.queue_manager_display_name != null ? var.queue_manager_display_name : "${local.prefix}${var.deployment_name}"
   location              = local.location
   name                  = var.queue_manager_name
   service_instance_crn  = local.mq_deployment_crn
@@ -177,15 +178,23 @@ module "sm_crn" {
   crn     = var.existing_secrets_manager_crn
 }
 
+locals {
+  sm_region           = var.existing_secrets_manager_crn != null ? module.sm_crn[0].region : ""
+  sm_ibmcloud_api_key = var.secrets_manager_ibmcloud_api_key == null ? var.ibmcloud_api_key : var.secrets_manager_ibmcloud_api_key
+}
+
 module "secret_group" {
   count                    = var.existing_secrets_manager_crn != null && var.existing_secret_group_id == null ? 1 : 0
   source                   = "terraform-ibm-modules/secrets-manager-secret-group/ibm"
   version                  = "1.3.7"
   region                   = module.sm_crn[0].region
   secrets_manager_guid     = module.sm_crn[0].service_instance
-  secret_group_name        = var.secret_group_name
+  secret_group_name        = var.secret_group_name != null ? var.secret_group_name : "${local.prefix}${var.deployment_name}"
   secret_group_description = "MQ DA module secrets"
   endpoint_type            = var.secrets_manager_endpoint_type
+  providers = {
+    ibm = ibm.ibm-sm
+  }
 }
 
 locals {
@@ -206,6 +215,9 @@ module "certificate_secret" {
   secret_description      = "MQ DA ${local.queue_manager_name}"
   secret_type             = "arbitrary"
   secret_payload_password = module.experimental_certificate.certificate
+  providers = {
+    ibm = ibm.ibm-sm
+  }
 }
 
 module "root_certificate_secret" {
@@ -220,4 +232,7 @@ module "root_certificate_secret" {
   secret_description      = "MQ DA ${local.queue_manager_name}"
   secret_type             = "arbitrary"
   secret_payload_password = module.experimental_certificate_root.certificate
+  providers = {
+    ibm = ibm.ibm-sm
+  }
 }
