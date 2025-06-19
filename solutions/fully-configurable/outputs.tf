@@ -2,7 +2,7 @@
 # Outputs
 ########################################################################################################################
 output "resource_group_name" {
-  description = "Resource group name where Enterprise Application Service instance is created"
+  description = "Resource group name where MQ on Cloud instance is created"
   value       = module.resource_group.resource_group_name
 }
 

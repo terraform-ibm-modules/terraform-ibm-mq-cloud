@@ -65,22 +65,20 @@ func TestRunUpgradeExample(t *testing.T) {
 		TerraformDir: standardSolutionTerraformDir,
 		Prefix:       "mq",
 		Region:       "us-east",
+		TerraformVars: map[string]interface{}{
+			"existing_mq_capacity_crn":     permanentResources["mq_capacity_crn"],
+			"existing_resource_group_name": resourceGroup,
+			"deployment_name":              "da-upg-instance",
+			"prefix":                       "mqupg",
+			"queue_manager_name":           "da_upg",
+			"queue_manager_display_name":   "da-upg-display",
+			"queue_manager_size":           "xsmall",
+			"application_name":             "app",
+			"user_email":                   "mq-user@exmaple.com",
+			"user_name":                    "mq-user",
+			"provider_visibility":          "public",
+		},
 	})
-
-	terraformVars := map[string]interface{}{
-		"existing_mq_capacity_crn":     permanentResources["mq_capacity_crn"],
-		"existing_resource_group_name": resourceGroup,
-		"deployment_name":              "da-upg-instance",
-		"prefix":                       "mq",
-		"queue_manager_name":           "da_upg",
-		"queue_manager_display_name":   "da-upg-display",
-		"queue_manager_size":           "xsmall",
-		"application_name":             "app",
-		"user_email":                   "mq-user@exmaple.com",
-		"user_name":                    "mq-user",
-	}
-
-	options.TerraformVars = terraformVars
 
 	// TODO: Once this test is on main, make this RunTestUpgrade
 	output, err := options.RunTestConsistency()
@@ -100,19 +98,17 @@ func TestRunInstanceOnlyExample(t *testing.T) {
 		TerraformDir: standardSolutionTerraformDir,
 		Prefix:       "mqi",
 		Region:       "us-east",
+		TerraformVars: map[string]interface{}{
+			"existing_mq_capacity_crn":     permanentResources["mq_capacity_crn"],
+			"existing_resource_group_name": resourceGroup,
+			"deployment_name":              "instance-only",
+			"prefix":                       "mqi",
+			"queue_manager_name":           "inst",
+			"queue_manager_display_name":   "instance-display",
+			"queue_manager_size":           "xsmall",
+			"provider_visibility":          "public",
+		},
 	})
-
-	terraformVars := map[string]interface{}{
-		"existing_mq_capacity_crn":     permanentResources["mq_capacity_crn"],
-		"existing_resource_group_name": resourceGroup,
-		"deployment_name":              "instance-only",
-		"prefix":                       "mqi",
-		"queue_manager_name":           "inst",
-		"queue_manager_display_name":   "instance-display",
-		"queue_manager_size":           "xsmall",
-	}
-
-	options.TerraformVars = terraformVars
 
 	output, err := options.RunTestConsistency()
 	if !options.UpgradeTestSkipped {
@@ -134,7 +130,7 @@ func TestRunStandardSolutionSchematics(t *testing.T) {
 		},
 		TemplateFolder:         standardSolutionTerraformDir,
 		Tags:                   []string{"test-schematic"},
-		Prefix:                 "mqda",
+		Prefix:                 "mqoc-da",
 		DeleteWorkspaceOnFail:  false,
 		WaitJobCompleteMinutes: 60,
 		Region:                 "us-south",
@@ -144,6 +140,7 @@ func TestRunStandardSolutionSchematics(t *testing.T) {
 		{Name: "ibmcloud_api_key", Value: options.RequiredEnvironmentVars["TF_VAR_ibmcloud_api_key"], DataType: "string", Secure: true},
 		{Name: "existing_mq_capacity_crn", Value: permanentResources["mq_capacity_crn"], DataType: "string"},
 		{Name: "existing_resource_group_name", Value: resourceGroup, DataType: "string"},
+		{Name: "prefix", Value: options.Prefix, DataType: "string"},
 		{Name: "region", Value: "us-east", DataType: "string"},
 		{Name: "deployment_name", Value: "da-mq-instance", DataType: "string"},
 		{Name: "prefix", Value: options.Prefix, DataType: "string"},
@@ -153,6 +150,8 @@ func TestRunStandardSolutionSchematics(t *testing.T) {
 		{Name: "application_name", Value: "dapp", DataType: "string"},
 		{Name: "user_email", Value: "mqda-user@exmaple.com", DataType: "string"},
 		{Name: "user_name", Value: "mqda-user", DataType: "string"},
+		// forcing provider visibility to public due to this provider bug https://github.ibm.com/GoldenEye/issues/issues/14309
+		{Name: "provider_visibility", Value: "public", DataType: "string"},
 	}
 	err := options.RunSchematicTest()
 	assert.Nil(t, err, "This should not have errored")
