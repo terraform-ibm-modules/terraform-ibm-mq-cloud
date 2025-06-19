@@ -60,63 +60,55 @@ func TestRunAdvancedExample(t *testing.T) {
 func TestRunUpgradeExample(t *testing.T) {
 	// t.Parallel()
 
-	options := testhelper.TestOptionsDefaultWithVars(&testhelper.TestOptions{
-		Testing:      t,
-		TerraformDir: standardSolutionTerraformDir,
-		Prefix:       "mq",
-		Region:       "us-east",
-		TerraformVars: map[string]interface{}{
-			"existing_mq_capacity_crn":     permanentResources["mq_capacity_crn"],
-			"existing_resource_group_name": resourceGroup,
-			"deployment_name":              "da-upg-instance",
-			"prefix":                       "mqupg",
-			"queue_manager_name":           "da_upg",
-			"queue_manager_display_name":   "da-upg-display",
-			"queue_manager_size":           "xsmall",
-			"application_name":             "app",
-			"user_email":                   "mq-user@exmaple.com",
-			"user_name":                    "mq-user",
-			"provider_visibility":          "public",
-		},
-	})
+	options := setupOptions(t, "mqupg", advancedExampleDir)
 
-	// TODO: Once this test is on main, make this RunTestUpgrade
-	output, err := options.RunTestConsistency()
-	if !options.UpgradeTestSkipped {
-		assert.Nil(t, err, "This should not have errored")
-		assert.NotNil(t, output, "Expected some output")
-	}
+	output, err := options.RunTestUpgrade()
+	assert.Nil(t, err, "Upgrade test should not have errored")
+	assert.NotNil(t, output, "Expected some output")
 }
 
-// Run the DA in minimal configuration, valid logic for options
+// Run the DA on Schematics in minimal configuration, valid logic for options
 // used in catalog pipeline
-func TestRunInstanceOnlyExample(t *testing.T) {
+func TestRunStandardInstanceOnlySolutionSchematics(t *testing.T) {
 	// t.Parallel()
 
-	options := testhelper.TestOptionsDefaultWithVars(&testhelper.TestOptions{
-		Testing:      t,
-		TerraformDir: standardSolutionTerraformDir,
-		Prefix:       "mqi",
-		Region:       "us-east",
-		TerraformVars: map[string]interface{}{
-			"existing_mq_capacity_crn":     permanentResources["mq_capacity_crn"],
-			"existing_resource_group_name": resourceGroup,
-			"deployment_name":              "instance-only",
-			"prefix":                       "mqi",
-			"queue_manager_name":           "inst",
-			"queue_manager_display_name":   "instance-display",
-			"queue_manager_size":           "xsmall",
-			"provider_visibility":          "public",
+	options := testschematic.TestSchematicOptionsDefault(&testschematic.TestSchematicOptions{
+		Testing: t,
+		TarIncludePatterns: []string{
+			"*.tf",
+			"modules/*/*.tf",
+			"modules/*/*.sh",
+			standardSolutionTerraformDir + "/*.tf",
 		},
+		TemplateFolder:         standardSolutionTerraformDir,
+		Tags:                   []string{"test-schematic"},
+		Prefix:                 "mqi",
+		DeleteWorkspaceOnFail:  false,
+		WaitJobCompleteMinutes: 60,
+		Region:                 "us-east",
 	})
 
-	output, err := options.RunTestConsistency()
-	if !options.UpgradeTestSkipped {
-		assert.Nil(t, err, "This should not have errored")
-		assert.NotNil(t, output, "Expected some output")
+	options.TerraformVars = []testschematic.TestSchematicTerraformVar{
+		{Name: "ibmcloud_api_key", Value: options.RequiredEnvironmentVars["TF_VAR_ibmcloud_api_key"], DataType: "string", Secure: true},
+		{Name: "existing_mq_capacity_crn", Value: permanentResources["mq_capacity_crn"], DataType: "string"},
+		{Name: "existing_resource_group_name", Value: resourceGroup, DataType: "string"},
+		{Name: "prefix", Value: options.Prefix, DataType: "string"},
+		{Name: "region", Value: "us-east", DataType: "string"},
+		{Name: "deployment_name", Value: "da-mq-instance", DataType: "string"},
+		{Name: "queue_manager_name", Value: "inst", DataType: "string"},
+		{Name: "queue_manager_display_name", Value: "instance-display", DataType: "string"},
+		{Name: "queue_manager_size", Value: "xsmall", DataType: "string"},
+		{Name: "application_name", Value: "daiapp", DataType: "string"},
+		{Name: "user_email", Value: "mqida-user@exmaple.com", DataType: "string"},
+		{Name: "user_name", Value: "mqida-user", DataType: "string"},
+		// forcing provider visibility to public due to this provider bug https://github.ibm.com/GoldenEye/issues/issues/14309
+		{Name: "provider_visibility", Value: "public", DataType: "string"},
 	}
+	err := options.RunSchematicTest()
+	assert.Nil(t, err, "This should not have errored")
 }
 
+// Run the DA on Schematics in full configuration
 func TestRunStandardSolutionSchematics(t *testing.T) {
 	// t.Parallel()
 
@@ -154,4 +146,46 @@ func TestRunStandardSolutionSchematics(t *testing.T) {
 	}
 	err := options.RunSchematicTest()
 	assert.Nil(t, err, "This should not have errored")
+}
+
+func TestRunStandardSolutionUpgradeSchematics(t *testing.T) {
+	// t.Parallel()
+
+	options := testschematic.TestSchematicOptionsDefault(&testschematic.TestSchematicOptions{
+		Testing: t,
+		TarIncludePatterns: []string{
+			"*.tf",
+			"modules/*/*.tf",
+			"modules/*/*.sh",
+			standardSolutionTerraformDir + "/*.tf",
+		},
+		TemplateFolder:         standardSolutionTerraformDir,
+		Tags:                   []string{"test-schematic"},
+		Prefix:                 "mqupg-da",
+		DeleteWorkspaceOnFail:  false,
+		WaitJobCompleteMinutes: 60,
+		Region:                 "us-south",
+	})
+
+	options.TerraformVars = []testschematic.TestSchematicTerraformVar{
+		{Name: "ibmcloud_api_key", Value: options.RequiredEnvironmentVars["TF_VAR_ibmcloud_api_key"], DataType: "string", Secure: true},
+		{Name: "existing_mq_capacity_crn", Value: permanentResources["mq_capacity_crn"], DataType: "string"},
+		{Name: "existing_resource_group_name", Value: resourceGroup, DataType: "string"},
+		{Name: "prefix", Value: options.Prefix, DataType: "string"},
+		{Name: "region", Value: "us-east", DataType: "string"},
+		{Name: "deployment_name", Value: "daupg-mq-instance", DataType: "string"},
+		{Name: "queue_manager_name", Value: "daupg_qm", DataType: "string"},
+		{Name: "queue_manager_display_name", Value: "daupg-qm-display", DataType: "string"},
+		{Name: "queue_manager_size", Value: "xsmall", DataType: "string"},
+		{Name: "application_name", Value: "daupgapp", DataType: "string"},
+		{Name: "user_email", Value: "mqda-user@exmaple.com", DataType: "string"},
+		{Name: "user_name", Value: "mqda-user", DataType: "string"},
+		// forcing provider visibility to public due to this provider bug https://github.ibm.com/GoldenEye/issues/issues/14309
+		{Name: "provider_visibility", Value: "public", DataType: "string"},
+	}
+
+	err := options.RunSchematicUpgradeTest()
+	if !options.UpgradeTestSkipped {
+		assert.NoError(t, err, "Schematic Upgrade Test had an unexpected error")
+	}
 }

@@ -31,8 +31,8 @@ variable "region" {
   default     = "us-east"
 
   validation {
-    condition     = contains(["eu-de", "eu-gb", "us-south", "us-east"], var.region)
-    error_message = "Invalid value for `region`, valid values for MQ on Cloud offering are: `eu-de`, `eu-gb`, `us-south`, `us-east`"
+    condition     = contains(["eu-gb", "us-east"], var.region)
+    error_message = "Invalid value for `region`, valid values for MQ on Cloud offering are: `eu-gb`, `us-east`"
   }
 }
 
