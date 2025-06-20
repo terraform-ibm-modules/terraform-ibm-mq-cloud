@@ -125,7 +125,7 @@ func TestRunStandardSolutionSchematics(t *testing.T) {
 		Prefix:                 "mqoc-da",
 		DeleteWorkspaceOnFail:  false,
 		WaitJobCompleteMinutes: 60,
-		Region:                 "us-south",
+		Region:                 "us-east",
 	})
 
 	options.TerraformVars = []testschematic.TestSchematicTerraformVar{
