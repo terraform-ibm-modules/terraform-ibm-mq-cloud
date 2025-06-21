@@ -186,7 +186,7 @@ locals {
 module "secret_group" {
   count                    = var.existing_secrets_manager_crn != null && var.existing_secret_group_id == null ? 1 : 0
   source                   = "terraform-ibm-modules/secrets-manager-secret-group/ibm"
-  version                  = "1.3.7"
+  version                  = "1.3.8"
   region                   = module.sm_crn[0].region
   secrets_manager_guid     = module.sm_crn[0].service_instance
   secret_group_name        = var.secret_group_name != null ? var.secret_group_name : "${local.prefix}${var.deployment_name}"
