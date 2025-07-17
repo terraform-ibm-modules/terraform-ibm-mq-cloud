@@ -6,11 +6,13 @@
       "product_kind": "solution",
       "tags": [
         "ibm_created",
-        "integration",
         "target_terraform",
         "terraform",
         "solution",
-        "application_modernization"
+        "integration",
+        "application_modernization",
+        "converged_infra",
+        "enterprise_app"
       ],
       "keywords": [
         "MQ",
@@ -121,7 +123,7 @@
               "on_by_default": true,
               "version": "v3.0.3"
             },
-              {
+            {
               "name": "deploy-arch-ibm-account-infra-base",
               "description": "Cloud automation for account configuration organizes your IBM Cloud account with a ready-made set of resource groups by default. When you enable the “with account settings” option, it also applies baseline security and governance settings.",
               "catalog_id": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3",
