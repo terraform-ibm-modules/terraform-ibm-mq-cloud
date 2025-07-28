@@ -28,7 +28,7 @@ variable "provider_visibility" {
 variable "region" {
   type        = string
   description = "The region to provision all resources in. [Learn more](https://terraform-ibm-modules.github.io/documentation/#/region) about how to select different regions for different services."
-  default     = "us-east"
+  default     = "us-south"
 
   validation {
     condition     = contains(["eu-gb", "us-east"], var.region)
@@ -91,7 +91,7 @@ variable "existing_mq_capacity_crn" {
 
 variable "deployment_name" {
   type        = string
-  description = "The name to be given to the MQ on Cloud deployment instance."
+  description = "The name to be given to the MQ on Cloud deployment instance.  If a prefix is specified, it will be prepended in the format `<prefix><deployment_name>`."
   default     = "mqcloud"
 }
 
