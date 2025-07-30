@@ -496,7 +496,8 @@
                 "description": "This architecture supports creating and configuring MQ on Cloud resources"
               }
             ]
-          }
+          },
+          "terraform_version": "1.10.5"
         }
       ]
     }
