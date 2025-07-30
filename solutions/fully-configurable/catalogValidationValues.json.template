@@ -1,6 +1,6 @@
 {
   "ibmcloud_api_key": $VALIDATION_APIKEY,
-  "region": "us-south",
+  "region": "us-east",
   "existing_resource_group_name": "geretain-test-resources",
   "existing_mq_capacity_crn": $MQ_CAPACITY_CRN,
   "deployment_name": $PREFIX,

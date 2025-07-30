@@ -28,7 +28,7 @@ variable "provider_visibility" {
 variable "region" {
   type        = string
   description = "The region to provision all resources in. [Learn more](https://terraform-ibm-modules.github.io/documentation/#/region) about how to select different regions for different services."
-  default     = "us-south"
+  default     = "us-east"
 
   validation {
     condition     = contains(["eu-gb", "us-east"], var.region)
