@@ -56,7 +56,8 @@
                 "crn:v1:bluemix:public:iam::::serviceRole:Manager",
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
-              "service_name": "mqcloud"
+              "service_name": "mqcloud",
+              "notes": "Required to provision and manage IBM MQ resources."
             },
             {
               "role_crns": [
