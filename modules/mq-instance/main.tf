@@ -38,6 +38,5 @@ resource "ibm_resource_instance" "mqcloud_deployment" {
 }
 
 data "ibm_mqcloud_queue_manager_options" "options" {
-  depends_on            = [ibm_resource_instance.mqcloud_deployment]
   service_instance_guid = resource.ibm_resource_instance.mqcloud_deployment.guid
 }
