@@ -90,7 +90,7 @@ variable "existing_mq_capacity_crn" {
 
 variable "deployment_name" {
   type        = string
-  description = "The name to be given to the MQ on Cloud deployment instance."
+  description = "The name to be given to the MQ on Cloud deployment instance.  If a prefix is specified, it will be prepended in the format `<prefix>-<deployment_name>`."
   default     = "mqcloud"
 }
 
