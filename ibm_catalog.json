@@ -395,7 +395,7 @@
                   "url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-mq-cloud/main/reference-architecture/deployable-architecture-mqcloud.svg",
                   "type": "image/svg+xml"
                 },
-                "description": "This architecture supports creating and configuring MQ on Cloud resources"
+                "description": "This solution deploys an <b>IBM MQ on Cloud</b> instance on IBM Cloud, providing a secure, scalable, and fully managed messaging service for your applications.<br><br>Once provisioned, you can access the IBM MQ on Cloud dashboard to create and configure queue managers, manage message queues, and integrate them into your applications using industry-standard messaging protocols.<br><br>Optionally, you can integrate <b>IBM Cloud Secrets Manager</b> to securely store and manage TLS certificates and other sensitive credentials required by IBM MQ, ensuring secure connectivity and compliance.<br><br>You can also enable <b>IBM Cloud Observability</b> services such as Cloud Monitoring, IBM Cloud Logs, and Activity Tracker Event Routing to gain operational visibility into your MQ workloads. These capabilities allow you to collect and analyze metrics such as CPU and memory usage, track user and application interactions, and monitor platform logs for troubleshooting and audit purposes.<br><br>This Terraform-based automation is part of IBM’s <b>Cloud automation for MQ on Cloud</b> framework, enabling Infrastructure as Code (IaC) deployment for consistency and repeatability."
               }
             ]
           },
