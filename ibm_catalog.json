@@ -115,11 +115,12 @@
               "notes": "[Optional] Required if Cloud automation for account configuration is enabled."
             },
             {
-              "service_name": "atracker",
+
               "role_crns": [
                 "crn:v1:bluemix:public:iam::::serviceRole:Writer",
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
+              "service_name": "atracker",
               "notes": "[Optional] Required for configuring Activity Tracker event routing to Cloud Object Storage bucket and Cloud Logs."
             },
             {
