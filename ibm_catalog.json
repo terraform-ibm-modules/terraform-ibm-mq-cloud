@@ -65,7 +65,7 @@
                 "crn:v1:bluemix:public:iam::::serviceRole:Manager"
               ],
               "service_name": "secrets-manager",
-              "notes": "Required for creating an Secrets Manager instance. 'Manager' access required to create new secret groups."
+              "notes": "[Optional] Required for creating an Secrets Manager instance. 'Manager' access required to create new secret groups."
             },
             {
               "role_crns": [
@@ -128,14 +128,14 @@
                 "crn:v1:bluemix:public:iam::::role:Administrator"
               ],
               "service_name": "All Account Management services",
-              "notes": "Administrator access is required for resource group creation and deletion."
+              "notes": "[Optional] Required to deploy Cloud automation for account configuration, which creates foundational IBM Cloud account resources, like IAM settings, trusted profiles, access groups, and resource groups."
             },
             {
               "role_crns": [
                 "crn:v1:bluemix:public:iam::::role:Administrator"
               ],
               "service_name": "All Identity and Access enabled services",
-              "notes": "[Optional] Only required if creating context-based restrictions which can be toggled using the `provision_cbr` input."
+              "notes": "[Optional] Required to deploy Cloud automation for account configuration, which creates foundational IBM Cloud account resources, like IAM settings, trusted profiles, access groups, and resource group with account settings."
             }
           ],
           "dependencies": [
@@ -490,7 +490,7 @@
                   "url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-mq-cloud/main/reference-architecture/deployable-architecture-mqcloud.svg",
                   "type": "image/svg+xml"
                 },
-                "description": "This solution deploys an <b>IBM MQ on Cloud</b> instance on IBM Cloud, providing a secure, scalable, and fully managed messaging service for applications. Once provisioned, you can access the IBM MQ on Cloud dashboard to create and configure queue managers, manage message queues, and integrate them into your applications using industry-standard messaging protocols.<br><br>Optionaly, you can integrate IBM Cloud Secrets Manager to securely store and manage TLS certificates and other sensitive credentials required by IBM MQ, ensuring secure connectivity and compliance.<br><br>You can also enable IBM Cloud Observability services such as Cloud Monitoring, IBM Cloud Logs, and Activity Tracker Event Routing to gain operational visibility into your MQ workloads. These capabilities allow you to collect and analyze metrics such as CPU and memory usage, track user and application interactions, and monitor platform logs for troubleshooting and audit purposes.This Terraform-based automation is part of IBM’s Cloud automation for MQ on Cloud framework, enabling Infrastructure as Code (IaC) deployment for consistency and repeatability."
+                "description": "This solution deploys an <b>IBM MQ on Cloud</b> instance on IBM Cloud, providing a secure, scalable, and fully managed messaging service for applications. Once provisioned, you can access the IBM MQ on Cloud dashboard to create and configure queue managers, manage message queues, and integrate them into your applications using industry-standard messaging protocols.<br><br>Optionally, you can integrate IBM Cloud Secrets Manager to securely store and manage TLS certificates and other sensitive credentials required by IBM MQ, ensuring secure connectivity and compliance.<br><br>You can also enable IBM Cloud Observability services such as Cloud Monitoring, IBM Cloud Logs, and Activity Tracker Event Routing to gain operational visibility into your MQ workloads. These capabilities allow you to collect and analyze metrics such as CPU and memory usage, track user and application interactions, and monitor platform logs for troubleshooting and audit purposes.This Terraform-based automation is part of IBM’s Cloud automation for MQ on Cloud framework, enabling Infrastructure as Code (IaC) deployment for consistency and repeatability."
               }
             ]
           },
