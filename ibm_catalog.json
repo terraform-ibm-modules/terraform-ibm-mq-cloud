@@ -97,7 +97,7 @@
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
               "service_name": "hs-crypto",
-              "notes": "[Optional] Required if KMS encryption is enabled and IBM Hyper Protect Crypto Services is used to encrypt the Object Storage bucket."
+              "notes": "[Optional] Required if Hyper Protect Crypto Services is used in Cloud automation for Observability."
             },
             {
               "role_crns": [
@@ -105,7 +105,7 @@
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
               "service_name": "kms",
-              "notes": "[Optional] Required if KMS encryption is enabled and Key protect is used for encryption of Object Storage bucket."
+              "notes": "[Optional] Required to deploy Cloud automation for Key Protect, so you can use your own managed encryption keys."
             },
             {
               "role_crns": [
