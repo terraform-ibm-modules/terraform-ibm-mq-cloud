@@ -73,7 +73,7 @@
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
               "service_name": "Event-Notifications",
-              "notes": "[Optional] Required if you are configuring an Event Notifications Instance."
+              "notes": "[Optional] Required if you are consuming the Secrets Manager deployable architecture."
             },
             {
               "role_crns": [
@@ -97,7 +97,7 @@
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
               "service_name": "hs-crypto",
-              "notes": "[Optional] Required if you are creating/configuring keys in an existing Hyper Protect Crypto Services (HPCS) instance for encryption."
+              "notes": "[Optional] Required if you are consuming the Secrets Manager deployable architecture."
             },
             {
               "role_crns": [
@@ -105,7 +105,7 @@
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
               "service_name": "kms",
-              "notes": "[Optional] Required if you are creating/configuring Key Protect instance and keys for encryption."
+              "notes": "[Optional] Required if you are consuming the Secrets Manager deployable architecture."
             },
             {
               "role_crns": [
