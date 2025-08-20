@@ -65,7 +65,7 @@
                 "crn:v1:bluemix:public:iam::::serviceRole:Manager"
               ],
               "service_name": "secrets-manager",
-              "notes": "[Optional] Required for creating an Secrets Manager instance. 'Manager' access required to create new secret groups."
+              "notes": "[Optional] Required for creating a Secrets Manager instance."
             },
             {
               "role_crns": [
