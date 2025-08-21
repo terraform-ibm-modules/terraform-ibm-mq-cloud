@@ -65,7 +65,7 @@
                 "crn:v1:bluemix:public:iam::::serviceRole:Manager"
               ],
               "service_name": "secrets-manager",
-              "notes": "[Optional] Required for creating an Secrets Manager instance. 'Manager' access required to create new secret groups."
+              "notes": "[Optional] Required for creating a Secrets Manager instance."
             },
             {
               "role_crns": [
@@ -73,7 +73,7 @@
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
               "service_name": "event-notifications",
-              "notes": "[Optional] Required if you are configuring an Event Notifications Instance."
+              "notes": "[Optional] Required for creating an Event Notifications instance."
             },
             {
               "role_crns": [
@@ -121,7 +121,7 @@
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
               "service_name": "atracker",
-              "notes": "[Optional] Required for configuring Activity Tracker event routing to Cloud Object Storage bucket and Cloud Logs."
+              "notes": "[Optional] Required to configure Activity Tracker Event Routing with Cloud automation for Observability."
             },
             {
               "role_crns": [
