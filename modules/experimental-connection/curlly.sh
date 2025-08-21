@@ -10,6 +10,6 @@ CONNECTION=$(curl -X GET --location --header "Authorization: Bearer ${BEARER}"  
 
 # shellcheck disable=SC2086
 # jq flattens json structure
-# jq then marshalls the numbers
+# jq then marshals the numbers
 # flatten is the same for both connection or error, caller to determine how to process output
 echo "${CONNECTION}" | jq '[paths(scalars) as $path | { ($path | map(tostring) | join("_")): getpath($path) } ] | add' |  jq 'walk(if type == "number" then tostring else . end)'
