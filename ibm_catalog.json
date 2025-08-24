@@ -42,7 +42,7 @@
           "description": "Optional integration with [Cloud automation for Observability](https://cloud.ibm.com/catalog/7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3/architecture/deploy-arch-ibm-observability-a3137d28-79e0-479d-8a24-758ebd5a0eab-global) services such as Log Analysis and Monitoring to support IBM MQ instance monitoring and logging."
         }
       ],
-      "support_details": "This product is in the community registry, as such support is handled through the [original repo](https://github.com/terraform-ibm-modules/terraform-ibm-mq-cloud). If you experience issues kindly open an issue in that repository [https://github.com/terraform-ibm-modules/terraform-ibm-mq-cloud/issues](https://github.com/terraform-ibm-modules/terraform-ibm-mq-cloud/issues). Please note that this product is not currently supported through the IBM Cloud Support Center.",
+      "support_details": "This product is in the community registry, as such support is handled through the [original repo](https://github.com/terraform-ibm-modules/terraform-ibm-mq-cloud). If you experience issues kindly open an issue in that repository [here](https://github.com/terraform-ibm-modules/terraform-ibm-mq-cloud/issues). Please note that this product is not currently supported through the IBM Cloud Support Center.",
       "flavors": [
         {
           "label": "Fully configurable",
