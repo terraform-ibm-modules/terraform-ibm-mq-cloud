@@ -46,7 +46,7 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_existing_mq_capacity_crn"></a> [existing\_mq\_capacity\_crn](#input\_existing\_mq\_capacity\_crn) | The CRN of an existing capacity service instance, if not specifed, a new capacity plan will be created. | `string` | `null` | no |
+| <a name="input_existing_mq_capacity_crn"></a> [existing\_mq\_capacity\_crn](#input\_existing\_mq\_capacity\_crn) | The CRN of an existing capacity service instance, if not specified, a new capacity plan will be created. | `string` | `null` | no |
 | <a name="input_name"></a> [name](#input\_name) | The name to give the MQ on Cloud instance. | `string` | n/a | yes |
 | <a name="input_region"></a> [region](#input\_region) | The region to provision the MQ on Cloud instance to. | `string` | n/a | yes |
 | <a name="input_resource_group_id"></a> [resource\_group\_id](#input\_resource\_group\_id) | The ID of the resource group to provision the MQ on Cloud instance to. | `string` | n/a | yes |

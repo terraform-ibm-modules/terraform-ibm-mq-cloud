@@ -42,7 +42,7 @@
           "description": "Optional integration with [Cloud automation for Observability](https://cloud.ibm.com/catalog/7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3/architecture/deploy-arch-ibm-observability-a3137d28-79e0-479d-8a24-758ebd5a0eab-global) services such as Log Analysis and Monitoring to support IBM MQ instance monitoring and logging."
         }
       ],
-      "support_details": "This product is in the community registry, as such support is handled through the [original repo](https://github.com/terraform-ibm-modules/terraform-ibm-mq-cloud). If you experience issues kindly open an issue in that repository [https://github.com/terraform-ibm-modules/terraform-ibm-mq-cloud/issues](https://github.com/terraform-ibm-modules/terraform-ibm-mq-cloud/issues). Please note that this product is not currently supported through the IBM Cloud Support Center.",
+      "support_details": "This product is in the community registry, as such support is handled through the [original repo](https://github.com/terraform-ibm-modules/terraform-ibm-mq-cloud). If you experience issues kindly open an issue in that repository [here](https://github.com/terraform-ibm-modules/terraform-ibm-mq-cloud/issues). Please note that this product is not currently supported through the IBM Cloud Support Center.",
       "flavors": [
         {
           "label": "Fully configurable",
@@ -65,21 +65,77 @@
                 "crn:v1:bluemix:public:iam::::serviceRole:Manager"
               ],
               "service_name": "secrets-manager",
-              "notes": "Required for creating an Secrets Manager instance. 'Manager' access required to create new secret groups."
+              "notes": "[Optional] Required for creating a Secrets Manager instance."
+            },
+            {
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::serviceRole:Manager",
+                "crn:v1:bluemix:public:iam::::role:Editor"
+              ],
+              "service_name": "event-notifications",
+              "notes": "[Optional] Required for creating an Event Notifications instance."
+            },
+            {
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::serviceRole:Manager",
+                "crn:v1:bluemix:public:iam::::role:Editor"
+              ],
+              "service_name": "sysdig-monitor",
+              "notes": "[Optional] Required if you are consuming the Observability deployable architecture which sets up Cloud Monitoring."
+            },
+            {
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::serviceRole:Manager",
+                "crn:v1:bluemix:public:iam::::role:Editor"
+              ],
+              "service_name": "logs",
+              "notes": "[Optional] Required if you are consuming the Observability deployable architecture which sets up Cloud Logs."
+            },
+            {
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::serviceRole:Manager",
+                "crn:v1:bluemix:public:iam::::role:Editor"
+              ],
+              "service_name": "hs-crypto",
+              "notes": "[Optional] Required if Hyper Protect Crypto Services is used in Cloud automation for Observability."
+            },
+            {
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::serviceRole:Manager",
+                "crn:v1:bluemix:public:iam::::role:Editor"
+              ],
+              "service_name": "kms",
+              "notes": "[Optional] Required to deploy Cloud automation for Key Protect, so you can use your own managed encryption keys."
+            },
+            {
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::role:Administrator"
+              ],
+              "service_name": "iam-identity",
+              "notes": "[Optional] Required if Cloud automation for account configuration is enabled."
+            },
+            {
+
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::serviceRole:Writer",
+                "crn:v1:bluemix:public:iam::::role:Editor"
+              ],
+              "service_name": "atracker",
+              "notes": "[Optional] Required to configure Activity Tracker Event Routing with Cloud automation for Observability."
             },
             {
               "role_crns": [
                 "crn:v1:bluemix:public:iam::::role:Administrator"
               ],
               "service_name": "All Account Management services",
-              "notes": "Administrator access is required for resource group creation and deletion."
+              "notes": "[Optional] Required to deploy Cloud automation for account configuration, which creates foundational IBM Cloud account resources, like IAM settings, trusted profiles, access groups, and resource groups."
             },
             {
               "role_crns": [
                 "crn:v1:bluemix:public:iam::::role:Administrator"
               ],
               "service_name": "All Identity and Access enabled services",
-              "notes": "(Optional) Only required if creating context-based restrictions which can be toggled using the `provision_cbr` input."
+              "notes": "[Optional] Required to deploy Cloud automation for account configuration, which creates foundational IBM Cloud account resources, like IAM settings, trusted profiles, access groups, and resource group with account settings."
             }
           ],
           "dependencies": [
@@ -187,15 +243,15 @@
               "hidden": true,
               "options": [
                 {
-                  "displayname": "private",
+                  "displayname": "Private",
                   "value": "private"
                 },
                 {
-                  "displayname": "public",
+                  "displayname": "Public",
                   "value": "public"
                 },
                 {
-                  "displayname": "public-and-private",
+                  "displayname": "Public-and-Private",
                   "value": "public-and-private"
                 }
               ]
@@ -236,12 +292,22 @@
               "default_value": false,
               "description": "When set to `true`, the IBM Cloud Monitoring instance will be configured to collect platform metrics from the provided region. You can configure 1 instance only of the IBM Cloud Monitoring service per region to collect platform metrics in that location. Check with the account or service administrator if another monitoring instance has already been configured. You may not have permissions to see all monitoring instances in the region. [Learn more](https://cloud.ibm.com/docs/monitoring?topic=monitoring-platform_metrics_enabling).",
               "required": true,
-              "virtual": true
+              "virtual": true,
+              "options": [
+                {
+                  "displayname": "true",
+                  "value": true
+                },
+                {
+                  "displayname": "false",
+                  "value": false
+                }
+              ]
             },
             {
               "key": "logs_routing_tenant_regions",
               "type": "array",
-              "default_value": "[]",
+              "default_value": [],
               "description": "To manage platform logs that are generated by IBM Cloud services in a region of IBM Cloud, you must create a tenant in each region that you operate. Pass a list of regions to create a tenant in. [Learn more](https://cloud.ibm.com/docs/logs-router?topic=logs-router-about-platform-logs).",
               "required": true,
               "custom_config": {
@@ -414,7 +480,7 @@
             "features": [
               {
                 "title": " ",
-                "description": "Configured to use IBM secure by default standards, but can be edited to fit your use case."
+                "description": "Configured to use IBM secure-by-default standards, but can be edited to fit your use case."
               }
             ],
             "diagrams": [
@@ -424,7 +490,7 @@
                   "url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-mq-cloud/main/reference-architecture/deployable-architecture-mqcloud.svg",
                   "type": "image/svg+xml"
                 },
-                "description": "This architecture supports creating and configuring MQ on Cloud resources"
+                "description": "This solution deploys an <b>IBM MQ on Cloud</b> instance on IBM Cloud, providing a secure, scalable, and fully managed messaging service for applications. Once provisioned, you can access the IBM MQ on Cloud dashboard to create and configure queue managers, manage message queues, and integrate them into your applications using industry-standard messaging protocols.<br><br>Optionally, you can integrate IBM Cloud Secrets Manager to securely store and manage TLS certificates and other sensitive credentials required by IBM MQ, ensuring secure connectivity and compliance.<br><br>You can also enable IBM Cloud Observability services such as Cloud Monitoring, IBM Cloud Logs, and Activity Tracker Event Routing to gain operational visibility into your MQ workloads. These capabilities allow you to collect and analyze metrics such as CPU and memory usage, track user and application interactions, and monitor platform logs for troubleshooting and audit purposes.This Terraform-based automation is part of IBM’s Cloud automation for MQ on Cloud framework, enabling Infrastructure as Code (IaC) deployment for consistency and repeatability."
               }
             ]
           },
