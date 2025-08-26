@@ -23,15 +23,15 @@
         "solution",
         "application_modernization"
       ],
-      "short_description": "Cloud architecture including instance of IBM Cloud MQ on Cloud with essential security and observability cloud services",
-      "long_description": "[IBM Cloud MQ](https://cloud.ibm.com/docs/mqcloud/index.html), on Cloud is an end-to-end solution to building and running secure queue managers.<br/>This architecture supports deploying an instance of MQ on Cloud on cloud together with optional security and observability cloud services.<br/><br/>ℹ️ This Terraform-based automation is part of a broader suite of IBM-maintained Infrastructure as Code (IaC) assets, each following the naming pattern \"Cloud automation for *servicename*\" and focusing on single IBM Cloud service. These single-service deployable architectures can be used on their own to streamline and automate service deployments through an [IaC approach](https://cloud.ibm.com/docs/secure-enterprise?topic=secure-enterprise-understanding-projects), or assembled together into a broader [automated IaC stack](https://cloud.ibm.com/docs/secure-enterprise?topic=secure-enterprise-config-stack) to automate the deployment of an end-to-end solution architecture.",
+      "short_description": "Cloud architecture including instance of IBM MQ on Cloud with essential security and observability cloud services",
+      "long_description": "[IBM MQ on Cloud](https://cloud.ibm.com/docs/mqcloud/index.html) is an end-to-end solution to building and running secure queue managers.<br/>This architecture supports deploying an instance of MQ on Cloud on cloud together with optional security and observability cloud services.<br/><br/>ℹ️ This Terraform-based automation is part of a broader suite of IBM-maintained Infrastructure as Code (IaC) assets, each following the naming pattern \"Cloud automation for *servicename*\" and focusing on single IBM Cloud service. These single-service deployable architectures can be used on their own to streamline and automate service deployments through an [IaC approach](https://cloud.ibm.com/docs/secure-enterprise?topic=secure-enterprise-understanding-projects), or assembled together into a broader [automated IaC stack](https://cloud.ibm.com/docs/secure-enterprise?topic=secure-enterprise-config-stack) to automate the deployment of an end-to-end solution architecture.",
       "offering_docs_url": "https://github.com/terraform-ibm-modules/terraform-ibm-mq-cloud/blob/main/solutions/fully-configurable/README.md",
       "offering_icon_url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-mq-cloud/main/images/MQ.svg",
       "provider_name": "IBM",
       "features": [
         {
           "title": "IBM Cloud MQ instance",
-          "description": "Supports building, deploying and running IBM Cloud MQ on Cloud. [Learn more](https://cloud.ibm.com/apidocs/mq-on-cloud)."
+          "description": "Supports building, deploying and running IBM MQ on Cloud. [Learn more](https://cloud.ibm.com/apidocs/mq-on-cloud)."
         },
         {
           "title": "Secrets Manager",
