@@ -81,7 +81,7 @@
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
               "service_name": "sysdig-monitor",
-              "notes": "[Optional] Required if you are consuming the Observability deployable architecture which sets up Cloud Monitoring."
+              "notes": "[Optional] Required to create an instance of Cloud Monitoring."
             },
             {
               "role_crns": [
@@ -89,7 +89,7 @@
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
               "service_name": "logs",
-              "notes": "[Optional] Required if you are consuming the Observability deployable architecture which sets up Cloud Logs."
+              "notes": "[Optional] Required to create an instance of Cloud Logs."
             },
             {
               "role_crns": [
@@ -97,7 +97,7 @@
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
               "service_name": "hs-crypto",
-              "notes": "[Optional] Required if Hyper Protect Crypto Services is used in Cloud automation for Observability."
+              "notes": "[Optional] Required if IBM Hyper Protect Crypto Services is used to encrypt Object Storage buckets created by this architecture."
             },
             {
               "role_crns": [
@@ -105,14 +105,7 @@
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
               "service_name": "kms",
-              "notes": "[Optional] Required to deploy Cloud automation for Key Protect, so you can use your own managed encryption keys."
-            },
-            {
-              "role_crns": [
-                "crn:v1:bluemix:public:iam::::role:Administrator"
-              ],
-              "service_name": "iam-identity",
-              "notes": "[Optional] Required if Cloud automation for account configuration is enabled."
+              "notes": "[Optional] Required if Key Management Services is used to encrypt Object Storage buckets created by this architecture."
             },
             {
 
