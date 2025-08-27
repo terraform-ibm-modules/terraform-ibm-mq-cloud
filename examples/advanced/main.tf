@@ -16,8 +16,8 @@ module "resource_group" {
 
 locals {
   prefix_split  = split("-", var.prefix)
-  prefix_offest = length(local.prefix_split) > 1 ? length(local.prefix_split) - 1 : 0
-  prefix        = local.prefix_split[local.prefix_offest]
+  prefix_offset = length(local.prefix_split) > 1 ? length(local.prefix_split) - 1 : 0
+  prefix        = local.prefix_split[local.prefix_offset]
 }
 
 module "mq_on_cloud" {
