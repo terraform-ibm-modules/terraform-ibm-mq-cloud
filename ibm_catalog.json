@@ -129,6 +129,13 @@
               ],
               "service_name": "All Identity and Access enabled services",
               "notes": "[Optional] Required to deploy Cloud automation for account configuration, which creates foundational IBM Cloud account resources, like IAM settings, trusted profiles, access groups, and resource group with account settings."
+            },
+            {
+              "role_crns": [
+                  "crn:v1:bluemix:public:iam::::role:Viewer"
+              ],
+              "service_name": "Resource group only",
+              "notes": "Viewer access is required in the resource group you want to provision in."
             }
           ],
           "dependencies": [
@@ -158,6 +165,11 @@
                 {
                   "dependency_input": "region",
                   "version_input": "secrets_manager_region",
+                  "reference_version": true
+                },
+                {
+                  "dependency_input": "secrets_manager_endpoint_type",
+                  "version_input": "secrets_manager_endpoint_type",
                   "reference_version": true
                 },
                 {
