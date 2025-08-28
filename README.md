@@ -29,7 +29,7 @@ IBM MQ on IBM Cloud enables you to quickly and easily deploy queue managers in t
 Use the terraform IBM module for MQ on Cloud manage MQ resources. Queue manager, User, Application and Certificate interfaces enable convenient management of MQ on Cloud resource lifecycles.
 
 Information: The terraform IBM module for MQ on Cloud is incubating and NOT GA on IBM Cloud. The features demonstrated here
-are incomplete, may not be in final form and may generate unpredicatable failures.
+are incomplete, may not be in final form and may generate unpredictable failures.
 
 <!-- The following content is automatically populated by the pre-commit hook -->
 <!-- BEGIN OVERVIEW HOOK -->
@@ -177,7 +177,7 @@ No resources.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_applications"></a> [applications](#input\_applications) | A map of IBM MQ on Cloud applications to be created. | <pre>map(object({<br/>    name = string<br/>  }))</pre> | `{}` | no |
-| <a name="input_existing_mq_capacity_crn"></a> [existing\_mq\_capacity\_crn](#input\_existing\_mq\_capacity\_crn) | The CRN of an existing capacity service instance, if not specifed, a new capacity plan will be created | `string` | `null` | no |
+| <a name="input_existing_mq_capacity_crn"></a> [existing\_mq\_capacity\_crn](#input\_existing\_mq\_capacity\_crn) | The CRN of an existing capacity service instance, if not specified, a new capacity plan will be created | `string` | `null` | no |
 | <a name="input_keystore_certificates"></a> [keystore\_certificates](#input\_keystore\_certificates) | A map of IBM MQ on Cloud keystore certificates to be created. | <pre>map(object({<br/>    certificate = string<br/>    label       = string<br/>  }))</pre> | `{}` | no |
 | <a name="input_name"></a> [name](#input\_name) | The name to give the MQ on Cloud instance. | `string` | n/a | yes |
 | <a name="input_queue_manager_display_name"></a> [queue\_manager\_display\_name](#input\_queue\_manager\_display\_name) | A displayable name for the queue manager. | `string` | n/a | yes |
