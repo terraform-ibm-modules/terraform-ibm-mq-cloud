@@ -30,12 +30,12 @@
       "provider_name": "IBM",
       "features": [
         {
-          "title": "IBM Cloud MQ instance",
-          "description": "Supports building, deploying and running IBM MQ on Cloud. [Learn more](https://cloud.ibm.com/apidocs/mq-on-cloud)."
+          "title": "IBM MQ on instance",
+          "description": "Supports building and deploying IBM MQ on Cloud. [Learn more](https://cloud.ibm.com/apidocs/mq-on-cloud)."
         },
         {
           "title": "Secrets Manager",
-          "description": "Optional integration with [Cloud automation for Secrets Manager](https://cloud.ibm.com/catalog/7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3/architecture/deploy-arch-ibm-secrets-manager-6d6ebc76-7bbd-42f5-8bc7-78f4fabd5944-global) for centrally managing TLS certificates required by IBM MQ."
+          "description": "Optional integration with [Cloud automation for Secrets Manager](https://cloud.ibm.com/catalog/7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3/architecture/deploy-arch-ibm-secrets-manager-6d6ebc76-7bbd-42f5-8bc7-78f4fabd5944-global) for centrally managing TLS certificates required by IBM MQ on Cloud."
         },
         {
           "title": "Observability",
@@ -57,7 +57,7 @@
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
               "service_name": "mqcloud",
-              "notes": "Required to provision and manage IBM MQ resources."
+              "notes": "Required to provision and manage IBM MQ on Cloud."
             },
             {
               "role_crns": [
@@ -97,7 +97,7 @@
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
               "service_name": "hs-crypto",
-              "notes": "[Optional] Required if IBM Hyper Protect Crypto Services is used to encrypt Object Storage buckets created by this architecture."
+              "notes": "[Optional] Required if IBM Hyper Protect Crypto Services is used for encryption."
             },
             {
               "role_crns": [
@@ -105,16 +105,15 @@
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
               "service_name": "kms",
-              "notes": "[Optional] Required if Key Management Services is used to encrypt Object Storage buckets created by this architecture."
+              "notes": "[Optional] Required if Key Protect is used for encryption."
             },
             {
-
               "role_crns": [
                 "crn:v1:bluemix:public:iam::::serviceRole:Writer",
                 "crn:v1:bluemix:public:iam::::role:Editor"
               ],
               "service_name": "atracker",
-              "notes": "[[Optional] Required to set up Activity Tracker event routing of auditing events."
+              "notes": "[Optional] Required to set up Activity Tracker Event Routing of auditing events."
             },
             {
               "role_crns": [
@@ -136,12 +135,27 @@
               ],
               "service_name": "Resource group only",
               "notes": "Viewer access is required in the resource group you want to provision in."
+            },
+            {
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::serviceRole:Manager",
+                "crn:v1:bluemix:public:iam::::role:Editor"
+              ],
+              "service_name": "cloud-object-storage",
+              "notes": "[Optional] Required to create an Object Storage instance."
+            },
+            {
+              "role_crns": [
+                "crn:v1:bluemix:public:iam::::role:Editor"
+              ],
+              "service_name": "metrics-router",
+              "notes": "[Optional] Required if Cloud Monitoring is configured to collect platform metrics."
             }
           ],
           "dependencies": [
             {
               "name": "deploy-arch-ibm-secrets-manager",
-              "description": "Enable to provisions and configures IBM Cloud Secrets Manager for securely storing generated secrets.",
+              "description": "Configure Secrets Manager for securely storing generated secrets.",
               "id": "6d6ebc76-7bbd-42f5-8bc7-78f4fabd5944-global",
               "flavors": [
                 "fully-configurable"
@@ -495,7 +509,7 @@
                   "url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-mq-cloud/main/reference-architecture/deployable-architecture-mqcloud.svg",
                   "type": "image/svg+xml"
                 },
-                "description": "This solution deploys an <b>IBM MQ on Cloud</b> instance on IBM Cloud, providing a secure, scalable, and fully managed messaging service for applications. Once provisioned, you can access the IBM MQ on Cloud dashboard to create and configure queue managers, manage message queues, and integrate them into your applications using industry-standard messaging protocols.<br><br>Optionally, you can integrate IBM Cloud Secrets Manager to securely store and manage TLS certificates and other sensitive credentials required by IBM MQ, ensuring secure connectivity and compliance.<br><br>You can also enable IBM Cloud Observability services such as Cloud Monitoring, IBM Cloud Logs, and Activity Tracker Event Routing to gain operational visibility into your MQ workloads. These capabilities allow you to collect and analyze metrics such as CPU and memory usage, track user and application interactions, and monitor platform logs for troubleshooting and audit purposes.This Terraform-based automation is part of IBM’s Cloud automation for MQ on Cloud framework, enabling Infrastructure as Code (IaC) deployment for consistency and repeatability."
+                "description": "This solution deploys an instance of <b>IBM MQ on Cloud</b>, providing a secure, scalable, and fully managed messaging service for applications. Once provisioned, you can access the IBM MQ on Cloud dashboard to create and configure queue managers, manage message queues, and integrate them into your applications using industry-standard messaging protocols.<br><br>Optionally, you can integrate Secrets Manager to securely store and manage TLS certificates and other sensitive credentials required by IBM MQ on Cloud, ensuring secure connectivity and compliance.<br><br>You can also enable observability services such as Cloud Monitoring, Cloud Logs, and Activity Tracker Event Routing to gain operational visibility into your MQ on Cloud workloads. These capabilities allow you to collect and analyze metrics such as CPU and memory usage, track user and application interactions, and monitor platform logs for troubleshooting and audit purposes."
               }
             ]
           },
