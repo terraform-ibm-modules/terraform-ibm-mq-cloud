@@ -8,7 +8,7 @@ locals {
   split_capacity_crn        = var.existing_mq_capacity_crn != null ? split(":", var.existing_mq_capacity_crn) : []
   existing_mq_capacity_guid = length(local.split_capacity_crn) >= 8 ? local.split_capacity_crn[7] : null
 
-  mq_capacity_guid = var.existing_mq_capacity_crn != null ? local.existing_mq_capacity_guid : ibm_resource_instance.mqcloud_capacity[0].id
+  mq_capacity_guid = var.existing_mq_capacity_crn != null ? local.existing_mq_capacity_guid : ibm_resource_instance.mqcloud_capacity[0].guid
   capacity_plan    = var.subscription_id == null ? "reserved-capacity" : "reserved-capacity-subscription"
 }
 
@@ -23,6 +23,11 @@ resource "ibm_resource_instance" "mqcloud_capacity" {
   }
   service = "mqcloud"
   tags    = var.tags
+
+  timeouts {
+    create = "8h"
+    delete = "2h"
+  }
 }
 
 resource "ibm_resource_instance" "mqcloud_deployment" {
