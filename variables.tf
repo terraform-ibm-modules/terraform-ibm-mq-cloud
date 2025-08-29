@@ -25,13 +25,13 @@ variable "tags" {
 
 variable "existing_mq_capacity_crn" {
   type        = string
-  description = "The CRN of an existing capacity service instance, if not specified, a new capacity plan will be created"
+  description = "The CRN of an existing capacity service instance, if not specifiied, a new capacity plan will be created."
   default     = null
 }
 
 variable "subscription_id" {
   type        = string
-  description = "An MQ on Cloud subscsription plan id for customers who have purchased a subscription through an IBM sales representative"
+  description = "An MQ on Cloud subscsription plan id for customers who have purchased a subscription through an IBM sales representative."
   default     = null
 }
 
@@ -45,7 +45,7 @@ variable "queue_manager_display_name" {
 }
 
 variable "queue_manager_location" {
-  description = "The location in which the queue manager will be deployed. Defaults to using the first location in the created service instance"
+  description = "The location in which the queue manager will be deployed. Defaults to using the first location in the created service instance."
   type        = string
   default     = null
 }
@@ -62,7 +62,7 @@ variable "queue_manager_size" {
 }
 
 variable "queue_manager_version" {
-  description = "The MQ version of the queue manager. If null, use the latest available"
+  description = "The MQ version of the queue manager. If null, use the latest available."
   type        = string
   default     = null
 }

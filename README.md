@@ -177,17 +177,17 @@ No resources.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_applications"></a> [applications](#input\_applications) | A map of IBM MQ on Cloud applications to be created. | <pre>map(object({<br/>    name = string<br/>  }))</pre> | `{}` | no |
-| <a name="input_existing_mq_capacity_crn"></a> [existing\_mq\_capacity\_crn](#input\_existing\_mq\_capacity\_crn) | The CRN of an existing capacity service instance, if not specified, a new capacity plan will be created | `string` | `null` | no |
+| <a name="input_existing_mq_capacity_crn"></a> [existing\_mq\_capacity\_crn](#input\_existing\_mq\_capacity\_crn) | The CRN of an existing capacity service instance, if not specifiied, a new capacity plan will be created. | `string` | `null` | no |
 | <a name="input_keystore_certificates"></a> [keystore\_certificates](#input\_keystore\_certificates) | A map of IBM MQ on Cloud keystore certificates to be created. | <pre>map(object({<br/>    certificate = string<br/>    label       = string<br/>  }))</pre> | `{}` | no |
 | <a name="input_name"></a> [name](#input\_name) | The name to give the MQ on Cloud instance. | `string` | n/a | yes |
 | <a name="input_queue_manager_display_name"></a> [queue\_manager\_display\_name](#input\_queue\_manager\_display\_name) | A displayable name for the queue manager. | `string` | n/a | yes |
-| <a name="input_queue_manager_location"></a> [queue\_manager\_location](#input\_queue\_manager\_location) | The location in which the queue manager will be deployed. Defaults to using the first location in the created service instance | `string` | `null` | no |
+| <a name="input_queue_manager_location"></a> [queue\_manager\_location](#input\_queue\_manager\_location) | The location in which the queue manager will be deployed. Defaults to using the first location in the created service instance. | `string` | `null` | no |
 | <a name="input_queue_manager_name"></a> [queue\_manager\_name](#input\_queue\_manager\_name) | A queue manager name conforming to MQ restrictions. 1 to 48 characters matching regular expression '/^[a-zA-Z0-9.\_]*$/' . | `string` | n/a | yes |
 | <a name="input_queue_manager_size"></a> [queue\_manager\_size](#input\_queue\_manager\_size) | The queue manager deployment sizes. Valid values are `xsmall`, `small`, `medium`, `large` . | `string` | `"xsmall"` | no |
-| <a name="input_queue_manager_version"></a> [queue\_manager\_version](#input\_queue\_manager\_version) | The MQ version of the queue manager. If null, use the latest available | `string` | `null` | no |
+| <a name="input_queue_manager_version"></a> [queue\_manager\_version](#input\_queue\_manager\_version) | The MQ version of the queue manager. If null, use the latest available. | `string` | `null` | no |
 | <a name="input_region"></a> [region](#input\_region) | The region to provision the MQ on Cloud instance to. | `string` | n/a | yes |
 | <a name="input_resource_group_id"></a> [resource\_group\_id](#input\_resource\_group\_id) | The ID of the resource group to provision the MQ on Cloud instance to. | `string` | n/a | yes |
-| <a name="input_subscription_id"></a> [subscription\_id](#input\_subscription\_id) | An MQ on Cloud subscsription plan id for customers who have purchased a subscription through an IBM sales representative | `string` | `null` | no |
+| <a name="input_subscription_id"></a> [subscription\_id](#input\_subscription\_id) | An MQ on Cloud subscsription plan id for customers who have purchased a subscription through an IBM sales representative. | `string` | `null` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | The list of resource tags that you want to associate with your MQ on Cloud instance. | `list(string)` | `[]` | no |
 | <a name="input_truststore_certificates"></a> [truststore\_certificates](#input\_truststore\_certificates) | A map of IBM MQ on Cloud truststore certificates to be created. | <pre>map(object({<br/>    certificate = string<br/>    label       = string<br/>  }))</pre> | `{}` | no |
 | <a name="input_users"></a> [users](#input\_users) | A map of IBM MQ on Cloud users to be created. | <pre>map(object({<br/>    email = string<br/>    name  = string<br/>  }))</pre> | `{}` | no |
@@ -197,11 +197,11 @@ No resources.
 | Name | Description |
 |------|-------------|
 | <a name="output_queue_manager_id"></a> [queue\_manager\_id](#output\_queue\_manager\_id) | The ID of the MQ on Cloud queue manager |
-| <a name="output_queue_manager_options"></a> [queue\_manager\_options](#output\_queue\_manager\_options) | Queue manager options for the MQ on Cloud deployment service instance |
-| <a name="output_service_instance_capacity_crn"></a> [service\_instance\_capacity\_crn](#output\_service\_instance\_capacity\_crn) | The CRN of the MQ on Cloud capacity service instance |
-| <a name="output_service_instance_capacity_guid"></a> [service\_instance\_capacity\_guid](#output\_service\_instance\_capacity\_guid) | The GUID of the MQ on Cloud capacity service instance |
-| <a name="output_service_instance_deployment_crn"></a> [service\_instance\_deployment\_crn](#output\_service\_instance\_deployment\_crn) | The CRN of the MQ on Cloud deployment service instance |
-| <a name="output_service_instance_deployment_guid"></a> [service\_instance\_deployment\_guid](#output\_service\_instance\_deployment\_guid) | The GUID of the MQ on Cloud deployment service instance |
+| <a name="output_queue_manager_options"></a> [queue\_manager\_options](#output\_queue\_manager\_options) | Queue manager options for the MQ on Cloud deployment service instance. |
+| <a name="output_service_instance_capacity_crn"></a> [service\_instance\_capacity\_crn](#output\_service\_instance\_capacity\_crn) | The CRN of the MQ on Cloud capacity service instance. |
+| <a name="output_service_instance_capacity_guid"></a> [service\_instance\_capacity\_guid](#output\_service\_instance\_capacity\_guid) | The GUID of the MQ on Cloud capacity service instance. |
+| <a name="output_service_instance_deployment_crn"></a> [service\_instance\_deployment\_crn](#output\_service\_instance\_deployment\_crn) | The CRN of the MQ on Cloud deployment service instance. |
+| <a name="output_service_instance_deployment_guid"></a> [service\_instance\_deployment\_guid](#output\_service\_instance\_deployment\_guid) | The GUID of the MQ on Cloud deployment service instance. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 <!-- Leave this section as is so that your module has a link to local development environment set-up steps for contributors to follow -->
