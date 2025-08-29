@@ -143,13 +143,6 @@
               ],
               "service_name": "cloud-object-storage",
               "notes": "[Optional] Required to create an Object Storage instance."
-            },
-            {
-              "role_crns": [
-                "crn:v1:bluemix:public:iam::::role:Editor"
-              ],
-              "service_name": "metrics-router",
-              "notes": "[Optional] Required if Cloud Monitoring is configured to collect platform metrics."
             }
           ],
           "dependencies": [
