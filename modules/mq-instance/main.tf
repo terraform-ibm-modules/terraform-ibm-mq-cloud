@@ -23,6 +23,11 @@ resource "ibm_resource_instance" "mqcloud_capacity" {
   }
   service = "mqcloud"
   tags    = var.tags
+
+  timeouts {
+    create = "8h"
+    delete = "2h"
+  }
 }
 
 resource "ibm_resource_instance" "mqcloud_deployment" {

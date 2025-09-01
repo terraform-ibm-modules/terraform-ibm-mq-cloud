@@ -101,7 +101,7 @@ output "connection_admin_queue_manager_name" {
 }
 
 output "connection_admin_cipherspec" {
-  description = "The admin channel ciper specification"
+  description = "The admin channel cipher specification"
   value       = module.experimental_connection.connection_admin_cipherspec
 }
 
@@ -131,7 +131,7 @@ output "connection_app_queue_manager_name" {
 }
 
 output "connection_app_cipherspec" {
-  description = "The application channel ciper specification."
+  description = "The application channel cipher specification."
   value       = module.experimental_connection.connection_app_cipherspec
 }
 
