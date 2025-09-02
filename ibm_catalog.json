@@ -196,7 +196,9 @@
             {
               "name": "deploy-arch-ibm-cloud-logs",
               "description": "Configure IBM Cloud Logs instance to analyse the platform logs.",
-              "flavors": ["fully-configurable"],
+              "flavors": [
+                "fully-configurable"
+              ],
               "id": "63d8ae58-fbf3-41ce-b844-0fb5b85882ab-global",
               "catalog_id": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3",
               "input_mapping": [
@@ -223,7 +225,9 @@
             {
               "name": "deploy-arch-ibm-cloud-monitoring",
               "description": "Configure IBM Cloud Monitoring to collect the platform metrics.",
-              "flavors": ["fully-configurable"],
+              "flavors": [
+                "fully-configurable"
+              ],
               "id": "73debdbf-894f-4c14-81c7-5ece3a70b67d-global",
               "catalog_id": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3",
               "input_mapping": [
@@ -250,7 +254,9 @@
             {
               "name": "deploy-arch-ibm-activity-tracker",
               "description": "Configure Activity Tracker Event Routing to route the auditing events.",
-              "flavors": ["fully-configurable"],
+              "flavors": [
+                "fully-configurable"
+              ],
               "id": "918453c3-4f97-4583-8c4a-83ef12fc7916-global",
               "catalog_id": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3",
               "input_mapping": [
