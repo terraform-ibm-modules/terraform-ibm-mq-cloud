@@ -215,6 +215,7 @@ func TestMqCloudDefaultConfiguration(t *testing.T) {
 			"existing_mq_capacity_crn":     permanentResources["mq_capacity_crn"],
 			"secrets_manager_region":       "us-south",
 			"secrets_manager_service_plan": "standard",
+			"queue_manager_name":           "da_qm",
 		},
 	)
 
