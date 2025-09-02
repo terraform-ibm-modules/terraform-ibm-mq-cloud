@@ -3,7 +3,6 @@ package test
 
 import (
 	"log"
-	// "math/rand"
 	"os"
 	"testing"
 
@@ -20,13 +19,6 @@ import (
 const yamlLocation = "../common-dev-assets/common-go-assets/common-permanent-resources.yaml"
 
 var permanentResources map[string]interface{}
-
-// var validRegions = []string{
-// 	"eu-gb",
-// 	"eu-de",
-// 	"us-east",
-// 	"us-south",
-// }
 
 // Use existing resource group
 const resourceGroup = "geretain-test-resources"
@@ -217,7 +209,7 @@ func TestMqCloudDefaultConfiguration(t *testing.T) {
 		"fully-configurable",
 		map[string]interface{}{
 			"prefix":                       options.Prefix,
-			"region":                       "us-south",
+			"region":                       "us-east",
 			"enable_platform_metrics":      false,
 			"logs_routing_tenant_regions":  []string{},
 			"existing_mq_capacity_crn":     permanentResources["mq_capacity_crn"],
@@ -241,7 +233,7 @@ func TestMqCloudDependencyPermutations(t *testing.T) {
 			OfferingFlavor: "fully-configurable",
 			Inputs: map[string]interface{}{
 				"prefix":                       "mq-perm",
-				"region":                       "us-south",
+				"region":                       "us-east",
 				"existing_resource_group_name": resourceGroup,
 			},
 		},
