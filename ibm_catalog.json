@@ -156,7 +156,7 @@
           "dependencies": [
             {
               "name": "deploy-arch-ibm-secrets-manager",
-              "description": "Configure Secrets Manager for securely storing generated secrets.",
+              "description": "Provisions a Secrets Manager instance to centrally manage Ingress subdomain certificates and other sensitive credentials.",
               "id": "6d6ebc76-7bbd-42f5-8bc7-78f4fabd5944-global",
               "flavors": [
                 "fully-configurable"
@@ -277,7 +277,7 @@
             },
             {
               "name": "deploy-arch-ibm-account-infra-base",
-              "description": "Cloud automation for account configuration organizes your IBM Cloud account with a ready-made set of resource groups by default. When you enable the “with account settings” option, it also applies baseline security and governance settings.",
+              "description": "Organize your IBM Cloud account with preconfigured resource groups. If not selected, the default resource group is used. Optionally, expand to apply recommended security controls via \"with Account Settings\" variation.",
               "catalog_id": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3",
               "flavors": [
                 "resource-group-only",
@@ -302,7 +302,7 @@
             },
             {
               "name": "deploy-arch-ibm-scc-workload-protection",
-              "description": "Configure an IBM Cloud Security and Compliance Center Workload Protection instance to help you manage security and compliance for your organization.",
+              "description": "Configure a Security and Compliance Center Workload Protection instance to manage security and compliance.",
               "id": "4322cf44-2289-49aa-a719-dd79e39b14dc-global",
               "version": "v1.11.1",
               "flavors": [
