@@ -245,10 +245,6 @@
                   "dependency_input": "enable_platform_metrics",
                   "version_input": "enable_platform_metrics",
                   "reference_version": true
-                },
-                {
-                  "dependency_output": "cloud_monitoring_crn",
-                  "version_input": "existing_monitoring_crn"
                 }
               ],
               "optional": true,
