@@ -7,7 +7,10 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
+	"github.com/terraform-ibm-modules/ibmcloud-terratest-wrapper/cloudinfo"
 	"github.com/terraform-ibm-modules/ibmcloud-terratest-wrapper/common"
+	"github.com/terraform-ibm-modules/ibmcloud-terratest-wrapper/testaddons"
 	"github.com/terraform-ibm-modules/ibmcloud-terratest-wrapper/testhelper"
 	"github.com/terraform-ibm-modules/ibmcloud-terratest-wrapper/testschematic"
 )
@@ -188,4 +191,55 @@ func TestRunStandardSolutionUpgradeSchematics(t *testing.T) {
 	if !options.UpgradeTestSkipped {
 		assert.NoError(t, err, "Schematic Upgrade Test had an unexpected error")
 	}
+}
+
+func TestMqCloudDefaultConfiguration(t *testing.T) {
+	t.Parallel()
+
+	options := testaddons.TestAddonsOptionsDefault(&testaddons.TestAddonOptions{
+		Testing:       t,
+		Prefix:        "mq-def",
+		ResourceGroup: resourceGroup,
+		QuietMode:     true, // Suppress logs except on failure
+	})
+
+	options.AddonConfig = cloudinfo.NewAddonConfigTerraform(
+		options.Prefix,
+		"deploy-arch-ibm-mq-cloud",
+		"fully-configurable",
+		map[string]interface{}{
+			"prefix":                       options.Prefix,
+			"region":                       "us-east",
+			"enable_platform_metrics":      false,
+			"logs_routing_tenant_regions":  []string{},
+			"existing_mq_capacity_crn":     permanentResources["mq_capacity_crn"],
+			"secrets_manager_region":       "us-south",
+			"secrets_manager_service_plan": "standard",
+			"queue_manager_name":           "da_qm",
+		},
+	)
+
+	err := options.RunAddonTest()
+	require.NoError(t, err)
+}
+
+// TestDependencyPermutations runs dependency permutations for the Event Notifications and all its dependencies
+func TestMqCloudDependencyPermutations(t *testing.T) {
+	t.Skip("Skipping dependency permutations until the test is fixed")
+	options := testaddons.TestAddonsOptionsDefault(&testaddons.TestAddonOptions{
+		Testing: t,
+		Prefix:  "mq-perm",
+		AddonConfig: cloudinfo.AddonConfig{
+			OfferingName:   "deploy-arch-ibm-mq-cloud",
+			OfferingFlavor: "fully-configurable",
+			Inputs: map[string]interface{}{
+				"prefix":                       "mq-perm",
+				"region":                       "us-east",
+				"existing_resource_group_name": resourceGroup,
+			},
+		},
+	})
+
+	err := options.RunAddonPermutationTest()
+	assert.NoError(t, err, "Dependency permutation test should not fail")
 }
