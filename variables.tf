@@ -4,34 +4,34 @@
 
 variable "resource_group_id" {
   type        = string
-  description = "The ID of the resource group to provision the MQ on Cloud instance to."
+  description = "The ID of the resource group where the IBM MQ instance is created."
 }
 
 variable "region" {
   type        = string
-  description = "The region to provision the MQ on Cloud instance to."
+  description = "The IBM Cloud region where the IBM MQ instance is created."
 }
 
 variable "name" {
   type        = string
-  description = "The name to give the MQ on Cloud instance."
+  description = "The name to give the IBM MQ instance."
 }
 
 variable "tags" {
   type        = list(string)
-  description = "The list of resource tags that you want to associate with your MQ on Cloud instance."
+  description = "The list of resource tags to add to your IBM MQ instance."
   default     = []
 }
 
 variable "existing_mq_capacity_crn" {
   type        = string
-  description = "The CRN of an existing capacity service instance, if not specifiied, a new capacity plan will be created."
+  description = "The CRN of an existing capacity service instance. If no CRN is specifiied, a new capacity plan is created."
   default     = null
 }
 
 variable "subscription_id" {
   type        = string
-  description = "An MQ on Cloud subscsription plan id for customers who have purchased a subscription through an IBM sales representative."
+  description = "An IBM MQ subscsription plan ID for customers who purchased a subscription through an IBM sales representative."
   default     = null
 }
 
@@ -45,24 +45,24 @@ variable "queue_manager_display_name" {
 }
 
 variable "queue_manager_location" {
-  description = "The location in which the queue manager will be deployed. Defaults to using the first location in the created service instance."
+  description = "The location in which the queue manager is deployed. Defaults to using the first location in the created service instance."
   type        = string
   default     = null
 }
 
 variable "queue_manager_name" {
   type        = string
-  description = "A queue manager name conforming to MQ restrictions. 1 to 48 characters matching regular expression '/^[a-zA-Z0-9._]*$/' ."
+  description = "A queue manager name conforming to IBM MQ restrictions. 1 to 48 characters matching regular expression `'/^[a-zA-Z0-9._]*$/'` ."
 }
 
 variable "queue_manager_size" {
-  description = "The queue manager deployment sizes. Valid values are `xsmall`, `small`, `medium`, `large` ."
+  description = "The queue manager deployment sizes. Valid values are `xsmall`, `small`, `medium`, or `large` ."
   type        = string
   default     = "xsmall"
 }
 
 variable "queue_manager_version" {
-  description = "The MQ version of the queue manager. If null, use the latest available."
+  description = "The IBM MQ version of the queue manager. If set to `null`, the latest available version is used."
   type        = string
   default     = null
 }
@@ -72,7 +72,7 @@ variable "queue_manager_version" {
 ########################################################################################################################
 
 variable "applications" {
-  description = "A map of IBM MQ on Cloud applications to be created."
+  description = "A map of IBM MQ applications to be created."
   type = map(object({
     name = string
   }))
@@ -80,7 +80,7 @@ variable "applications" {
 }
 
 variable "keystore_certificates" {
-  description = "A map of IBM MQ on Cloud keystore certificates to be created."
+  description = "A map of IBM MQ keystore certificates to be created."
   type = map(object({
     certificate = string
     label       = string
@@ -89,7 +89,7 @@ variable "keystore_certificates" {
 }
 
 variable "truststore_certificates" {
-  description = "A map of IBM MQ on Cloud truststore certificates to be created."
+  description = "A map of IBM MQ truststore certificates to be created."
   type = map(object({
     certificate = string
     label       = string
@@ -98,7 +98,7 @@ variable "truststore_certificates" {
 }
 
 variable "users" {
-  description = "A map of IBM MQ on Cloud users to be created."
+  description = "A map of IBM MQ users to be created."
   type = map(object({
     email = string
     name  = string
