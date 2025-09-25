@@ -185,7 +185,7 @@ No resources.
 | <a name="input_queue_manager_name"></a> [queue\_manager\_name](#input\_queue\_manager\_name) | A queue manager name conforming to IBM MQ on Cloud restrictions. 1 to 48 characters matching regular expression `'/^[a-zA-Z0-9._]*$/'` . | `string` | n/a | yes |
 | <a name="input_queue_manager_size"></a> [queue\_manager\_size](#input\_queue\_manager\_size) | The queue manager deployment sizes. Valid values are `xsmall`, `small`, `medium`, or `large` . | `string` | `"xsmall"` | no |
 | <a name="input_queue_manager_version"></a> [queue\_manager\_version](#input\_queue\_manager\_version) | The IBM MQ on Cloud version of the queue manager. If set to `null`, the latest available version is used. | `string` | `null` | no |
-| <a name="input_region"></a> [region](#input\_region) | The IBM Cloud region where the IBM MQ on Cloud instance is created. | `string` | n/a | yes |
+| <a name="input_region"></a> [region](#input\_region) | The region where the IBM MQ on Cloud instance is created. | `string` | n/a | yes |
 | <a name="input_resource_group_id"></a> [resource\_group\_id](#input\_resource\_group\_id) | The ID of the resource group where the IBM MQ on Cloud instance is created. | `string` | n/a | yes |
 | <a name="input_subscription_id"></a> [subscription\_id](#input\_subscription\_id) | An IBM MQ on Cloud subscription plan ID for customers who purchased a subscription through an IBM sales representative. | `string` | `null` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | The list of resource tags to add to your IBM MQ on Cloud instance. | `list(string)` | `[]` | no |

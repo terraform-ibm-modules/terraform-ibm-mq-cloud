@@ -9,7 +9,7 @@ variable "resource_group_id" {
 
 variable "region" {
   type        = string
-  description = "The IBM Cloud region where the IBM MQ on Cloud instance is created."
+  description = "The region where the IBM MQ on Cloud instance is created."
 }
 
 variable "name" {
