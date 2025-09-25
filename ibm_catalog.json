@@ -11,7 +11,7 @@
         "solution",
         "integration",
         "application_modernization",
-        "converged_infra",
+        "platform_engineering",
         "enterprise_app"
       ],
       "keywords": [
@@ -374,7 +374,9 @@
                 "config_constraints": {
                   "identifier": "rg_name"
                 }
-              }
+              },
+              "default_value": "Default",
+              "description": "The name of an existing resource group to provision the resources."
             },
             {
               "key": "region",
