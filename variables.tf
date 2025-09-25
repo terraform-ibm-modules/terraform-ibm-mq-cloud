@@ -4,22 +4,22 @@
 
 variable "resource_group_id" {
   type        = string
-  description = "The ID of the resource group where the IBM MQ instance is created."
+  description = "The ID of the resource group where the IBM MQ on Cloud instance is created."
 }
 
 variable "region" {
   type        = string
-  description = "The IBM Cloud region where the IBM MQ instance is created."
+  description = "The IBM Cloud region where the IBM MQ on Cloud instance is created."
 }
 
 variable "name" {
   type        = string
-  description = "The name to give the IBM MQ instance."
+  description = "The name to give the IBM MQ on Cloud instance."
 }
 
 variable "tags" {
   type        = list(string)
-  description = "The list of resource tags to add to your IBM MQ instance."
+  description = "The list of resource tags to add to your IBM MQ on Cloud instance."
   default     = []
 }
 
@@ -31,7 +31,7 @@ variable "existing_mq_capacity_crn" {
 
 variable "subscription_id" {
   type        = string
-  description = "An IBM MQ subscsription plan ID for customers who purchased a subscription through an IBM sales representative."
+  description = "An IBM MQ on Cloud subscription plan ID for customers who purchased a subscription through an IBM sales representative."
   default     = null
 }
 
@@ -52,7 +52,7 @@ variable "queue_manager_location" {
 
 variable "queue_manager_name" {
   type        = string
-  description = "A queue manager name conforming to IBM MQ restrictions. 1 to 48 characters matching regular expression `'/^[a-zA-Z0-9._]*$/'` ."
+  description = "A queue manager name conforming to IBM MQ on Cloud restrictions. 1 to 48 characters matching regular expression `'/^[a-zA-Z0-9._]*$/'` ."
 }
 
 variable "queue_manager_size" {
@@ -62,7 +62,7 @@ variable "queue_manager_size" {
 }
 
 variable "queue_manager_version" {
-  description = "The IBM MQ version of the queue manager. If set to `null`, the latest available version is used."
+  description = "The IBM MQ on Cloud version of the queue manager. If set to `null`, the latest available version is used."
   type        = string
   default     = null
 }
@@ -72,7 +72,7 @@ variable "queue_manager_version" {
 ########################################################################################################################
 
 variable "applications" {
-  description = "A map of IBM MQ applications to be created."
+  description = "A map of IBM MQ on Cloud applications to be created."
   type = map(object({
     name = string
   }))
@@ -80,7 +80,7 @@ variable "applications" {
 }
 
 variable "keystore_certificates" {
-  description = "A map of IBM MQ keystore certificates to be created."
+  description = "A map of IBM MQ on Cloud keystore certificates to be created."
   type = map(object({
     certificate = string
     label       = string
@@ -89,7 +89,7 @@ variable "keystore_certificates" {
 }
 
 variable "truststore_certificates" {
-  description = "A map of IBM MQ truststore certificates to be created."
+  description = "A map of IBM MQ on Cloud truststore certificates to be created."
   type = map(object({
     certificate = string
     label       = string
@@ -98,7 +98,7 @@ variable "truststore_certificates" {
 }
 
 variable "users" {
-  description = "A map of IBM MQ users to be created."
+  description = "A map of IBM MQ on Cloud users to be created."
   type = map(object({
     email = string
     name  = string
