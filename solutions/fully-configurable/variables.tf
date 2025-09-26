@@ -82,6 +82,7 @@ variable "resource_tags" {
 variable "existing_mq_capacity_crn" {
   type        = string
   description = "The CRN of an existing MQ on Cloud capacity service instance."
+  nullable    = false
 }
 
 ########################################################################################################################
