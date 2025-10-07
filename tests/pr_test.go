@@ -6,6 +6,7 @@ import (
 	"os"
 	"testing"
 
+	"github.com/IBM/go-sdk-core/core"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"github.com/terraform-ibm-modules/ibmcloud-terratest-wrapper/cloudinfo"
@@ -17,13 +18,14 @@ import (
 
 // Define a struct with fields that match the structure of the YAML data
 const yamlLocation = "../common-dev-assets/common-go-assets/common-permanent-resources.yaml"
+const terraformVersion = "terraform_v1.10" // This should match the version in the ibm_catalog.json
 
 var permanentResources map[string]interface{}
 
 // Use existing resource group
 const resourceGroup = "geretain-test-resources"
 const advancedExampleDir = "examples/advanced"
-const standardSolutionTerraformDir = "solutions/fully-configurable"
+const fullyConfigurableTerraformDir = "solutions/fully-configurable"
 
 // TestMain will be run before any parallel tests, used to read data from yaml for use with tests
 func TestMain(m *testing.M) {
@@ -81,14 +83,15 @@ func TestRunStandardInstanceOnlySolutionSchematics(t *testing.T) {
 			"*.tf",
 			"modules/*/*.tf",
 			"modules/*/*.sh",
-			standardSolutionTerraformDir + "/*.tf",
+			fullyConfigurableTerraformDir + "/*.tf",
 		},
-		TemplateFolder:         standardSolutionTerraformDir,
+		TemplateFolder:         fullyConfigurableTerraformDir,
 		Tags:                   []string{"test-schematic"},
 		Prefix:                 "mqi",
 		DeleteWorkspaceOnFail:  false,
 		WaitJobCompleteMinutes: 60,
 		Region:                 "us-east",
+		TerraformVersion:       terraformVersion,
 	})
 
 	options.TerraformVars = []testschematic.TestSchematicTerraformVar{
@@ -112,7 +115,7 @@ func TestRunStandardInstanceOnlySolutionSchematics(t *testing.T) {
 }
 
 // Run the DA on Schematics in full configuration
-func TestRunStandardSolutionSchematics(t *testing.T) {
+func TestRunFullyConfigurableSchematics(t *testing.T) {
 	// t.Parallel()
 
 	options := testschematic.TestSchematicOptionsDefault(&testschematic.TestSchematicOptions{
@@ -121,14 +124,15 @@ func TestRunStandardSolutionSchematics(t *testing.T) {
 			"*.tf",
 			"modules/*/*.tf",
 			"modules/*/*.sh",
-			standardSolutionTerraformDir + "/*.tf",
+			fullyConfigurableTerraformDir + "/*.tf",
 		},
-		TemplateFolder:         standardSolutionTerraformDir,
+		TemplateFolder:         fullyConfigurableTerraformDir,
 		Tags:                   []string{"test-schematic"},
 		Prefix:                 "mqoc-da",
 		DeleteWorkspaceOnFail:  false,
 		WaitJobCompleteMinutes: 60,
 		Region:                 "us-east",
+		TerraformVersion:       terraformVersion,
 	})
 
 	options.TerraformVars = []testschematic.TestSchematicTerraformVar{
@@ -151,7 +155,7 @@ func TestRunStandardSolutionSchematics(t *testing.T) {
 	assert.Nil(t, err, "This should not have errored")
 }
 
-func TestRunStandardSolutionUpgradeSchematics(t *testing.T) {
+func TestRunFullyConfigurableUpgradeSchematics(t *testing.T) {
 	// t.Parallel()
 
 	options := testschematic.TestSchematicOptionsDefault(&testschematic.TestSchematicOptions{
@@ -160,14 +164,16 @@ func TestRunStandardSolutionUpgradeSchematics(t *testing.T) {
 			"*.tf",
 			"modules/*/*.tf",
 			"modules/*/*.sh",
-			standardSolutionTerraformDir + "/*.tf",
+			fullyConfigurableTerraformDir + "/*.tf",
 		},
-		TemplateFolder:         standardSolutionTerraformDir,
-		Tags:                   []string{"test-schematic"},
-		Prefix:                 "mqupg-da",
-		DeleteWorkspaceOnFail:  false,
-		WaitJobCompleteMinutes: 60,
-		Region:                 "us-south",
+		TemplateFolder:             fullyConfigurableTerraformDir,
+		Tags:                       []string{"test-schematic"},
+		Prefix:                     "mqupg-da",
+		DeleteWorkspaceOnFail:      false,
+		WaitJobCompleteMinutes:     60,
+		Region:                     "us-south",
+		CheckApplyResultForUpgrade: true,
+		TerraformVersion:           terraformVersion,
 	})
 
 	options.TerraformVars = []testschematic.TestSchematicTerraformVar{
@@ -219,27 +225,34 @@ func TestMqCloudDefaultConfiguration(t *testing.T) {
 		},
 	)
 
-	err := options.RunAddonTest()
-	require.NoError(t, err)
-}
-
-// TestDependencyPermutations runs dependency permutations for the Event Notifications and all its dependencies
-func TestMqCloudDependencyPermutations(t *testing.T) {
-	t.Skip("Skipping dependency permutations until the test is fixed")
-	options := testaddons.TestAddonsOptionsDefault(&testaddons.TestAddonOptions{
-		Testing: t,
-		Prefix:  "mq-perm",
-		AddonConfig: cloudinfo.AddonConfig{
-			OfferingName:   "deploy-arch-ibm-mq-cloud",
+	// Disable target / route creation to prevent hitting quota in account
+	options.AddonConfig.Dependencies = []cloudinfo.AddonConfig{
+		{
+			OfferingName:   "deploy-arch-ibm-cloud-monitoring",
 			OfferingFlavor: "fully-configurable",
 			Inputs: map[string]interface{}{
-				"prefix":                       "mq-perm",
-				"region":                       "us-east",
-				"existing_resource_group_name": resourceGroup,
+				"enable_metrics_routing_to_cloud_monitoring": false,
 			},
+			Enabled: core.BoolPtr(true),
 		},
-	})
+		{
+			OfferingName:   "deploy-arch-ibm-activity-tracker",
+			OfferingFlavor: "fully-configurable",
+			Inputs: map[string]interface{}{
+				"enable_activity_tracker_event_routing_to_cloud_logs": false,
+			},
+			Enabled: core.BoolPtr(true),
+		},
+		{
+			OfferingName:   "deploy-arch-ibm-secrets-manager",
+			OfferingFlavor: "fully-configurable",
+			Inputs: map[string]interface{}{
+				"existing_secrets_manager_crn": permanentResources["secretsManagerCRN"],
+			},
+			Enabled: core.BoolPtr(true),
+		},
+	}
 
-	err := options.RunAddonPermutationTest()
-	assert.NoError(t, err, "Dependency permutation test should not fail")
+	err := options.RunAddonTest()
+	require.NoError(t, err)
 }
