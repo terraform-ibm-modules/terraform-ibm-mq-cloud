@@ -215,7 +215,7 @@ func TestMqCloudDefaultConfiguration(t *testing.T) {
 		"fully-configurable",
 		map[string]interface{}{
 			"prefix":                       options.Prefix,
-			"region":                       "us-east",
+			"region":                       "us-south",
 			"enable_platform_metrics":      false,
 			"secrets_manager_region":       permanentResources["secretsManagerRegion"],
 			"secrets_manager_service_plan": "standard",
