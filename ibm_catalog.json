@@ -178,7 +178,7 @@
                 "fully-configurable"
               ],
               "catalog_id": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3",
-              "version": "v2.8.6",
+              "version": "v2.10.0",
               "optional": true,
               "on_by_default": true,
               "default_flavor": "fully-configurable",
@@ -236,7 +236,7 @@
               ],
               "optional": true,
               "on_by_default": true,
-              "version": "v1.6.11"
+              "version": "v1.6.28"
             },
             {
               "name": "deploy-arch-ibm-cloud-monitoring",
@@ -265,7 +265,7 @@
               ],
               "optional": true,
               "on_by_default": true,
-              "version": "v1.6.4"
+              "version": "v1.7.2"
             },
             {
               "name": "deploy-arch-ibm-activity-tracker",
@@ -289,7 +289,7 @@
               ],
               "optional": true,
               "on_by_default": true,
-              "version": "v1.2.25"
+              "version": "v1.2.34"
             },
             {
               "name": "deploy-arch-ibm-account-infra-base",
@@ -314,13 +314,13 @@
               ],
               "optional": true,
               "on_by_default": false,
-              "version": "v3.0.7"
+              "version": "v3.0.23"
             },
             {
               "name": "deploy-arch-ibm-scc-workload-protection",
               "description": "Configure an IBM Cloud Security and Compliance Center Workload Protection instance to help you manage security and compliance for your organization.",
               "id": "4322cf44-2289-49aa-a719-dd79e39b14dc-global",
-              "version": "v1.11.4",
+              "version": "v1.12.3",
               "flavors": [
                 "fully-configurable"
               ],
