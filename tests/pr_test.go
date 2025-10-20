@@ -214,7 +214,6 @@ func TestMqCloudDefaultConfiguration(t *testing.T) {
 		"deploy-arch-ibm-mq-cloud",
 		"fully-configurable",
 		map[string]interface{}{
-			"prefix":                       options.Prefix,
 			"region":                       "us-south",
 			"enable_platform_metrics":      false,
 			"secrets_manager_region":       permanentResources["secretsManagerRegion"],
