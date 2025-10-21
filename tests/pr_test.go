@@ -203,10 +203,11 @@ func TestMqCloudDefaultConfiguration(t *testing.T) {
 	t.Parallel()
 
 	options := testaddons.TestAddonsOptionsDefault(&testaddons.TestAddonOptions{
-		Testing:       t,
-		Prefix:        "mq-def",
-		ResourceGroup: resourceGroup,
-		QuietMode:     true, // Suppress logs except on failure
+		Testing:               t,
+		Prefix:                "mq-def",
+		ResourceGroup:         resourceGroup,
+		QuietMode:             true, // Suppress logs except on failure
+		OverrideInputMappings: core.BoolPtr(true),
 	})
 
 	options.AddonConfig = cloudinfo.NewAddonConfigTerraform(
