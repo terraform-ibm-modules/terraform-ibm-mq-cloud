@@ -394,7 +394,18 @@
             },
             {
               "key": "prefix",
-              "required": true
+              "required": true,
+              "default_value": "dev",
+              "random_string": {
+                "length": 4
+              },
+              "value_constraints": [
+                {
+                  "type": "regex",
+                  "description": "Prefix must begin with a lowercase letter and may contain only lowercase letters, digits, and hyphens '-'. It must not end with a hyphen('-'), and cannot contain consecutive hyphens ('--'). It should not exceed 16 characters.",
+                  "value": "^$|^__NULL__$|^[a-z](?!.*--)(?:[a-z0-9-]{0,14}[a-z0-9])?$"
+                }
+              ]
             },
             {
               "key": "enable_platform_metrics",
@@ -442,7 +453,14 @@
             },
             {
               "key": "existing_mq_capacity_crn",
-              "required": true
+              "required": true,
+              "value_constraints": [
+                {
+                  "type": "regex",
+                  "description": "The value provided for 'existing_mq_capacity_crn' is not valid.",
+                  "value": "^__NULL__$|^crn:(.*:){3}(mqcloud):(.*:){2}[0-9a-fA-F]{8}(?:-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}::$"
+                }
+              ]
             },
             {
               "key": "secrets_manager_region",
@@ -515,10 +533,25 @@
               "key": "deployment_name"
             },
             {
-              "key": "existing_mq_deployment_crn"
+              "key": "existing_mq_deployment_crn",
+              "value_constraints": [
+                {
+                  "type": "regex",
+                  "description": "The value provided for 'existing_mq_deployment_crn' is not valid.",
+                  "value": "^__NULL__$|^crn:(.*:){3}(mqcloud):(.*:){2}[0-9a-fA-F]{8}(?:-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}::$"
+                }
+              ]
             },
             {
-              "key": "queue_manager_name"
+              "key": "queue_manager_name",
+              "required": true,
+              "value_constraints": [
+                {
+                  "type": "regex",
+                  "description": "The value provided for ‘queue_manager_name’ must contain only alphanumeric characters and underscores (_), matching the pattern ^([\\w_]+)\\w$",
+                  "value": "^__NULL__$|^([\\w_]+)\\w$"
+                }
+              ]
             },
             {
               "key": "queue_manager_display_name"
@@ -560,7 +593,14 @@
               "key": "user_email"
             },
             {
-              "key": "existing_secrets_manager_crn"
+              "key": "existing_secrets_manager_crn",
+              "value_constraints": [
+                {
+                  "type": "regex",
+                  "description": "The value provided for 'existing_secrets_manager_crn' is not valid.",
+                  "value": "^__NULL__$|^crn:(.*:){3}secrets-manager:(.*:){2}[0-9a-fA-F]{8}(?:-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}::$"
+                }
+              ]
             },
             {
               "key": "secrets_manager_ibmcloud_api_key"
