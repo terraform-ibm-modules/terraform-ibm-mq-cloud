@@ -203,11 +203,10 @@ func TestMqCloudDefaultConfiguration(t *testing.T) {
 	t.Parallel()
 
 	options := testaddons.TestAddonsOptionsDefault(&testaddons.TestAddonOptions{
-		Testing:               t,
-		Prefix:                "mq-def",
-		ResourceGroup:         resourceGroup,
-		QuietMode:             true, // Suppress logs except on failure
-		OverrideInputMappings: core.BoolPtr(true),
+		Testing:       t,
+		Prefix:        "mq-def",
+		ResourceGroup: resourceGroup,
+		QuietMode:     true, // Suppress logs except on failure
 	})
 
 	options.AddonConfig = cloudinfo.NewAddonConfigTerraform(
@@ -215,10 +214,10 @@ func TestMqCloudDefaultConfiguration(t *testing.T) {
 		"deploy-arch-ibm-mq-cloud",
 		"fully-configurable",
 		map[string]interface{}{
-			"region":                       "us-south",
+			"region":                       "eu-gb",
 			"enable_platform_metrics":      false,
 			"secrets_manager_region":       permanentResources["secretsManagerRegion"],
-			"secrets_manager_service_plan": "standard",
+			"secrets_manager_service_plan": "__NULL__",
 			"logs_routing_tenant_regions":  []string{},
 			"existing_mq_capacity_crn":     permanentResources["mq_capacity_crn"],
 			"queue_manager_name":           "da_qm",
