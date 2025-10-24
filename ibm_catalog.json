@@ -125,6 +125,13 @@
             },
             {
               "role_crns": [
+                "crn:v1:bluemix:public:iam::::role:Administrator"
+              ],
+              "service_name": "All Identity and Access enabled services",
+              "notes": "[Optional] Required to to create trusted profile for App Configuration aggregator which is used for compliance scanning."
+            },
+            {
+              "role_crns": [
                 "crn:v1:bluemix:public:iam::::role:Viewer"
               ],
               "service_name": "Resource group only",
@@ -360,9 +367,7 @@
                 "config_constraints": {
                   "identifier": "rg_name"
                 }
-              },
-              "default_value": "Default",
-              "description": "The name of an existing resource group to provision the resources. [Learn more](https://cloud.ibm.com/docs/account?topic=account-rgs&interface=ui#create_rgs) about how to create a resource group."
+              }
             },
             {
               "key": "region",
