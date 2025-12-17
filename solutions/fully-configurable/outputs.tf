@@ -210,3 +210,32 @@ output "secret_root_cert_name" {
   description = "The root CA certificate secret name."
   value       = var.existing_secrets_manager_crn != null ? local.root_certificate_secret_name : null
 }
+
+########################################################################################################################
+# Next Steps URLs
+########################################################################################################################
+
+output "next_steps_text" {
+  value       = "Your MQ on Cloud service instance is ready to create and manage queue managers."
+  description = "Next steps text"
+}
+
+output "next_step_primary_label" {
+  value       = "Go to the MQ on Cloud service instance"
+  description = "Primary label"
+}
+
+output "next_step_primary_url" {
+  value       = "https://cloud.ibm.com/services/mqcloud/${local.mq_deployment_crn}"
+  description = "Primary URL"
+}
+
+output "next_step_secondary_label" {
+  value       = "Learn more about IBM MQ on Cloud"
+  description = "Secondary label"
+}
+
+output "next_step_secondary_url" {
+  value       = "https://cloud.ibm.com/docs/mqcloud?topic=mqcloud-intro_to_mq"
+  description = "Secondary URL"
+}
