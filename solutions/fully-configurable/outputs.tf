@@ -226,7 +226,7 @@ output "next_step_primary_label" {
 }
 
 output "next_step_primary_url" {
-  value       = "https://cloud.ibm.com/services/mqcloud/${local.mq_deployment_crn}"
+  value       = "https://cloud.ibm.com/services/mqcloud/${local.mq_deployment_crn}?paneId=manage"
   description = "Primary URL"
 }
 
