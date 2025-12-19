@@ -19,7 +19,7 @@ import (
 // Define a struct with fields that match the structure of the YAML data
 const yamlLocation = "../common-dev-assets/common-go-assets/common-permanent-resources.yaml"
 const terraformVersion = "terraform_v1.10" // This should match the version in the ibm_catalog.json
-const region = "us-east" // Must use us-east as that is where the MQ capacity instance is
+const region = "us-east"                   // Must use us-east as that is where the MQ capacity instance is
 
 var permanentResources map[string]interface{}
 
@@ -100,7 +100,7 @@ func TestRunStandardInstanceOnlySolutionSchematics(t *testing.T) {
 		{Name: "existing_mq_capacity_crn", Value: permanentResources["mq_capacity_crn"], DataType: "string"},
 		{Name: "existing_resource_group_name", Value: resourceGroup, DataType: "string"},
 		{Name: "prefix", Value: options.Prefix, DataType: "string"},
-		{Name: "region", Value: options.Region", DataType: "string"},
+		{Name: "region", Value: options.Region, DataType: "string"},
 		{Name: "deployment_name", Value: "da-mq-instance", DataType: "string"},
 		{Name: "queue_manager_name", Value: "inst", DataType: "string"},
 		{Name: "queue_manager_display_name", Value: "instance-display", DataType: "string"},
