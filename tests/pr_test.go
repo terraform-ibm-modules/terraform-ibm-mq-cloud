@@ -19,6 +19,7 @@ import (
 // Define a struct with fields that match the structure of the YAML data
 const yamlLocation = "../common-dev-assets/common-go-assets/common-permanent-resources.yaml"
 const terraformVersion = "terraform_v1.10" // This should match the version in the ibm_catalog.json
+const region = "us-east" // Must use us-east as that is where the MQ capacity instance is
 
 var permanentResources map[string]interface{}
 
@@ -43,7 +44,7 @@ func setupOptions(t *testing.T, prefix string, dir string) *testhelper.TestOptio
 		Testing:       t,
 		TerraformDir:  dir,
 		Prefix:        prefix,
-		Region:        "us-east",
+		Region:        region,
 		ResourceGroup: resourceGroup,
 		TerraformVars: map[string]interface{}{
 			"existing_mq_capacity_crn": permanentResources["mq_capacity_crn"],
@@ -90,7 +91,7 @@ func TestRunStandardInstanceOnlySolutionSchematics(t *testing.T) {
 		Prefix:                 "mqi",
 		DeleteWorkspaceOnFail:  false,
 		WaitJobCompleteMinutes: 60,
-		Region:                 "us-east",
+		Region:                 region,
 		TerraformVersion:       terraformVersion,
 	})
 
@@ -99,7 +100,7 @@ func TestRunStandardInstanceOnlySolutionSchematics(t *testing.T) {
 		{Name: "existing_mq_capacity_crn", Value: permanentResources["mq_capacity_crn"], DataType: "string"},
 		{Name: "existing_resource_group_name", Value: resourceGroup, DataType: "string"},
 		{Name: "prefix", Value: options.Prefix, DataType: "string"},
-		{Name: "region", Value: "us-east", DataType: "string"},
+		{Name: "region", Value: options.Region", DataType: "string"},
 		{Name: "deployment_name", Value: "da-mq-instance", DataType: "string"},
 		{Name: "queue_manager_name", Value: "inst", DataType: "string"},
 		{Name: "queue_manager_display_name", Value: "instance-display", DataType: "string"},
@@ -131,7 +132,7 @@ func TestRunFullyConfigurableSchematics(t *testing.T) {
 		Prefix:                 "mqoc-da",
 		DeleteWorkspaceOnFail:  false,
 		WaitJobCompleteMinutes: 60,
-		Region:                 "us-east",
+		Region:                 region,
 		TerraformVersion:       terraformVersion,
 	})
 
@@ -140,7 +141,7 @@ func TestRunFullyConfigurableSchematics(t *testing.T) {
 		{Name: "existing_mq_capacity_crn", Value: permanentResources["mq_capacity_crn"], DataType: "string"},
 		{Name: "existing_resource_group_name", Value: resourceGroup, DataType: "string"},
 		{Name: "prefix", Value: options.Prefix, DataType: "string"},
-		{Name: "region", Value: "us-east", DataType: "string"},
+		{Name: "region", Value: options.Region, DataType: "string"},
 		{Name: "deployment_name", Value: "da-mq-instance", DataType: "string"},
 		{Name: "queue_manager_name", Value: "da_qm", DataType: "string"},
 		{Name: "queue_manager_display_name", Value: "da-qm-display", DataType: "string"},
@@ -171,7 +172,7 @@ func TestRunFullyConfigurableUpgradeSchematics(t *testing.T) {
 		Prefix:                     "mqupg-da",
 		DeleteWorkspaceOnFail:      false,
 		WaitJobCompleteMinutes:     60,
-		Region:                     "us-south",
+		Region:                     region,
 		CheckApplyResultForUpgrade: true,
 		TerraformVersion:           terraformVersion,
 	})
@@ -181,7 +182,7 @@ func TestRunFullyConfigurableUpgradeSchematics(t *testing.T) {
 		{Name: "existing_mq_capacity_crn", Value: permanentResources["mq_capacity_crn"], DataType: "string"},
 		{Name: "existing_resource_group_name", Value: resourceGroup, DataType: "string"},
 		{Name: "prefix", Value: options.Prefix, DataType: "string"},
-		{Name: "region", Value: "us-east", DataType: "string"},
+		{Name: "region", Value: options.Region, DataType: "string"},
 		{Name: "deployment_name", Value: "daupg-mq-instance", DataType: "string"},
 		{Name: "queue_manager_name", Value: "daupg_qm", DataType: "string"},
 		{Name: "queue_manager_display_name", Value: "daupg-qm-display", DataType: "string"},
@@ -214,7 +215,7 @@ func TestMqCloudDefaultConfiguration(t *testing.T) {
 		"deploy-arch-ibm-mq-cloud",
 		"fully-configurable",
 		map[string]interface{}{
-			"region":                       "us-east",
+			"region":                       region,
 			"enable_platform_metrics":      false,
 			"secrets_manager_region":       permanentResources["privateOnlySecMgrRegion"],
 			"secrets_manager_service_plan": "__NULL__",
