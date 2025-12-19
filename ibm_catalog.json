@@ -175,7 +175,7 @@
                 "fully-configurable"
               ],
               "catalog_id": "7a4d68b4-cf8b-40cd-a3d1-f49aff526eb3",
-              "version": "v2.11.0",
+              "version": "v2.12.7",
               "optional": true,
               "on_by_default": true,
               "default_flavor": "fully-configurable",
@@ -243,7 +243,7 @@
               ],
               "optional": true,
               "on_by_default": true,
-              "version": "v1.9.0"
+              "version": "v1.10.1"
             },
             {
               "name": "deploy-arch-ibm-cloud-monitoring",
@@ -277,7 +277,7 @@
               ],
               "optional": true,
               "on_by_default": true,
-              "version": "v1.9.0"
+              "version": "v1.11.0"
             },
             {
               "name": "deploy-arch-ibm-activity-tracker",
@@ -306,13 +306,13 @@
               ],
               "optional": true,
               "on_by_default": true,
-              "version": "v1.4.3"
+              "version": "v1.5.6"
             },
             {
               "name": "deploy-arch-ibm-scc-workload-protection",
               "description": "Configure an IBM Cloud Security and Compliance Center Workload Protection instance to help you manage security and compliance for your organization.",
               "id": "4322cf44-2289-49aa-a719-dd79e39b14dc-global",
-              "version": "v1.14.0",
+              "version": "v1.16.7",
               "flavors": [
                 "fully-configurable"
               ],
@@ -448,7 +448,14 @@
             },
             {
               "key": "existing_mq_capacity_crn",
-              "required": true
+              "required": true,
+              "value_constraints": [
+                {
+                  "type": "regex",
+                  "description": "The value provided for 'existing_mq_capacity_crn' is not valid.",
+                  "value": "^__NULL__$|^crn:v\\d:(.*:){2}(mqcloud):(.*:)([aos]\\/[\\w_\\-]+):[0-9a-fA-F]{8}(?:-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}::$"
+                }
+              ]
             },
             {
               "key": "secrets_manager_region",
@@ -521,10 +528,25 @@
               "key": "deployment_name"
             },
             {
-              "key": "existing_mq_deployment_crn"
+              "key": "existing_mq_deployment_crn",
+              "value_constraints": [
+                {
+                  "type": "regex",
+                  "description": "The value provided for 'existing_mq_deployment_crn' is not valid.",
+                  "value": "^__NULL__$|^crn:v\\d:(.*:){2}(mqcloud):(.*:)([aos]\\/[\\w_\\-]+):[0-9a-fA-F]{8}(?:-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}::$"
+                }
+              ]
             },
             {
-              "key": "queue_manager_name"
+              "key": "queue_manager_name",
+              "required": true,
+              "value_constraints": [
+                {
+                  "type": "regex",
+                  "description": "The value provided for ‘queue_manager_name’ must contain only alphanumeric characters and underscores (_), matching the pattern ^([\\w_]+)\\w$",
+                  "value": "^__NULL__$|^([\\w_]+)\\w$"
+                }
+              ]
             },
             {
               "key": "queue_manager_display_name"
@@ -566,7 +588,14 @@
               "key": "user_email"
             },
             {
-              "key": "existing_secrets_manager_crn"
+              "key": "existing_secrets_manager_crn",
+              "value_constraints": [
+                {
+                  "type": "regex",
+                  "description": "The value provided for 'existing_secrets_manager_crn' is not valid.",
+                  "value": "^__NULL__$|^crn:v\\d:(.*:){2}secrets-manager:(.*:)([aos]\\/[\\w_\\-]+):[0-9a-fA-F]{8}(?:-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}::$"
+                }
+              ]
             },
             {
               "key": "secrets_manager_ibmcloud_api_key"
@@ -610,7 +639,7 @@
               }
             ]
           },
-          "terraform_version": "1.10.5",
+          "terraform_version": "1.12.2",
           "ignore_readme": true
         }
       ]

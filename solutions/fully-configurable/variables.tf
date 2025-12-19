@@ -39,7 +39,7 @@ variable "region" {
 variable "prefix" {
   type        = string
   nullable    = true
-  description = "The prefix to be added to all resources created by this solution. To skip using a prefix, set this value to null or an empty string. The prefix must begin with a lowercase letter and may contain only lowercase letters, digits, and hyphens '-'. It should not exceed 16 characters, must not end with a hyphen('-'), and can not contain consecutive hyphens ('--'). Example: prod-0205-mq. [Learn more](https://terraform-ibm-modules.github.io/documentation/#/prefix.md)."
+  description = "The prefix to add to all resources that this solution creates (e.g `prod`, `test`, `dev`). To skip using a prefix, set this value to null or an empty string. [Learn more](https://terraform-ibm-modules.github.io/documentation/#/prefix.md)."
 
   validation {
     # - null and empty string is allowed
@@ -83,6 +83,14 @@ variable "existing_mq_capacity_crn" {
   type        = string
   description = "The CRN of an existing MQ on Cloud capacity service instance."
   nullable    = false
+
+  validation {
+    condition = anytrue([
+      var.existing_mq_capacity_crn == null,
+      can(regex("^crn:v\\d:(.*:){2}(mqcloud):(.*:)([aos]\\/[\\w_\\-]+):[0-9a-fA-F]{8}(?:-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}::$", var.existing_mq_capacity_crn))
+    ])
+    error_message = "The value provided for 'existing_mq_capacity_crn' is not valid."
+  }
 }
 
 ########################################################################################################################
@@ -99,6 +107,14 @@ variable "existing_mq_deployment_crn" {
   type        = string
   description = "The CRN of an existing MQ on Cloud deployment service instance. If no value is specified, a new instance is created."
   default     = null
+
+  validation {
+    condition = anytrue([
+      var.existing_mq_deployment_crn == null,
+      can(regex("^crn:v\\d:(.*:){2}(mqcloud):(.*:)([aos]\\/[\\w_\\-]+):[0-9a-fA-F]{8}(?:-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}::$", var.existing_mq_deployment_crn))
+    ])
+    error_message = "The value provided for 'existing_mq_deployment_crn' is not valid."
+  }
 }
 
 ########################################################################################################################
@@ -181,6 +197,14 @@ variable "existing_secrets_manager_crn" {
   type        = string
   description = "The CRN of a secrets manager to store secrets.name of an existing application."
   default     = null
+
+  validation {
+    condition = anytrue([
+      var.existing_secrets_manager_crn == null,
+      can(regex("^crn:v\\d:(.*:){2}secrets-manager:(.*:)([aos]\\/[\\w_\\-]+):[0-9a-fA-F]{8}(?:-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}::$", var.existing_secrets_manager_crn))
+    ])
+    error_message = "The value provided for 'existing_secrets_manager_crn' is not valid."
+  }
 }
 
 variable "secrets_manager_endpoint_type" {
