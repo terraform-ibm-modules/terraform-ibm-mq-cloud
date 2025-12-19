@@ -253,6 +253,14 @@ func TestMqCloudDefaultConfiguration(t *testing.T) {
 			},
 			Enabled: core.BoolPtr(true),
 		},
+		{
+			OfferingName:   "deploy-arch-ibm-event-notifications",
+			OfferingFlavor: "fully-configurable",
+			Inputs: map[string]interface{}{
+				"region": "us-south", // EN is not supported in us-east, so need to override
+			},
+			Enabled: core.BoolPtr(true),
+		},
 	}
 
 	err := options.RunAddonTest()
