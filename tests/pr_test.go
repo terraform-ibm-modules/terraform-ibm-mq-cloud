@@ -18,7 +18,7 @@ import (
 
 // Define a struct with fields that match the structure of the YAML data
 const yamlLocation = "../common-dev-assets/common-go-assets/common-permanent-resources.yaml"
-const terraformVersion = "terraform_v1.10" // This should match the version in the ibm_catalog.json
+const terraformVersion = "terraform_v1.12.2" // This should match the version in the ibm_catalog.json
 const region = "us-east"                   // Must use us-east as that is where the MQ capacity instance is
 
 var permanentResources map[string]interface{}
