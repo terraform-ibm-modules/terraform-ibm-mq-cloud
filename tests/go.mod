@@ -3,7 +3,7 @@ module github.com/terraform-ibm-modules/terraform-ibm-mq-cloud
 go 1.25.5
 
 require (
-	github.com/IBM/go-sdk-core v1.1.0
+	github.com/IBM/go-sdk-core/v5 v5.21.2
 	github.com/stretchr/testify v1.11.1
 	github.com/terraform-ibm-modules/ibmcloud-terratest-wrapper v1.64.1
 )
@@ -13,7 +13,6 @@ require (
 	github.com/IBM-Cloud/bluemix-go v0.0.0-20240719075425-078fcb3a55be // indirect
 	github.com/IBM-Cloud/power-go-client v1.14.4 // indirect
 	github.com/IBM/cloud-databases-go-sdk v0.8.1 // indirect
-	github.com/IBM/go-sdk-core/v5 v5.21.2 // indirect
 	github.com/IBM/platform-services-go-sdk v0.91.0 // indirect
 	github.com/IBM/project-go-sdk v0.4.0 // indirect
 	github.com/IBM/schematics-go-sdk v0.4.0 // indirect
@@ -26,7 +25,6 @@ require (
 	github.com/cloudflare/circl v1.6.1 // indirect
 	github.com/cyphar/filepath-securejoin v0.4.1 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
-	github.com/dgrijalva/jwt-go v3.2.0+incompatible // indirect
 	github.com/emirpasic/gods v1.18.1 // indirect
 	github.com/gabriel-vasile/mimetype v1.4.11 // indirect
 	github.com/ghodss/yaml v1.0.0 // indirect
@@ -97,7 +95,6 @@ require (
 	golang.org/x/sys v0.39.0 // indirect
 	golang.org/x/text v0.32.0 // indirect
 	golang.org/x/tools v0.39.0 // indirect
-	gopkg.in/go-playground/validator.v9 v9.31.0 // indirect
 	gopkg.in/warnings.v0 v0.1.2 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
