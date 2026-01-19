@@ -71,7 +71,7 @@ module "queue_manager" {
   source                = "../../modules/queue-manager"
   display_name          = var.queue_manager_display_name != null ? var.queue_manager_display_name : "${local.prefix}${var.deployment_name}"
   location              = local.location
-  name                  = "${local.prefix}${var.queue_manager_name}"
+  name                  = var.queue_manager_name
   service_instance_crn  = local.mq_deployment_crn
   size                  = var.queue_manager_size
   queue_manager_version = local.version

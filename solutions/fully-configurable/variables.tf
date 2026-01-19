@@ -123,8 +123,8 @@ variable "existing_mq_deployment_crn" {
 
 variable "queue_manager_name" {
   type        = string
-  description = "The name to be given to the queue manager."
-  default     = "queue-manager"
+  description = "The name to be given to the queue manager. When using an existing queue manager, use the `existing_queue_manager_name` variable."
+  default     = "default"
   validation {
     condition     = var.queue_manager_name == null || can(regex("^([\\w_]+)\\w$", var.queue_manager_name))
     error_message = "The value of queue_manager_name, if not null, must contain only alphanumerical characters and \"_\" matching this regular expression ^([\\w_]+)\\w$ "
