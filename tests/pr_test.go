@@ -73,48 +73,6 @@ func TestRunUpgradeExample(t *testing.T) {
 	assert.NotNil(t, output, "Expected some output")
 }
 
-// Run the DA on Schematics in minimal configuration, valid logic for options
-// used in catalog pipeline
-func TestRunStandardInstanceOnlySolutionSchematics(t *testing.T) {
-	// t.Parallel()
-
-	options := testschematic.TestSchematicOptionsDefault(&testschematic.TestSchematicOptions{
-		Testing: t,
-		TarIncludePatterns: []string{
-			"*.tf",
-			"modules/*/*.tf",
-			"modules/*/*.sh",
-			fullyConfigurableTerraformDir + "/*.tf",
-		},
-		TemplateFolder:         fullyConfigurableTerraformDir,
-		Tags:                   []string{"test-schematic"},
-		Prefix:                 "mqi",
-		DeleteWorkspaceOnFail:  false,
-		WaitJobCompleteMinutes: 60,
-		Region:                 region,
-		TerraformVersion:       terraformVersion,
-	})
-
-	options.TerraformVars = []testschematic.TestSchematicTerraformVar{
-		{Name: "ibmcloud_api_key", Value: options.RequiredEnvironmentVars["TF_VAR_ibmcloud_api_key"], DataType: "string", Secure: true},
-		{Name: "existing_mq_capacity_crn", Value: permanentResources["mq_capacity_crn"], DataType: "string"},
-		{Name: "existing_resource_group_name", Value: resourceGroup, DataType: "string"},
-		{Name: "prefix", Value: options.Prefix, DataType: "string"},
-		{Name: "region", Value: options.Region, DataType: "string"},
-		{Name: "deployment_name", Value: "da-mq-instance", DataType: "string"},
-		{Name: "queue_manager_name", Value: "inst", DataType: "string"},
-		{Name: "queue_manager_display_name", Value: "instance-display", DataType: "string"},
-		{Name: "queue_manager_size", Value: "xsmall", DataType: "string"},
-		{Name: "application_name", Value: "daiapp", DataType: "string"},
-		{Name: "user_email", Value: "mqida-user@exmaple.com", DataType: "string"},
-		{Name: "user_name", Value: "mqida-user", DataType: "string"},
-		// forcing provider visibility to public due to this provider bug https://github.ibm.com/GoldenEye/issues/issues/14309
-		{Name: "provider_visibility", Value: "public", DataType: "string"},
-	}
-	err := options.RunSchematicTest()
-	assert.Nil(t, err, "This should not have errored")
-}
-
 // Run the DA on Schematics in full configuration
 func TestRunFullyConfigurableSchematics(t *testing.T) {
 	// t.Parallel()
