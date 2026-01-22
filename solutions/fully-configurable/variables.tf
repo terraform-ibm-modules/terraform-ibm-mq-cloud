@@ -123,7 +123,7 @@ variable "existing_mq_deployment_crn" {
 
 variable "queue_manager_name" {
   type        = string
-  description = "The name to be given to the queue manager. When using an existing queue manager, use the `existing_queue_manager_name` variable."
+  description = "The name to be given to the queue manager. When using an existing queue manager, use the `existing_queue_manager_name` variable. When using the `existing_queue_manager_name` variable the `queue_manager_name` input is ignored."
   default     = "default"
   validation {
     condition     = var.queue_manager_name == null || can(regex("^([\\w_]+)\\w$", var.queue_manager_name))
@@ -137,7 +137,7 @@ variable "queue_manager_name" {
 
 variable "existing_queue_manager_name" {
   type        = string
-  description = "The name of an existing queue manager."
+  description = "The name of an existing queue manager. If no value is passed then `queue_manager_name` will be used to create a new queue manager."
   default     = null
 }
 
