@@ -251,14 +251,23 @@ func TestMqCloudDefaultConfiguration(t *testing.T) {
 				"service_plan":                         "__NULL__", // no plan value needed when using existing SM
 				"skip_secrets_manager_iam_auth_policy": true,       // since using an existing Secrets Manager instance, attempting to re-create auth policy can cause conflicts if the policy already exists
 				"secret_groups":                        []string{}, // passing empty array for secret groups as default value is creating general group and it will cause conflicts as we are using an existing SM
+				"region":                               "us-south",
 			},
 			Enabled: core.BoolPtr(true),
 		},
 		{
-			OfferingName:   "deploy-arch-ibm-event-notifications",
+			OfferingName:   "deploy-arch-ibm-cloud-logs",
 			OfferingFlavor: "fully-configurable",
 			Inputs: map[string]interface{}{
-				"region": "us-south", // EN is not supported in us-east, so need to override
+				"region": "us-south", // Event Notifications (a dependency of Cloud Logs DA) is not supported in us-east, so hard coding to us-south)
+			},
+			Enabled: core.BoolPtr(true),
+		},
+		{
+			OfferingName:   "deploy-arch-ibm-scc-workload-protection",
+			OfferingFlavor: "fully-configurable",
+			Inputs: map[string]interface{}{
+				"region": "us-south", // Event Notifications (a dependency of App Config DA which is a dependency of SCC-WP DA) is not supported in us-east, so hard coding to us-south)
 			},
 			Enabled: core.BoolPtr(true),
 		},
