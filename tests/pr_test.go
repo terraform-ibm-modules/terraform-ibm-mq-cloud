@@ -186,7 +186,7 @@ func TestRunFullyConfigurableUpgradeSchematics(t *testing.T) {
 		Region:                     region,
 		CheckApplyResultForUpgrade: true,
 		TerraformVersion:           terraformVersion,
-		IgnoreUpdates: testhelper.Exemptions{ // Ignore for consistency check
+		IgnoreUpdates: testhelper.Exemptions{
 			List: IgnoreVersionUpdates,
 		},
 	})
