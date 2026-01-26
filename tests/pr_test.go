@@ -4,6 +4,7 @@ package test
 import (
 	"log"
 	"os"
+	"strings"
 	"testing"
 
 	"github.com/IBM/go-sdk-core/core"
@@ -184,7 +185,9 @@ func TestRunFullyConfigurableUpgradeSchematics(t *testing.T) {
 		{Name: "prefix", Value: options.Prefix, DataType: "string"},
 		{Name: "region", Value: options.Region, DataType: "string"},
 		{Name: "deployment_name", Value: "daupg-mq-instance", DataType: "string"},
-		{Name: "queue_manager_name", Value: "daupg_qm", DataType: "string"},
+		{Name: "existing_secrets_manager_crn", Value: permanentResources["privateOnlySecMgrCRN"], DataType: "string"},
+		{Name: "secret_group_name", Value: options.Prefix, DataType: "string"},
+		{Name: "queue_manager_name", Value: strings.ReplaceAll(options.Prefix, "-", "_"), DataType: "string"}, // queue manager name cannot contain dash so converting to underscore
 		{Name: "queue_manager_display_name", Value: "daupg-qm-display", DataType: "string"},
 		{Name: "queue_manager_size", Value: "xsmall", DataType: "string"},
 		{Name: "application_name", Value: "daupgapp", DataType: "string"},
@@ -222,7 +225,11 @@ func TestMqCloudDefaultConfiguration(t *testing.T) {
 			"secrets_manager_service_plan": "__NULL__",
 			"logs_routing_tenant_regions":  []string{},
 			"existing_mq_capacity_crn":     permanentResources["mq_capacity_crn"],
-			"queue_manager_name":           "da_qm",
+			// using prefix here as this value is used as part of the secrets manager
+			// secrets that are created and can cause a name clash when using our
+			// permanent Secrets Manager instance.
+			// note: queue manager name cannot contain dash so converting to underscore.
+			"queue_manager_name": strings.ReplaceAll(options.Prefix, "-", "_"),
 		},
 	)
 
