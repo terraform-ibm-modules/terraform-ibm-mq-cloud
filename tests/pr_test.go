@@ -226,8 +226,8 @@ func TestMqCloudDefaultConfiguration(t *testing.T) {
 		},
 	)
 
-	// Disable target / route creation to prevent hitting quota in account
 	options.AddonConfig.Dependencies = []cloudinfo.AddonConfig{
+		// Disable target / route creation to prevent hitting quota in account
 		{
 			OfferingName:   "deploy-arch-ibm-cloud-monitoring",
 			OfferingFlavor: "fully-configurable",
@@ -244,6 +244,7 @@ func TestMqCloudDefaultConfiguration(t *testing.T) {
 			},
 			Enabled: core.BoolPtr(true),
 		},
+		// Use existing Secrets Manager to help prevent hitting quota in account
 		{
 			OfferingName:   "deploy-arch-ibm-secrets-manager",
 			OfferingFlavor: "fully-configurable",
@@ -252,23 +253,27 @@ func TestMqCloudDefaultConfiguration(t *testing.T) {
 				"service_plan":                         "__NULL__", // no plan value needed when using existing SM
 				"skip_secrets_manager_iam_auth_policy": true,       // since using an existing Secrets Manager instance, attempting to re-create auth policy can cause conflicts if the policy already exists
 				"secret_groups":                        []string{}, // passing empty array for secret groups as default value is creating general group and it will cause conflicts as we are using an existing SM
-				"region":                               "us-south",
+				"region":                               permanentResources["secretsManagerRegion"],
+			},
+			Enabled: core.BoolPtr(true),
+		},
+		// Need to override the region for dependant DAs due to the following constraints:
+		// - MQ must be deployed in us-east, as that is where the MQ capacity instance is in the account that tests are run in.
+		// - Event Notifications is not supported in us-east, so locking that to us-south instead
+		// - App Config and Event Notifications must be in the same region
+		{
+			OfferingName:   "deploy-arch-ibm-event-notifications",
+			OfferingFlavor: "fully-configurable",
+			Inputs: map[string]interface{}{
+				"region": "us-south",
 			},
 			Enabled: core.BoolPtr(true),
 		},
 		{
-			OfferingName:   "deploy-arch-ibm-cloud-logs",
+			OfferingName:   "deploy-arch-ibm-apprapp",
 			OfferingFlavor: "fully-configurable",
 			Inputs: map[string]interface{}{
-				"region": "us-south", // Event Notifications (a dependency of Cloud Logs DA) is not supported in us-east, so hard coding to us-south)
-			},
-			Enabled: core.BoolPtr(true),
-		},
-		{
-			OfferingName:   "deploy-arch-ibm-scc-workload-protection",
-			OfferingFlavor: "fully-configurable",
-			Inputs: map[string]interface{}{
-				"region": "us-south", // Event Notifications (a dependency of App Config DA which is a dependency of SCC-WP DA) is not supported in us-east, so hard coding to us-south)
+				"region": "us-south",
 			},
 			Enabled: core.BoolPtr(true),
 		},
