@@ -26,7 +26,6 @@
       "short_description": "Deploys MQ on Cloud instance with optional security, logging, and notification services",
       "long_description": "[IBM MQ on Cloud](https://cloud.ibm.com/docs/mqcloud/index.html) is an end-to-end solution for building and running secure queue managers. It connects applications dynamically, securely, and reliably across your messaging network, so your business can build message-driven and event-driven applications at scale.<br/>This deployable architecture creates an instance of IBM MQ on Cloud along with optional security and observability cloud services.<br/><br/>ℹ️ This Terraform-based automation is part of a broader suite of IBM-maintained Infrastructure as Code (IaC) assets, each following the naming pattern \"Cloud automation for *servicename*\" and focusing on single IBM Cloud service. These single-service deployable architectures can be used on their own to streamline and automate service deployments through an [IaC approach](https://cloud.ibm.com/docs/secure-enterprise?topic=secure-enterprise-understanding-projects), or assembled together into a broader [automated IaC stack](https://cloud.ibm.com/docs/secure-enterprise?topic=secure-enterprise-config-stack) to automate the deployment of an end-to-end solution architecture. \n\nLeverage [Terraform IBM Modules](https://github.com/terraform-ibm-modules) to shape and scale your solutions. You can integrate Terraform IBM Modules (TIM) to extend functionality and design a solution tailored to your environment and operations needs. These modules offer reusable, customizable elements that follow IBM Cloud's recommended practices. You can access the [source code and documentation](https://github.com/terraform-ibm-modules/terraform-ibm-mq-cloud) and use it to extend your current architecture or create new solutions.",
       "offering_docs_url": "https://cloud.ibm.com/docs/ibm-cloud-provider-for-terraform?topic=ibm-cloud-provider-for-terraform-about-tim",
-      "release_notes_url": "https://github.com/terraform-ibm-modules/terraform-ibm-mq-cloud/releases",
       "offering_icon_url": "https://raw.githubusercontent.com/terraform-ibm-modules/terraform-ibm-mq-cloud/main/images/MQ.svg",
       "provider_name": "IBM",
       "features": [
@@ -64,6 +63,7 @@
           "index": 1,
           "install_type": "fullstack",
           "working_directory": "solutions/fully-configurable",
+          "release_notes_url": "https://github.com/terraform-ibm-modules/terraform-ibm-mq-cloud/releases",
           "iam_permissions": [
             {
               "role_crns": [
