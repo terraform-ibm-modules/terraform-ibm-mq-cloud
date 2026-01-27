@@ -60,10 +60,10 @@
         {
           "label": "Fully configurable",
           "name": "fully-configurable",
-          "short_description": "Ideal for users who want flexibility with a reliable starting point.",
           "index": 1,
           "install_type": "fullstack",
           "working_directory": "solutions/fully-configurable",
+          "short_description": "Ideal for users looking for a managed messaging service that brings IBM MQ's reliable, secure application-to-application communication to the cloud, handling infrastructure, upgrades, and patching for you",
           "iam_permissions": [
             {
               "role_crns": [
