@@ -4,6 +4,7 @@ package test
 import (
 	"log"
 	"os"
+	"strings"
 	"testing"
 
 	"github.com/IBM/go-sdk-core/core"
@@ -198,7 +199,9 @@ func TestRunFullyConfigurableUpgradeSchematics(t *testing.T) {
 		{Name: "prefix", Value: options.Prefix, DataType: "string"},
 		{Name: "region", Value: options.Region, DataType: "string"},
 		{Name: "deployment_name", Value: "daupg-mq-instance", DataType: "string"},
-		{Name: "queue_manager_name", Value: "daupg_qm", DataType: "string"},
+		{Name: "existing_secrets_manager_crn", Value: permanentResources["privateOnlySecMgrCRN"], DataType: "string"},
+		{Name: "secret_group_name", Value: options.Prefix, DataType: "string"},
+		{Name: "queue_manager_name", Value: strings.ReplaceAll(options.Prefix, "-", "_"), DataType: "string"}, // queue manager name cannot contain dash so converting to underscore
 		{Name: "queue_manager_display_name", Value: "daupg-qm-display", DataType: "string"},
 		{Name: "queue_manager_size", Value: "xsmall", DataType: "string"},
 		{Name: "application_name", Value: "daupgapp", DataType: "string"},
@@ -218,10 +221,11 @@ func TestMqCloudDefaultConfiguration(t *testing.T) {
 	t.Parallel()
 
 	options := testaddons.TestAddonsOptionsDefault(&testaddons.TestAddonOptions{
-		Testing:       t,
-		Prefix:        "mq-def",
-		ResourceGroup: resourceGroup,
-		QuietMode:     true, // Suppress logs except on failure
+		Testing:               t,
+		Prefix:                "mq-def",
+		ResourceGroup:         resourceGroup,
+		OverrideInputMappings: core.BoolPtr(true),
+		QuietMode:             true, // Suppress logs except on failure
 	})
 
 	options.AddonConfig = cloudinfo.NewAddonConfigTerraform(
@@ -235,12 +239,16 @@ func TestMqCloudDefaultConfiguration(t *testing.T) {
 			"secrets_manager_service_plan": "__NULL__",
 			"logs_routing_tenant_regions":  []string{},
 			"existing_mq_capacity_crn":     permanentResources["mq_capacity_crn"],
-			"queue_manager_name":           "da_qm",
+			// using prefix here as this value is used as part of the secrets manager
+			// secrets that are created and can cause a name clash when using our
+			// permanent Secrets Manager instance.
+			// note: queue manager name cannot contain dash so converting to underscore.
+			"queue_manager_name": strings.ReplaceAll(options.Prefix, "-", "_"),
 		},
 	)
 
-	// Disable target / route creation to prevent hitting quota in account
 	options.AddonConfig.Dependencies = []cloudinfo.AddonConfig{
+		// Disable target / route creation to prevent hitting quota in account
 		{
 			OfferingName:   "deploy-arch-ibm-cloud-monitoring",
 			OfferingFlavor: "fully-configurable",
@@ -257,6 +265,7 @@ func TestMqCloudDefaultConfiguration(t *testing.T) {
 			},
 			Enabled: core.BoolPtr(true),
 		},
+		// Use existing Secrets Manager to help prevent hitting quota in account
 		{
 			OfferingName:   "deploy-arch-ibm-secrets-manager",
 			OfferingFlavor: "fully-configurable",
@@ -265,14 +274,27 @@ func TestMqCloudDefaultConfiguration(t *testing.T) {
 				"service_plan":                         "__NULL__", // no plan value needed when using existing SM
 				"skip_secrets_manager_iam_auth_policy": true,       // since using an existing Secrets Manager instance, attempting to re-create auth policy can cause conflicts if the policy already exists
 				"secret_groups":                        []string{}, // passing empty array for secret groups as default value is creating general group and it will cause conflicts as we are using an existing SM
+				"region":                               permanentResources["secretsManagerRegion"],
 			},
 			Enabled: core.BoolPtr(true),
 		},
+		// Need to override the region for dependant DAs due to the following constraints:
+		// - MQ must be deployed in us-east, as that is where the MQ capacity instance is in the account that tests are run in.
+		// - Event Notifications is not supported in us-east, so locking that to us-south instead
+		// - App Config and Event Notifications must be in the same region
 		{
 			OfferingName:   "deploy-arch-ibm-event-notifications",
 			OfferingFlavor: "fully-configurable",
 			Inputs: map[string]interface{}{
-				"region": "us-south", // EN is not supported in us-east, so need to override
+				"region": "us-south",
+			},
+			Enabled: core.BoolPtr(true),
+		},
+		{
+			OfferingName:   "deploy-arch-ibm-apprapp",
+			OfferingFlavor: "fully-configurable",
+			Inputs: map[string]interface{}{
+				"region": "us-south",
 			},
 			Enabled: core.BoolPtr(true),
 		},
