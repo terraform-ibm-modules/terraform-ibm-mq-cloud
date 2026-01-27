@@ -29,6 +29,11 @@ const resourceGroup = "geretain-test-resources"
 const advancedExampleDir = "examples/advanced"
 const fullyConfigurableTerraformDir = "solutions/fully-configurable"
 
+var IgnoreVersionUpdates = []string{
+	// When a version for queue manager is not passed, the module takes the latest version which can fail the upgrade test. So, this needs to be ignored.
+	"module.queue_manager[0].ibm_mqcloud_queue_manager.mqcloud_queue_manager",
+}
+
 // TestMain will be run before any parallel tests, used to read data from yaml for use with tests
 func TestMain(m *testing.M) {
 	var err error
@@ -94,6 +99,9 @@ func TestRunStandardInstanceOnlySolutionSchematics(t *testing.T) {
 		WaitJobCompleteMinutes: 60,
 		Region:                 region,
 		TerraformVersion:       terraformVersion,
+		IgnoreUpdates: testhelper.Exemptions{ // Ignore for consistency check
+			List: IgnoreVersionUpdates,
+		},
 	})
 
 	options.TerraformVars = []testschematic.TestSchematicTerraformVar{
@@ -135,6 +143,9 @@ func TestRunFullyConfigurableSchematics(t *testing.T) {
 		WaitJobCompleteMinutes: 60,
 		Region:                 region,
 		TerraformVersion:       terraformVersion,
+		IgnoreUpdates: testhelper.Exemptions{ // Ignore for consistency check
+			List: IgnoreVersionUpdates,
+		},
 	})
 
 	options.TerraformVars = []testschematic.TestSchematicTerraformVar{
@@ -176,6 +187,9 @@ func TestRunFullyConfigurableUpgradeSchematics(t *testing.T) {
 		Region:                     region,
 		CheckApplyResultForUpgrade: true,
 		TerraformVersion:           terraformVersion,
+		IgnoreUpdates: testhelper.Exemptions{
+			List: IgnoreVersionUpdates,
+		},
 	})
 
 	options.TerraformVars = []testschematic.TestSchematicTerraformVar{
