@@ -378,16 +378,17 @@
             {
               "key": "region",
               "required": true,
-              "options": [
-                {
-                  "displayname": "Washington (us-east)",
-                  "value": "us-east"
-                },
-                {
-                  "displayname": "London (eu-gb)",
-                  "value": "eu-gb"
+              "custom_config": {
+                "type": "region",
+                "grouping": "deployment",
+                "original_grouping": "deployment",
+                "config_constraints": {
+                  "filterString": "service:mqcloud",
+                  "showKinds": [
+                    "region"
+                  ]
                 }
-              ]
+              }
             },
             {
               "key": "prefix",

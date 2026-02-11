@@ -29,11 +29,6 @@ variable "region" {
   type        = string
   description = "The region to provision all resources in. [Learn more](https://terraform-ibm-modules.github.io/documentation/#/region) about how to select different regions for different services."
   default     = "us-east"
-
-  validation {
-    condition     = contains(["eu-gb", "us-east"], var.region)
-    error_message = "Invalid value for `region`, valid values for MQ on Cloud offering are: `eu-gb`, `us-east`"
-  }
 }
 
 variable "prefix" {
