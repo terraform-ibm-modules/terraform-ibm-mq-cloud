@@ -463,7 +463,7 @@
                 "grouping": "deployment",
                 "original_grouping": "deployment",
                 "config_constraints": {
-                  "resourceType": "mqcloud",
+                  "resourceType": "service_name",
                   "selection": "single_select",
                   "valueType": "crn"
                 }
@@ -553,9 +553,9 @@
                 "grouping": "deployment",
                 "original_grouping": "deployment",
                 "config_constraints": {
-                  "resourceType": "mqcloud",
+                  "resourceType": "service_name",
                   "selection": "single_select",
-                  "valueType": "crn"
+                  "valueType": "id"
                 }
               }
             },
