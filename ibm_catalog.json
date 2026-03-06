@@ -595,7 +595,7 @@
               "value_constraints": [
                 {
                   "type": "regex",
-                  "description": "The value provided for 'existing_secrets_manager_crn' is not valid.",
+                  "description": "The value provided for 'existing_secrets_manager_instance' is not valid.",
                   "value": "^__NULL__$|^crn:v\\d:(.*:){2}secrets-manager:(.*:)([aos]\\/[\\w_\\-]+):[0-9a-fA-F]{8}(?:-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}::$"
                 }
               ],
