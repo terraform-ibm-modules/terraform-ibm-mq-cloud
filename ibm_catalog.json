@@ -457,17 +457,7 @@
                   "description": "The value provided for 'existing_mq_capacity_crn' is not valid.",
                   "value": "^__NULL__$|^crn:v\\d:(.*:){2}(mqcloud):(.*:)([aos]\\/[\\w_\\-]+):[0-9a-fA-F]{8}(?:-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}::$"
                 }
-              ],
-              "custom_config": {
-                "type": "platform_resource",
-                "grouping": "deployment",
-                "original_grouping": "deployment",
-                "config_constraints": {
-                  "resourceType": "mqcloud",
-                  "selection": "single_select",
-                  "valueType": "crn"
-                }
-              }
+              ]
             },
             {
               "key": "secrets_manager_region",
@@ -547,17 +537,7 @@
                   "description": "The value provided for 'existing_mq_deployment_crn' is not valid.",
                   "value": "^__NULL__$|^crn:v\\d:(.*:){2}(mqcloud):(.*:)([aos]\\/[\\w_\\-]+):[0-9a-fA-F]{8}(?:-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}::$"
                 }
-              ],
-              "custom_config": {
-                "type": "platform_resource",
-                "grouping": "deployment",
-                "original_grouping": "deployment",
-                "config_constraints": {
-                  "resourceType": "mqcloud",
-                  "selection": "single_select",
-                  "valueType": "crn"
-                }
-              }
+              ]
             },
             {
               "key": "queue_manager_name",
@@ -611,6 +591,7 @@
             },
             {
               "key": "existing_secrets_manager_crn",
+              "display_name": "existing_secrets_manager_instance",
               "value_constraints": [
                 {
                   "type": "regex",
