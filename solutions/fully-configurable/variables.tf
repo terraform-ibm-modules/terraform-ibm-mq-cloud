@@ -193,23 +193,23 @@ variable "user_email" {
 # Secrets Manager - in which to store the queue manager certificate and optionally store application keys
 ########################################################################################################################
 
-variable "existing_secrets_manager_crn" {
+variable "existing_secrets_manager_instance_crn" {
   type        = string
   description = "The CRN of a secrets manager to store secrets.name of an existing application."
   default     = null
 
   validation {
     condition = anytrue([
-      var.existing_secrets_manager_crn == null,
-      can(regex("^crn:v\\d:(.*:){2}secrets-manager:(.*:)([aos]\\/[\\w_\\-]+):[0-9a-fA-F]{8}(?:-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}::$", var.existing_secrets_manager_crn))
+      var.existing_secrets_manager_instance_crn == null,
+      can(regex("^crn:v\\d:(.*:){2}secrets-manager:(.*:)([aos]\\/[\\w_\\-]+):[0-9a-fA-F]{8}(?:-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}::$", var.existing_secrets_manager_instance_crn))
     ])
-    error_message = "The value provided for 'existing_secrets_manager_crn' is not valid."
+    error_message = "The value provided for 'existing_secrets_manager_instance_crn' is not valid."
   }
 }
 
 variable "secrets_manager_endpoint_type" {
   type        = string
-  description = "The type of endpoint to use for communicating with the provided Secrets Manager instance. Possible values are `public` or `private`. Applies only if `existing_secrets_manager_crn` is set."
+  description = "The type of endpoint to use for communicating with the provided Secrets Manager instance. Possible values are `public` or `private`. Applies only if `existing_secrets_manager_instance_crn` is set."
   default     = "private"
   validation {
     condition     = contains(["public", "private"], var.secrets_manager_endpoint_type)

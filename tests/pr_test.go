@@ -199,7 +199,7 @@ func TestRunFullyConfigurableUpgradeSchematics(t *testing.T) {
 		{Name: "prefix", Value: options.Prefix, DataType: "string"},
 		{Name: "region", Value: options.Region, DataType: "string"},
 		{Name: "deployment_name", Value: "daupg-mq-instance", DataType: "string"},
-		{Name: "existing_secrets_manager_crn", Value: permanentResources["privateOnlySecMgrCRN"], DataType: "string"},
+		{Name: "existing_secrets_manager_instance_crn", Value: permanentResources["privateOnlySecMgrCRN"], DataType: "string"},
 		{Name: "secret_group_name", Value: options.Prefix, DataType: "string"},
 		{Name: "queue_manager_name", Value: strings.ReplaceAll(options.Prefix, "-", "_"), DataType: "string"}, // queue manager name cannot contain dash so converting to underscore
 		{Name: "queue_manager_display_name", Value: "daupg-qm-display", DataType: "string"},
@@ -270,11 +270,11 @@ func TestMqCloudDefaultConfiguration(t *testing.T) {
 			OfferingName:   "deploy-arch-ibm-secrets-manager",
 			OfferingFlavor: "fully-configurable",
 			Inputs: map[string]interface{}{
-				"existing_secrets_manager_crn":         permanentResources["privateOnlySecMgrCRN"],
-				"service_plan":                         "__NULL__", // no plan value needed when using existing SM
-				"skip_secrets_manager_iam_auth_policy": true,       // since using an existing Secrets Manager instance, attempting to re-create auth policy can cause conflicts if the policy already exists
-				"secret_groups":                        []string{}, // passing empty array for secret groups as default value is creating general group and it will cause conflicts as we are using an existing SM
-				"region":                               permanentResources["secretsManagerRegion"],
+				"existing_secrets_manager_instance_crn": permanentResources["privateOnlySecMgrCRN"],
+				"service_plan":                          "__NULL__", // no plan value needed when using existing SM
+				"skip_secrets_manager_iam_auth_policy":  true,       // since using an existing Secrets Manager instance, attempting to re-create auth policy can cause conflicts if the policy already exists
+				"secret_groups":                         []string{}, // passing empty array for secret groups as default value is creating general group and it will cause conflicts as we are using an existing SM
+				"region":                                permanentResources["secretsManagerRegion"],
 			},
 			Enabled: core.BoolPtr(true),
 		},
