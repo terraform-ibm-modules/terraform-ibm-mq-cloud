@@ -194,7 +194,7 @@
                 },
                 {
                   "dependency_input": "region",
-                  "version_input": "secrets_manager_region",
+                  "version_input": "region",
                   "reference_version": true
                 },
                 {
@@ -456,55 +456,6 @@
                   "type": "regex",
                   "description": "The value provided for 'existing_mq_capacity_crn' is not valid.",
                   "value": "^__NULL__$|^crn:v\\d:(.*:){2}(mqcloud):(.*:)([aos]\\/[\\w_\\-]+):[0-9a-fA-F]{8}(?:-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}::$"
-                }
-              ]
-            },
-            {
-              "key": "secrets_manager_region",
-              "required": true,
-              "virtual": true,
-              "default_value": "us-south",
-              "description": "The region where the Secrets Manager instance is provisioned.",
-              "options": [
-                {
-                  "displayname": "Osaka (jp-osa)",
-                  "value": "jp-osa"
-                },
-                {
-                  "displayname": "Sydney (au-syd)",
-                  "value": "au-syd"
-                },
-                {
-                  "displayname": "Tokyo (jp-tok)",
-                  "value": "jp-tok"
-                },
-                {
-                  "displayname": "Frankfurt (eu-de)",
-                  "value": "eu-de"
-                },
-                {
-                  "displayname": "London (eu-gb)",
-                  "value": "eu-gb"
-                },
-                {
-                  "displayname": "Madrid (eu-es)",
-                  "value": "eu-es"
-                },
-                {
-                  "displayname": "Dallas (us-south)",
-                  "value": "us-south"
-                },
-                {
-                  "displayname": "Toronto (ca-tor)",
-                  "value": "ca-tor"
-                },
-                {
-                  "displayname": "Washington DC (us-east)",
-                  "value": "us-east"
-                },
-                {
-                  "displayname": "Sao Paulo (br-sao)",
-                  "value": "br-sao"
                 }
               ]
             },
