@@ -235,7 +235,6 @@ func TestMqCloudDefaultConfiguration(t *testing.T) {
 		map[string]interface{}{
 			"region":                       region,
 			"enable_platform_metrics":      false,
-			"secrets_manager_region":       permanentResources["privateOnlySecMgrRegion"],
 			"secrets_manager_service_plan": "__NULL__",
 			"logs_routing_tenant_regions":  []string{},
 			"existing_mq_capacity_crn":     permanentResources["mq_capacity_crn"],
@@ -274,7 +273,6 @@ func TestMqCloudDefaultConfiguration(t *testing.T) {
 				"service_plan":                         "__NULL__", // no plan value needed when using existing SM
 				"skip_secrets_manager_iam_auth_policy": true,       // since using an existing Secrets Manager instance, attempting to re-create auth policy can cause conflicts if the policy already exists
 				"secret_groups":                        []string{}, // passing empty array for secret groups as default value is creating general group and it will cause conflicts as we are using an existing SM
-				"region":                               permanentResources["secretsManagerRegion"],
 			},
 			Enabled: core.BoolPtr(true),
 		},
