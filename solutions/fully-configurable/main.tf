@@ -172,19 +172,19 @@ module "experimental_certificate_root" {
 ########################################################################################################################
 
 module "sm_crn" {
-  count   = var.existing_secrets_manager_crn != null ? 1 : 0
+  count   = var.existing_secrets_manager_instance_crn != null ? 1 : 0
   source  = "terraform-ibm-modules/common-utilities/ibm//modules/crn-parser"
   version = "1.4.2"
-  crn     = var.existing_secrets_manager_crn
+  crn     = var.existing_secrets_manager_instance_crn
 }
 
 locals {
-  sm_region           = var.existing_secrets_manager_crn != null ? module.sm_crn[0].region : ""
+  sm_region           = var.existing_secrets_manager_instance_crn != null ? module.sm_crn[0].region : ""
   sm_ibmcloud_api_key = var.secrets_manager_ibmcloud_api_key == null ? var.ibmcloud_api_key : var.secrets_manager_ibmcloud_api_key
 }
 
 module "secret_group" {
-  count                    = var.existing_secrets_manager_crn != null && var.existing_secret_group_id == null ? 1 : 0
+  count                    = var.existing_secrets_manager_instance_crn != null && var.existing_secret_group_id == null ? 1 : 0
   source                   = "terraform-ibm-modules/secrets-manager-secret-group/ibm"
   version                  = "1.4.8"
   region                   = module.sm_crn[0].region
@@ -198,13 +198,13 @@ module "secret_group" {
 }
 
 locals {
-  secret_group_id              = var.existing_secrets_manager_crn == null ? null : (var.existing_secret_group_id == null ? module.secret_group[0].secret_group_id : var.existing_secret_group_id)
+  secret_group_id              = var.existing_secrets_manager_instance_crn == null ? null : (var.existing_secret_group_id == null ? module.secret_group[0].secret_group_id : var.existing_secret_group_id)
   certificate_secret_name      = "mq-da-cert-${local.queue_manager_name}"
   root_certificate_secret_name = "mq-da-root-cert-${local.queue_manager_name}"
 }
 
 module "certificate_secret" {
-  count                   = var.existing_secrets_manager_crn != null ? 1 : 0
+  count                   = var.existing_secrets_manager_instance_crn != null ? 1 : 0
   source                  = "terraform-ibm-modules/secrets-manager-secret/ibm"
   version                 = "1.9.14"
   region                  = module.sm_crn[0].region
@@ -221,7 +221,7 @@ module "certificate_secret" {
 }
 
 module "root_certificate_secret" {
-  count                   = var.existing_secrets_manager_crn != null ? 1 : 0
+  count                   = var.existing_secrets_manager_instance_crn != null ? 1 : 0
   source                  = "terraform-ibm-modules/secrets-manager-secret/ibm"
   version                 = "1.9.14"
   region                  = module.sm_crn[0].region

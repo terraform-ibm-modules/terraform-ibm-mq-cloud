@@ -188,27 +188,27 @@ output "truststore_root_certificate_errors" {
 # Ideally a CRN would be used, but secrets groups do not have them
 output "secret_group_id" {
   description = "The ID of the secret group containing the MQ secrets."
-  value       = var.existing_secrets_manager_crn != null && var.existing_secret_group_id == null ? module.secret_group[0].secret_group_id : null
+  value       = var.existing_secrets_manager_instance_crn != null && var.existing_secret_group_id == null ? module.secret_group[0].secret_group_id : null
 }
 
 output "secret_issuer_certificate_crn" {
   description = "The issue CA certificate secret CRN."
-  value       = var.existing_secrets_manager_crn != null ? module.certificate_secret[0].secret_crn : null
+  value       = var.existing_secrets_manager_instance_crn != null ? module.certificate_secret[0].secret_crn : null
 }
 
 output "secret_issuer_certificate_name" {
   description = "The issue CA certificate secret name."
-  value       = var.existing_secrets_manager_crn != null ? local.certificate_secret_name : null
+  value       = var.existing_secrets_manager_instance_crn != null ? local.certificate_secret_name : null
 }
 
 output "secret_root_cert_crn" {
   description = "The root CA certificate secret CRN."
-  value       = var.existing_secrets_manager_crn != null ? module.root_certificate_secret[0].secret_crn : null
+  value       = var.existing_secrets_manager_instance_crn != null ? module.root_certificate_secret[0].secret_crn : null
 }
 
 output "secret_root_cert_name" {
   description = "The root CA certificate secret name."
-  value       = var.existing_secrets_manager_crn != null ? local.root_certificate_secret_name : null
+  value       = var.existing_secrets_manager_instance_crn != null ? local.root_certificate_secret_name : null
 }
 
 ########################################################################################################################
