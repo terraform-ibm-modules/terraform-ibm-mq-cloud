@@ -35,26 +35,24 @@ are incomplete, may not be in final form and may generate unpredictable failures
 <!-- The following content is automatically populated by the pre-commit hook -->
 <!-- BEGIN OVERVIEW HOOK -->
 ## Overview
+
 * [terraform-ibm-mq-cloud](#terraform-ibm-mq-cloud)
 * [Submodules](./modules)
-    * [application](./modules/application)
-    * [experimental-api-key](./modules/experimental-api-key)
-    * [experimental-certificate](./modules/experimental-certificate)
-    * [experimental-connection](./modules/experimental-connection)
-    * [keystore-certificate](./modules/keystore-certificate)
-    * [mq-instance](./modules/mq-instance)
-    * [queue-manager](./modules/queue-manager)
-    * [truststore-certificate](./modules/truststore-certificate)
-    * [user](./modules/user)
+  * [application](./modules/application)
+  * [experimental-api-key](./modules/experimental-api-key)
+  * [experimental-certificate](./modules/experimental-certificate)
+  * [experimental-connection](./modules/experimental-connection)
+  * [keystore-certificate](./modules/keystore-certificate)
+  * [mq-instance](./modules/mq-instance)
+  * [queue-manager](./modules/queue-manager)
+  * [truststore-certificate](./modules/truststore-certificate)
+  * [user](./modules/user)
 * [Examples](./examples)
 :information_source: Ctrl/Cmd+Click or right-click on the Schematics deploy button to open in a new tab
-    * <a href="./examples/advanced">Advanced example</a> <a href="https://cloud.ibm.com/schematics/workspaces/create?workspace_name=mq-cloud-advanced-example&repository=https://github.com/terraform-ibm-modules/terraform-ibm-mq-cloud/tree/main/examples/advanced"><img src="https://img.shields.io/badge/Deploy%20with IBM%20Cloud%20Schematics-0f62fe?logo=ibm&logoColor=white&labelColor=0f62fe" alt="Deploy with IBM Cloud Schematics" style="height: 16px; vertical-align: text-bottom; margin-left: 5px;"></a>
-    * <a href="./examples/basic">Basic example</a> <a href="https://cloud.ibm.com/schematics/workspaces/create?workspace_name=mq-cloud-basic-example&repository=https://github.com/terraform-ibm-modules/terraform-ibm-mq-cloud/tree/main/examples/basic"><img src="https://img.shields.io/badge/Deploy%20with IBM%20Cloud%20Schematics-0f62fe?logo=ibm&logoColor=white&labelColor=0f62fe" alt="Deploy with IBM Cloud Schematics" style="height: 16px; vertical-align: text-bottom; margin-left: 5px;"></a>
-* [Deployable Architectures](./solutions)
-    * <a href="./solutions/fully-configurable">Cloud automation for MQ on Cloud (Fully configurable)</a>
+  * <a href="./examples/advanced">Advanced example</a> <a href="https://cloud.ibm.com/schematics/workspaces/create?workspace_name=mq-cloud-advanced-example&repository=https://github.com/terraform-ibm-modules/terraform-ibm-mq-cloud/tree/main/examples/advanced"><img src="https://img.shields.io/badge/Deploy%20with IBM%20Cloud%20Schematics-0f62fe?logo=ibm&logoColor=white&labelColor=0f62fe" alt="Deploy with IBM Cloud Schematics" style="height: 16px; vertical-align: text-bottom; margin-left: 5px;"></a>
+  * <a href="./examples/basic">Basic example</a> <a href="https://cloud.ibm.com/schematics/workspaces/create?workspace_name=mq-cloud-basic-example&repository=https://github.com/terraform-ibm-modules/terraform-ibm-mq-cloud/tree/main/examples/basic"><img src="https://img.shields.io/badge/Deploy%20with IBM%20Cloud%20Schematics-0f62fe?logo=ibm&logoColor=white&labelColor=0f62fe" alt="Deploy with IBM Cloud Schematics" style="height: 16px; vertical-align: text-bottom; margin-left: 5px;"></a>
 * [Contributing](#contributing)
 <!-- END OVERVIEW HOOK -->
-
 
 <!--
 If this repo contains any reference architectures, uncomment the heading below and link to them.
@@ -63,7 +61,6 @@ See "Reference architecture" in the public documentation at
 https://terraform-ibm-modules.github.io/documentation/#/implementation-guidelines?id=reference-architecture
 -->
 <!-- ## Reference architectures -->
-
 
 <!-- Replace this heading with the name of the root level module (the repo name) -->
 ## terraform-ibm-mq-cloud
@@ -147,11 +144,10 @@ statement instead the previous block.
 
 <!-- No permissions are needed to run this module.-->
 
-- IAM services
-    - **mqcloud** service
-        - `Editor` platform access
-        - `Manager` service access
-
+* IAM services
+  * **mqcloud** service
+    * `Editor` platform access
+    * `Manager` service access
 
 <!-- The following content is automatically populated by the pre-commit hook -->
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
