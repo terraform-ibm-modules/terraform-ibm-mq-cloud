@@ -1,6 +1,6 @@
 # Terraform MQ on Cloud Module
 
-:warning: This module is no longer maintained and has been archived.
+🕸️ Archived: This repo is no longer maintained and is archived.
 
 <!--
 Update status and "latest release" badges:
