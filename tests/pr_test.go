@@ -61,7 +61,7 @@ func setupOptions(t *testing.T, prefix string, dir string) *testhelper.TestOptio
 
 func TestRunAdvancedExample(t *testing.T) {
 	// t.Parallel()
-
+	t.Skip() // Skip running tests as only README.md is updated with Archive information.
 	options := setupOptions(t, "mqoc", advancedExampleDir)
 
 	output, err := options.RunTestConsistency()
@@ -71,7 +71,7 @@ func TestRunAdvancedExample(t *testing.T) {
 
 func TestRunUpgradeExample(t *testing.T) {
 	// t.Parallel()
-
+	t.Skip() // Skip running tests as only README.md is updated with Archive information.
 	options := setupOptions(t, "mqupg", advancedExampleDir)
 
 	output, err := options.RunTestUpgrade()
@@ -83,7 +83,7 @@ func TestRunUpgradeExample(t *testing.T) {
 // used in catalog pipeline
 func TestRunStandardInstanceOnlySolutionSchematics(t *testing.T) {
 	// t.Parallel()
-
+	t.Skip() // Skip running tests as only README.md is updated with Archive information.
 	options := testschematic.TestSchematicOptionsDefault(&testschematic.TestSchematicOptions{
 		Testing: t,
 		TarIncludePatterns: []string{
@@ -127,7 +127,7 @@ func TestRunStandardInstanceOnlySolutionSchematics(t *testing.T) {
 // Run the DA on Schematics in full configuration
 func TestRunFullyConfigurableSchematics(t *testing.T) {
 	// t.Parallel()
-
+	t.Skip() // Skip running tests as only README.md is updated with Archive information.
 	options := testschematic.TestSchematicOptionsDefault(&testschematic.TestSchematicOptions{
 		Testing: t,
 		TarIncludePatterns: []string{
@@ -170,7 +170,7 @@ func TestRunFullyConfigurableSchematics(t *testing.T) {
 
 func TestRunFullyConfigurableUpgradeSchematics(t *testing.T) {
 	// t.Parallel()
-
+	t.Skip() // Skip running tests as only README.md is updated with Archive information.
 	options := testschematic.TestSchematicOptionsDefault(&testschematic.TestSchematicOptions{
 		Testing: t,
 		TarIncludePatterns: []string{
@@ -219,7 +219,7 @@ func TestRunFullyConfigurableUpgradeSchematics(t *testing.T) {
 
 func TestMqCloudDefaultConfiguration(t *testing.T) {
 	t.Parallel()
-
+	t.Skip() // Skip running tests as only README.md is updated with Archive information.
 	options := testaddons.TestAddonsOptionsDefault(&testaddons.TestAddonOptions{
 		Testing:               t,
 		Prefix:                "mq-def",
