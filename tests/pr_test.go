@@ -13,12 +13,12 @@ import (
 
 // Define a struct with fields that match the structure of the YAML data
 const yamlLocation = "../common-dev-assets/common-go-assets/common-permanent-resources.yaml"
-const region = "us-east" // Must use us-east as that is where the MQ capacity instance is
+const region = "eu-de" // Must use us-east as that is where the MQ capacity instance is
 
 var permanentResources map[string]interface{}
 
 // Use existing resource group
-const resourceGroup = "Default"
+const resourceGroup = "mq-eude-prod"
 const advancedExampleDir = "examples/advanced"
 const basicExampleDir = "examples/basic"
 
