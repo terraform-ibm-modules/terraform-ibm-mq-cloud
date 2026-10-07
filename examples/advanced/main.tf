@@ -44,7 +44,7 @@ module "mq_on_cloud" {
   users = {
     "user-${local.prefix}" = {
       name  = "user-1"
-      email = "user-1@example.com"
+      email = var.user_email
     }
   }
 }
@@ -59,7 +59,7 @@ module "user" {
   service_instance_crn = module.mq_on_cloud.service_instance_deployment_crn
   source               = "../../modules/user"
   name                 = "another-user"
-  email                = "another@example.com"
+  email                = var.user_email
 }
 
 module "keystore" {

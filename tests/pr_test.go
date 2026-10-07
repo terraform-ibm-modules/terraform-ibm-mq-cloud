@@ -13,6 +13,7 @@ import (
 
 // Define a struct with fields that match the structure of the YAML data
 const yamlLocation = "../common-dev-assets/common-go-assets/common-permanent-resources.yaml"
+
 const region = "eu-de" // Must use us-east as that is where the MQ capacity instance is
 
 var permanentResources map[string]interface{}
@@ -29,6 +30,14 @@ func TestMain(m *testing.M) {
 	if err != nil {
 		log.Fatal(err)
 	}
+
+	// Pass the user email via a TF_VAR_ environment variable instead of a -var flag
+	// so that the value is never exposed in Terraform command-line arguments logged by terratest.
+	userEmail := os.Getenv("MQ_USER_EMAIL")
+	if userEmail == "" {
+		log.Fatal("MQ_USER_EMAIL environment variable must be set")
+	}
+	os.Setenv("TF_VAR_user_email", userEmail) //nolint:errcheck
 
 	os.Exit(m.Run())
 }
