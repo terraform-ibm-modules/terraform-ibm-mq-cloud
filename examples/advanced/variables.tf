@@ -50,9 +50,3 @@ variable "truststore_certificate" {
   default     = null
   sensitive   = true
 }
-
-variable "user_email" {
-  type        = string
-  description = "Email address to assign to the MQ on Cloud users"
-  sensitive   = true
-}

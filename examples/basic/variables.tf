@@ -59,9 +59,3 @@ variable "subscription_id" {
 #  description = "Base64 encoded string containing truststore certificate"
 #  sensitive   = true
 #}
-
-variable "user_email" {
-  type        = string
-  description = "Email address to assign to the MQ on Cloud user"
-  sensitive   = true
-}

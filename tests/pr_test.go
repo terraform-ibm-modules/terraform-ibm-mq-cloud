@@ -31,14 +31,6 @@ func TestMain(m *testing.M) {
 		log.Fatal(err)
 	}
 
-	// Pass the user email via a TF_VAR_ environment variable instead of a -var flag
-	// so that the value is never exposed in Terraform command-line arguments logged by terratest.
-	userEmail := os.Getenv("MQ_USER_EMAIL")
-	if userEmail == "" {
-		log.Fatal("MQ_USER_EMAIL environment variable must be set")
-	}
-	os.Setenv("TF_VAR_user_email", userEmail) //nolint:errcheck
-
 	os.Exit(m.Run())
 }
 
