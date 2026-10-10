@@ -175,13 +175,13 @@ statement instead the previous block.
 ### Requirements
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.9.0 |
 
 ### Modules
 
 | Name | Source | Version |
-|------|--------|---------|
+| ---- | ------ | ------- |
 | <a name="module_application"></a> [application](#module\_application) | ./modules/application | n/a |
 | <a name="module_keystore_certificate"></a> [keystore\_certificate](#module\_keystore\_certificate) | ./modules/keystore-certificate | n/a |
 | <a name="module_mqcloud_instance"></a> [mqcloud\_instance](#module\_mqcloud\_instance) | ./modules/mq-instance | n/a |
@@ -196,7 +196,7 @@ No resources.
 ### Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
+| ---- | ----------- | ---- | ------- | :------: |
 | <a name="input_applications"></a> [applications](#input\_applications) | A map of IBM MQ on Cloud applications to be created. | <pre>map(object({<br/>    name = string<br/>  }))</pre> | `{}` | no |
 | <a name="input_existing_mq_capacity_crn"></a> [existing\_mq\_capacity\_crn](#input\_existing\_mq\_capacity\_crn) | The CRN of an existing capacity service instance. If no CRN is specifiied, a new capacity plan is created. | `string` | `null` | no |
 | <a name="input_keystore_certificates"></a> [keystore\_certificates](#input\_keystore\_certificates) | A map of IBM MQ on Cloud keystore certificates to be created. | <pre>map(object({<br/>    certificate = string<br/>    label       = string<br/>  }))</pre> | `{}` | no |
@@ -216,7 +216,7 @@ No resources.
 ### Outputs
 
 | Name | Description |
-|------|-------------|
+| ---- | ----------- |
 | <a name="output_queue_manager_id"></a> [queue\_manager\_id](#output\_queue\_manager\_id) | The ID of the IBM MQ on Cloud queue manager |
 | <a name="output_queue_manager_options"></a> [queue\_manager\_options](#output\_queue\_manager\_options) | Queue manager options for the IBM MQ on Cloud deployment service instance. |
 | <a name="output_service_instance_capacity_crn"></a> [service\_instance\_capacity\_crn](#output\_service\_instance\_capacity\_crn) | The CRN of the IBM MQ on Cloud capacity service instance. |

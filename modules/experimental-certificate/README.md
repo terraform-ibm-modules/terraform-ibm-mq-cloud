@@ -30,7 +30,7 @@ module "experimental_certificate" {
 ### Requirements
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.9.0 |
 | <a name="requirement_external"></a> [external](#requirement\_external) | >= 2.3.4 |
 
@@ -41,20 +41,20 @@ No modules.
 ### Resources
 
 | Name | Type |
-|------|------|
+| ---- | ---- |
 | [external_external.certificate](https://registry.terraform.io/providers/hashicorp/external/latest/docs/data-sources/external) | data source |
 
 ### Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
+| ---- | ----------- | ---- | ------- | :------: |
 | <a name="input_href"></a> [href](#input\_href) | The truststore certificates href | `string` | n/a | yes |
 | <a name="input_ibmcloud_api_key"></a> [ibmcloud\_api\_key](#input\_ibmcloud\_api\_key) | The IBM Cloud API key to deploy resources | `string` | n/a | yes |
 
 ### Outputs
 
 | Name | Description |
-|------|-------------|
+| ---- | ----------- |
 | <a name="output_certificate"></a> [certificate](#output\_certificate) | The value of the requested certificate |
 | <a name="output_errors"></a> [errors](#output\_errors) | Diagnostics of any errors reported by during the lookup process |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
