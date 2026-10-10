@@ -18,7 +18,7 @@ module "experimental_connection" {
 ### Requirements
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.9.0 |
 | <a name="requirement_external"></a> [external](#requirement\_external) | >= 2.3.4 |
 
@@ -29,20 +29,20 @@ No modules.
 ### Resources
 
 | Name | Type |
-|------|------|
+| ---- | ---- |
 | [external_external.connection](https://registry.terraform.io/providers/hashicorp/external/latest/docs/data-sources/external) | data source |
 
 ### Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
+| ---- | ----------- | ---- | ------- | :------: |
 | <a name="input_href"></a> [href](#input\_href) | The queue manager connection href | `string` | n/a | yes |
 | <a name="input_ibmcloud_api_key"></a> [ibmcloud\_api\_key](#input\_ibmcloud\_api\_key) | The IBM Cloud API key to deploy resources | `string` | n/a | yes |
 
 ### Outputs
 
 | Name | Description |
-|------|-------------|
+| ---- | ----------- |
 | <a name="output_connection_admin_channel_name"></a> [connection\_admin\_channel\_name](#output\_connection\_admin\_channel\_name) | Channel name of the admin channel |
 | <a name="output_connection_admin_cipherspec"></a> [connection\_admin\_cipherspec](#output\_connection\_admin\_cipherspec) | Cipher specification of the admin channel |
 | <a name="output_connection_admin_host"></a> [connection\_admin\_host](#output\_connection\_admin\_host) | Host name of the admin channel |
