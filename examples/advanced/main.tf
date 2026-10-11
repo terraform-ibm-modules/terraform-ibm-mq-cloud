@@ -41,7 +41,7 @@ module "mq_on_cloud" {
       name = "application-2"
     }
   }
-   users = {}
+  users = {}
 }
 
 module "application" {
