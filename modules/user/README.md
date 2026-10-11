@@ -23,7 +23,7 @@ module "user" {
 ### Requirements
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.9.0 |
 | <a name="requirement_ibm"></a> [ibm](#requirement\_ibm) | >= 1.79.0, < 3.0.0 |
 
@@ -34,13 +34,13 @@ No modules.
 ### Resources
 
 | Name | Type |
-|------|------|
+| ---- | ---- |
 | [ibm_mqcloud_user.user](https://registry.terraform.io/providers/ibm-cloud/ibm/latest/docs/resources/mqcloud_user) | resource |
 
 ### Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
+| ---- | ----------- | ---- | ------- | :------: |
 | <a name="input_email"></a> [email](#input\_email) | The email of the user. | `string` | n/a | yes |
 | <a name="input_name"></a> [name](#input\_name) | The shortname of the user that will be used as the IBM MQ administrator in interactions with a queue manager for this service instance. | `string` | n/a | yes |
 | <a name="input_service_instance_crn"></a> [service\_instance\_crn](#input\_service\_instance\_crn) | The CRN that uniquely identifies the MQ on Cloud deployment service instance. | `string` | n/a | yes |
@@ -48,7 +48,7 @@ No modules.
 ### Outputs
 
 | Name | Description |
-|------|-------------|
+| ---- | ----------- |
 | <a name="output_href"></a> [href](#output\_href) | The URL for the user details. |
 | <a name="output_id"></a> [id](#output\_id) | The unique identifier of the user. |
 | <a name="output_user_id"></a> [user\_id](#output\_user\_id) | The ID of the user which was allocated on creation, and can be used for delete calls |

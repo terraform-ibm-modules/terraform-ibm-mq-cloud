@@ -22,7 +22,7 @@ module "keystore_certificate" {
 ### Requirements
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.9.0 |
 | <a name="requirement_ibm"></a> [ibm](#requirement\_ibm) | >= 1.79.0, < 3.0.0 |
 
@@ -33,13 +33,13 @@ No modules.
 ### Resources
 
 | Name | Type |
-|------|------|
+| ---- | ---- |
 | [ibm_mqcloud_keystore_certificate.mqcloud_keystore_certificate](https://registry.terraform.io/providers/ibm-cloud/ibm/latest/docs/resources/mqcloud_keystore_certificate) | resource |
 
 ### Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
+| ---- | ----------- | ---- | ------- | :------: |
 | <a name="input_certificate"></a> [certificate](#input\_certificate) | A base64 encoded string contain a PEM certificate chain. | `string` | n/a | yes |
 | <a name="input_label"></a> [label](#input\_label) | The label to use for the certificate to be uploaded. | `string` | n/a | yes |
 | <a name="input_queue_manager_id"></a> [queue\_manager\_id](#input\_queue\_manager\_id) | The id of the queue manager. | `string` | n/a | yes |
@@ -48,7 +48,7 @@ No modules.
 ### Outputs
 
 | Name | Description |
-|------|-------------|
+| ---- | ----------- |
 | <a name="output_certificate_id"></a> [certificate\_id](#output\_certificate\_id) | Id of the certificate. |
 | <a name="output_dns_names"></a> [dns\_names](#output\_dns\_names) | The list of DNS names. |
 | <a name="output_dns_names_total_count"></a> [dns\_names\_total\_count](#output\_dns\_names\_total\_count) | The total count of dns names. |
