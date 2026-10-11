@@ -22,7 +22,7 @@ module "application" {
 ### Requirements
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.9.0 |
 | <a name="requirement_ibm"></a> [ibm](#requirement\_ibm) | >= 1.79.0, < 3.0.0 |
 
@@ -33,20 +33,20 @@ No modules.
 ### Resources
 
 | Name | Type |
-|------|------|
+| ---- | ---- |
 | [ibm_mqcloud_application.mqcloud_application](https://registry.terraform.io/providers/ibm-cloud/ibm/latest/docs/resources/mqcloud_application) | resource |
 
 ### Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
+| ---- | ----------- | ---- | ------- | :------: |
 | <a name="input_name"></a> [name](#input\_name) | The name of the application. | `string` | n/a | yes |
 | <a name="input_service_instance_crn"></a> [service\_instance\_crn](#input\_service\_instance\_crn) | The CRN that uniquely identifies the MQ on Cloud deployment service instance. | `string` | n/a | yes |
 
 ### Outputs
 
 | Name | Description |
-|------|-------------|
+| ---- | ----------- |
 | <a name="output_application_id"></a> [application\_id](#output\_application\_id) | The ID of the application which was allocated on creation, and can be used for delete calls |
 | <a name="output_create_api_key_uri"></a> [create\_api\_key\_uri](#output\_create\_api\_key\_uri) | The URI to create a new apikey for the application. |
 | <a name="output_href"></a> [href](#output\_href) | The URL for this application. |

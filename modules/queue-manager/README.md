@@ -21,7 +21,7 @@ module "queue_manager" {
 ### Requirements
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.9.0 |
 | <a name="requirement_ibm"></a> [ibm](#requirement\_ibm) | >= 1.79.0, < 3.0.0 |
 
@@ -32,14 +32,14 @@ No modules.
 ### Resources
 
 | Name | Type |
-|------|------|
+| ---- | ---- |
 | [ibm_mqcloud_queue_manager.mqcloud_queue_manager](https://registry.terraform.io/providers/ibm-cloud/ibm/latest/docs/resources/mqcloud_queue_manager) | resource |
 | [ibm_mqcloud_queue_manager_options.options](https://registry.terraform.io/providers/ibm-cloud/ibm/latest/docs/data-sources/mqcloud_queue_manager_options) | data source |
 
 ### Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
+| ---- | ----------- | ---- | ------- | :------: |
 | <a name="input_display_name"></a> [display\_name](#input\_display\_name) | A displayable name for the queue manager. | `string` | n/a | yes |
 | <a name="input_location"></a> [location](#input\_location) | The locations in which the queue manager would be deployed. | `string` | n/a | yes |
 | <a name="input_name"></a> [name](#input\_name) | A queue manager name conforming to MQ restrictions. 1 to 48 characters matching regular expression '/^[a-zA-Z0-9.\_]*$/' . | `string` | n/a | yes |
@@ -50,7 +50,7 @@ No modules.
 ### Outputs
 
 | Name | Description |
-|------|-------------|
+| ---- | ----------- |
 | <a name="output_administrator_api_endpoint_url"></a> [administrator\_api\_endpoint\_url](#output\_administrator\_api\_endpoint\_url) | The url through which to access the Admin REST APIs for this queue manager. |
 | <a name="output_available_upgrade_versions_uri"></a> [available\_upgrade\_versions\_uri](#output\_available\_upgrade\_versions\_uri) | The uri through which the available versions to upgrade to can be found for this queue manager. |
 | <a name="output_connection_info_uri"></a> [connection\_info\_uri](#output\_connection\_info\_uri) | The uri through which the CDDT for this queue manager can be obtained. |
