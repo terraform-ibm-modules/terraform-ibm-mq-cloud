@@ -41,25 +41,12 @@ module "mq_on_cloud" {
       name = "application-2"
     }
   }
-  users = {
-    "user-${local.prefix}" = {
-      name  = "user-1"
-      email = "user-1@example.com"
-    }
-  }
 }
 
 module "application" {
   service_instance_crn = module.mq_on_cloud.service_instance_deployment_crn
   source               = "../../modules/application"
   name                 = "app-ext"
-}
-
-module "user" {
-  service_instance_crn = module.mq_on_cloud.service_instance_deployment_crn
-  source               = "../../modules/user"
-  name                 = "another-user"
-  email                = "another@example.com"
 }
 
 module "keystore" {
