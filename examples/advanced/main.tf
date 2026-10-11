@@ -41,12 +41,7 @@ module "mq_on_cloud" {
       name = "application-2"
     }
   }
-   users = {
-    "user-${local.prefix}" = {
-      name  = "user-1"
-      email = "user-1@example.com"
-    }
-  }
+   users = {}
 }
 
 module "application" {
