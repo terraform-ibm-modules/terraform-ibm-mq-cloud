@@ -41,12 +41,9 @@ module "mq_on_cloud" {
       name = "application-1"
     }
   }
-  users = {
-    "user-${local.prefix}" = {
-      name  = "user-1"
-      email = "user-1@example.com"
-    }
-  }
+
+  users = {}
+
   #keystore_certificates = var.keystore_certificate == null ? {} : {
   #  "${var.prefix}-ks-cert" = {
   #    certificate = var.keystore_certificate
