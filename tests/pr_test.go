@@ -72,6 +72,8 @@ func TestRunUpgradeExample(t *testing.T) {
 	options := setupOptions(t, "mqupg", advancedExampleDir)
 
 	output, err := options.RunTestUpgrade()
-	assert.Nil(t, err, "Upgrade test should not have errored")
-	assert.NotNil(t, output, "Expected some output")
+	if !options.UpgradeTestSkipped {
+		assert.Nil(t, err, "This should not have errored")
+		assert.NotNil(t, output, "Expected some output")
+	}
 }
